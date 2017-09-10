@@ -35,7 +35,7 @@ Using Amazon's Machine Learning API, the recommendations will be based on your p
 ### Design
 
 
-### [TimeLog](https://github.com/j-stoff/my_next_book)
+### [TimeLog](https://github.com/j-stoff/my_next_book/blob/master/TimeLog.md)
 
-### [Project Plan](https://github.com/j-stoff/my_next_book)
+### [Project Plan](https://github.com/j-stoff/my_next_book/blob/master/ProjectPlan.md)
 
