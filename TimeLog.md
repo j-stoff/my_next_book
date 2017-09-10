@@ -1,0 +1,10 @@
+# Time Log
+
+
+| Date | Major Accomplishment | Hours | Notes |
+|------------|------------|------------|----------|
+9/9/17 | Finished Problem statement and added barebones to repository | 2 | Still looking into ML API |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
