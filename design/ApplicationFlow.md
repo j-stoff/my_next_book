@@ -18,9 +18,9 @@ Part 2 - Generating the recommendation
 1. The user will need to log in to the main application using some UI interface complete with text fields and login buttons.
 2. After logging in, a new user will need to submit some data such as previous books read, preferred authors and genres, as well as basic contact information for record keeping.
 3. Returning users and users finished with data submission will go to the home screen which will have three main areas. 
-    *Recommend a book which will generate book recommendations
-    *my history which displays books read on the app and serves to change preferences for the recommendation criteria
-    *my information to change or update contact information.
+    * Recommend a book which will generate book recommendations
+    * My history which displays books read on the app and serves to change preferences for the recommendation criteria
+    * My information to change or update contact information.
 4. Go to the various page selected and preform ascribed operations
     - Ex: Recommendation page will generate a recommendation complete with name, author, and a picture of the book
 5. Enjoy the app
