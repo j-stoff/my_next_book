@@ -33,6 +33,9 @@ Using Amazon's Machine Learning API, the recommendations will be based on your p
 
 
 ### Design
+    * Design wireframes
+    * Database design
+    * Application flow
 
 
 ### [TimeLog](https://github.com/j-stoff/my_next_book/blob/master/TimeLog.md)
