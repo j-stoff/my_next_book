@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="ml_training@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="ml_training">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="ml2"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="sample"/>
+    <schema id="8" parent="1" name="sys"/>
+    <schema id="9" parent="1" name="week4hibernate"/>
+    <table id="10" parent="2" name="authors"/>
+    <table id="11" parent="2" name="books"/>
+    <column id="12" parent="10" name="id_author">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="13" parent="10" name="author_first_name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="14" parent="10" name="author_last_name">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="15" parent="10" name="author_genre">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="16" parent="10" name="author_average_rating">
+      <Position>5</Position>
+      <DataType>double|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="17" parent="10" name="author_book_reviews">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <key id="18" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_author</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="19" parent="11" name="id_books">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="20" parent="11" name="book_title">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="11" name="book_author">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="11" name="book_rating">
+      <Position>4</Position>
+      <DataType>double|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="11" name="book_num_rating">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="24" parent="11" name="book_num_review">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="25" parent="11" name="book_genre">
+      <Position>7</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="11" name="fk_id_author">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="11" name="book_isbn">
+      <Position>9</Position>
+      <DataType>int(15)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="11" name="book_goodreads_id">
+      <Position>10</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="29" parent="11" name="book_title_UNIQUE">
+      <ColNames>book_title</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="30" parent="11" name="fk_id_authors_idx">
+      <ColNames>fk_id_author</ColNames>
+    </index>
+    <key id="31" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_books</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="32" parent="11" name="book_title_UNIQUE">
+      <ColNames>book_title</ColNames>
+      <UnderlyingIndexName>book_title_UNIQUE</UnderlyingIndexName>
+    </key>
+    <foreign-key id="33" parent="11" name="fk_id_authors">
+      <ColNames>fk_id_author</ColNames>
+      <RefSchemaName>ml_training</RefSchemaName>
+      <RefTableName>authors</RefTableName>
+      <RefColNames>id_author</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+  </database-model>
+</dataSource>

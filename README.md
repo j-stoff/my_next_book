@@ -36,8 +36,8 @@ Using Amazon's Machine Learning API, the recommendations will be based on your p
 
 [Design wireframes](https://github.com/j-stoff/my_next_book/blob/master/design/ScreenDesign.md)
 
-Database design
-    [Machine Learning](https://github.com/j-stoff/my_next_book/blob/master/design/machineLearningDBModel.mwb)
+Database design -
+    [Machine Learning](https://github.com/j-stoff/my_next_book/blob/master/design/machineLearningDBModel.mwb) ,
     [User Information](https://github.com/j-stoff/my_next_book/blob/master/design/userDBModel.mwb)
 
 [Application flow](https://github.com/j-stoff/my_next_book/blob/master/design/ApplicationFlow.md)
