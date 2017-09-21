@@ -1,15 +1,53 @@
 package next_book_web_scrapper.database;
 
+import javax.persistence.*;
+import org.hibernate.annotations.GenericGenerator;
 import java.util.List;
 
+@Entity
+@Table(name="authors")
 public class Author {
 
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name="increment", strategy = "increment")
+    @Column(name="id_author")
     private int id;
+
+    @Column(name="author_first_name")
     private String firstName;
+
+    @Column(name="author_last_name")
     private String lastName;
+
+    @Column(name="author_genre")
+    @Convert(converter = ListConverter.class)
     private List<String> genres;
+
+    @Column(name="author_average_rating")
     private double averageRating;
+
+    @Column(name="author_book_reviews")
     private String bookReviews;
+
+
+    /**
+     * No argument constructor
+     */
+    public Author() {
+    }
+
+    /**
+     * Argument constructor for testing convenience.
+     * @param aFirstName a first name for the author.
+     * @param aLastName a last name for the author.
+     * @param anAverageRating an average book rating for this author.
+     */
+    public Author(String aFirstName, String aLastName, double anAverageRating) {
+        this.firstName = aFirstName;
+        this.lastName = aLastName;
+        this.averageRating = anAverageRating;
+    }
 
     /**
      * Getter for author's id.

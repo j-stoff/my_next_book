@@ -1,16 +1,43 @@
 package next_book_web_scrapper.database;
 
+import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.*;
+
+@Entity
+@Table(name="books")
 public class Book {
 
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name="increment", strategy = "increment")
+    @Column(name="id_books")
     private int id;
+
+    @Column(name="book_title")
     private String title;
+
+    @Column(name="book_author")
     private String authorName;
+
+    @Column(name="book_rating")
     private double rating;
+
+    @Column(name="book_num_rating")
     private int numberOfRatings;
+
+    @Column(name="book_num_review")
     private int numberOfReviews;
+
+    @Column(name="book_genre")
     private String genre;
+
+    @Column(name="fk_id_author")
     private int fk_id_author;
+
+    @Column(name="book_isbn")
     private int isbn;
+
+    @Column(name="book_goodreads_id")
     private int goodreadsId;
 
 
