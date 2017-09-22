@@ -2,6 +2,8 @@ package next_book_web_scrapper.database;
 
 import javax.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,7 +24,7 @@ public class Author {
 
     @Column(name="author_genre")
     @Convert(converter = ListConverter.class)
-    private List<String> genres;
+    private List<String> genre;
 
     @Column(name="author_average_rating")
     private double averageRating;
@@ -35,6 +37,7 @@ public class Author {
      * No argument constructor
      */
     public Author() {
+        genre = new ArrayList<>();
     }
 
     /**
@@ -44,6 +47,7 @@ public class Author {
      * @param anAverageRating an average book rating for this author.
      */
     public Author(String aFirstName, String aLastName, double anAverageRating) {
+        this();
         this.firstName = aFirstName;
         this.lastName = aLastName;
         this.averageRating = anAverageRating;
@@ -102,15 +106,15 @@ public class Author {
      * @return genres as a list of Strings.
      */
     public List<String> getGenres() {
-        return genres;
+        return genre;
     }
 
     /**
      * Setter for a list of author's book genres as a list.
-     * @param genres new list of genres.
+     * @param genre new list of genres.
      */
-    public void setGenres(List<String> genres) {
-        this.genres = genres;
+    public void setGenres(List<String> genre) {
+        this.genre = genre;
     }
 
     /**
@@ -145,5 +149,23 @@ public class Author {
      */
     public void setBookReviews(String bookReviews) {
         this.bookReviews = bookReviews;
+    }
+
+    @Override
+    public String toString() {
+        String newLine = System.getProperty("line.separator");
+        String author = "Author id: " + id + newLine;
+        author += "First Name: " + firstName + newLine;
+        author += "Last Name: " + lastName + newLine;
+        if (genre != null) {
+            author += "Author's genres: " + genre.toString() + newLine;
+        } else {
+            author += "Author genres: None yet" + newLine;
+        }
+
+        author += "Average book rating: " + averageRating + newLine;
+        author += "Book reviews " + bookReviews + newLine;
+
+        return author;
     }
 }
