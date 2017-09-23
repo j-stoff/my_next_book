@@ -1,22 +1,14 @@
 package next_book_web_scrapper.database;
 
+import next_book_web_scrapper.entity.Author;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-
 public class AuthorDAO {
 
     private final Logger log = Logger.getLogger(this.getClass());
-
-    /// Not null fields
-    /// first name
-    /// last name
-    /// avg rating
 
     /**
      * No argument constructor
@@ -55,7 +47,9 @@ public class AuthorDAO {
             rollbackTransaction(currentTransaction, message, exception);
         } finally {
             try {
-                databaseSession.close();
+                if (databaseSession != null) {
+                    databaseSession.close();
+                }
             } catch (Exception exception) {
                 log.error("Problem closing session in addAuthor()", exception);
             }
@@ -82,7 +76,9 @@ public class AuthorDAO {
             log.error("Exception in getAuthor()", exception);
         } finally {
             try {
-                databaseSession.close();
+                if (databaseSession != null) {
+                    databaseSession.close();
+                }
             } catch (Exception exception) {
                 log.error("Problem closing session in getAuthor()", exception);
             }
@@ -98,7 +94,7 @@ public class AuthorDAO {
      * @return author id on success or 0 for failure.
      */
     public int deleteAuthor(int author_id) {
-        int db_author_id = 0;
+        int db_author_id;
         Author authorToDelete = getAuthor(author_id);
 
         if (authorToDelete == null) {
@@ -123,7 +119,9 @@ public class AuthorDAO {
             rollbackTransaction(currentTransaction, message, exception);
         } finally {
             try {
-                databaseSession.close();
+                if (databaseSession != null) {
+                    databaseSession.close();
+                }
             } catch (Exception exception) {
                 log.error("Problem with closing session in deleteAuthor()", exception);
             }
@@ -161,7 +159,9 @@ public class AuthorDAO {
             rollbackTransaction(currentTransaction,message, exception);
         } finally {
             try {
-                databaseSession.close();
+                if (databaseSession != null) {
+                    databaseSession.close();
+                }
             } catch (Exception exception) {
                 log.error("Problem closing session in deleteAuthor", exception);
             }
@@ -195,7 +195,9 @@ public class AuthorDAO {
             rollbackTransaction(currentTransaction, message, exception);
         } finally {
             try {
-                databaseSession.close();
+                if (databaseSession != null) {
+                    databaseSession.close();
+                }
             } catch (Exception exception) {
                 log.error("Problem with closing database session", exception);
             }
@@ -233,7 +235,9 @@ public class AuthorDAO {
             rollbackTransaction(currentTransaction, message, exception);
         } finally {
             try {
-                databaseSession.close();
+                if (databaseSession != null) {
+                    databaseSession.close();
+                }
             } catch (Exception exception) {
                 log.error("Problem with closing session in updateAuthor", exception);
             }
@@ -276,7 +280,7 @@ public class AuthorDAO {
     private void rollbackTransaction(Transaction currentTransaction,
                                      String message, Exception exception) {
         if (currentTransaction == null) {
-            log.error(message + ", exceptionWithException,rollback not needed", exception);
+            log.error(message + ", rollback not needed", exception);
             return;
         }
 
@@ -284,7 +288,7 @@ public class AuthorDAO {
             currentTransaction.rollback();
             log.error(message + ", rollback committed", exception);
         } catch (Exception exceptionWithException) {
-            log.error(message + ", rollback error", exceptionWithException);
+            log.error(message + ", exceptionWithException, rollback error", exceptionWithException);
         }
 
 

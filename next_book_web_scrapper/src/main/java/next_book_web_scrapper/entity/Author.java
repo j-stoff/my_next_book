@@ -1,10 +1,11 @@
-package next_book_web_scrapper.database;
+package next_book_web_scrapper.entity;
 
 import javax.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import next_book_web_scrapper.util.ListConverter;
 
 @Entity
 @Table(name="authors")

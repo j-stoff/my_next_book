@@ -1,4 +1,4 @@
-package next_book_web_scrapper.database;
+package next_book_web_scrapper.util;
 
 import javax.persistence.AttributeConverter;
 import java.util.ArrayList;

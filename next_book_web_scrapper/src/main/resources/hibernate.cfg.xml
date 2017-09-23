@@ -22,8 +22,8 @@
         <property name="show_sql">true</property>
 
         <!-- List the annotated entity class/es -->
-        <mapping class="next_book_web_scrapper.database.Book"/>
-        <mapping class="next_book_web_scrapper.database.Author"/>
+        <mapping class="next_book_web_scrapper.entity.Book"/>
+        <mapping class="next_book_web_scrapper.entity.Author"/>
 
     </session-factory>
 

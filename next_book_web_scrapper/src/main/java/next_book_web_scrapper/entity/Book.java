@@ -1,7 +1,9 @@
-package next_book_web_scrapper.database;
+package next_book_web_scrapper.entity;
 
+import next_book_web_scrapper.util.ListConverter;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="books")
@@ -29,7 +31,8 @@ public class Book {
     private int numberOfReviews;
 
     @Column(name="book_genre")
-    private String genre;
+    @Convert(converter = ListConverter.class)
+    private List<String> genre;
 
     @Column(name="fk_id_author")
     private int fk_id_author;
@@ -40,6 +43,26 @@ public class Book {
     @Column(name="book_goodreads_id")
     private int goodreadsId;
 
+
+    /**
+     * No argument constructor
+     */
+    public Book() {
+
+    }
+
+    /**
+     * Constructor for non-null fields. Testing purposes mainly.
+     */
+    public Book(int anId, String bookTitle, String anAuthorName,
+                int aBookRating, List<String> bookGenres, int anIsbn) {
+        this.id = anId;
+        this.title = bookTitle;
+        this.authorName = anAuthorName;
+        this.rating = aBookRating;
+        this.genre = bookGenres;
+        this.isbn = anIsbn;
+    }
 
     /**
      * Getter for book id in the book table.
@@ -140,18 +163,18 @@ public class Book {
     }
 
     /**
-     * Getter for the book's genre.
-     * @return genre
+     * Getter for the book's genre as a list.
+     * @return genre as a list.
      */
-    public String getGenre() {
+    public List<String> getGenre() {
         return genre;
     }
 
     /**
-     * Setter for the book's genre.
-     * @param genre the new book genre.
+     * Setter for the book's list of genres.
+     * @param genre the new book genres in a list of strings.
      */
-    public void setGenre(String genre) {
+    public void setGenre(List<String> genre) {
         this.genre = genre;
     }
 
