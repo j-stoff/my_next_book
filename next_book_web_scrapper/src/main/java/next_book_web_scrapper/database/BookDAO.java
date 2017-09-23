@@ -59,16 +59,167 @@ public class BookDAO {
     }
 
     /**
+     * Retrieve a book based on the database id.
+     * @param book_id id in the database.
+     * @return a Book object filled with information from the database.
+     */
+    public Book getBook(int book_id) {
+        Book retrievedBook = null;
+        Session databaseSession = null;
+
+        try {
+            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
+            retrievedBook = (Book) databaseSession.get(Book.class, book_id);
+        } catch (HibernateException hibernateException) {
+            log.error("Hibernate Exception in getBook", hibernateException);
+        } catch (Exception exception) {
+            log.error("Exception in getBook", exception);
+        } finally {
+            try {
+                if (databaseSession != null) {
+                    databaseSession.close();
+                }
+            } catch (Exception exception) {
+                log.error("Problem closing session in getBook", exception);
+            }
+        }
+
+        return retrievedBook;
+    }
+
+    /**
+     * Update a book in the database. If the book doesn't exist, it will be created.
+     * @param bookUpdated the book data to update.
+     * @return boolean if the book update was successful.
+     */
+    public boolean updateBook(Book bookUpdated) {
+        if (bookUpdated == null) {
+            return false;
+        }
+
+        if (!areNullFieldsValid(bookUpdated)) {
+            return false;
+        }
+
+        Session databaseSession = null;
+        Transaction currentTransaction = null;
+
+        try {
+            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
+            currentTransaction = databaseSession.beginTransaction();
+            databaseSession.update(bookUpdated);
+            currentTransaction.commit();
+        } catch (HibernateException hibernateException) {
+            String message = "Hibernate Exception in updateBook";
+            rollbackTransaction(currentTransaction, message, hibernateException);
+        } catch (Exception exception) {
+            String message = "Exception in updateBook";
+            rollbackTransaction(currentTransaction, message, exception);
+        } finally {
+            try {
+                if (databaseSession != null) {
+                    databaseSession.close();
+                }
+            } catch (Exception exception) {
+                log.error("Problem with closing session in updateBook", exception);
+            }
+        }
+
+        return true;
+    }
+
+
+    /**
+     * Delete a book in the database using the id.
+     * @param book_id the database id of the book to delete.
+     * @return the id on success, 0 if the book is not in the database, -1 for an error
+     */
+    public int deleteBook(int book_id) {
+        if (book_id <= 0) {
+            return -1;
+        }
+        int retrievedId;
+        Book deletedBook = getBook(book_id);
+        if (deletedBook == null) {
+            return 0;
+        } else {
+            retrievedId = deletedBook.getId();
+        }
+
+
+        Session databaseSession = null;
+        Transaction currentTransaction = null;
+
+        try {
+            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
+            currentTransaction = databaseSession.beginTransaction();
+            databaseSession.delete(deletedBook);
+            currentTransaction.commit();
+        } catch (HibernateException hibernateException) {
+            String message = "Hibernate Exception in deleteBook";
+            rollbackTransaction(currentTransaction, message, hibernateException);
+        } catch (Exception exception) {
+            String message = "Exception in deleteBook";
+            rollbackTransaction(currentTransaction, message, exception);
+        } finally {
+
+            try {
+                if (databaseSession != null) {
+                    databaseSession.close();
+                }
+            } catch  (Exception exception) {
+                log.error("Problem closing the session in deleteBook", exception);
+            }
+        }
+
+        return retrievedId;
+    }
+
+    /**
+     * Delete a book in the database using a book object.
+     * @param book book object to delete.
+     * @return the id on success, 0 if the book is not in the database, -1 for an error
+     */
+    public int deleteBook(Book book) {
+        if (book == null) {
+            return -1;
+        }
+
+        int retrieved_id = book.getId();
+        Session databaseSession = null;
+        Transaction currentTransaction = null;
+
+        try {
+            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
+            currentTransaction = databaseSession.beginTransaction();
+            databaseSession.delete(book);
+            currentTransaction.commit();
+        } catch (HibernateException hibernateException) {
+            String message = "Hibernate Exception in deleteBook";
+            rollbackTransaction(currentTransaction, message, hibernateException);
+        } catch (Exception expcetion) {
+            String message = "Exception in deleteBook";
+            rollbackTransaction(currentTransaction, message, expcetion);
+        } finally {
+            try {
+                if (databaseSession != null) {
+                    databaseSession.close();
+                }
+            } catch (Exception exception) {
+                log.error("Problem closing the session deleteBook", exception);
+            }
+        }
+
+        return retrieved_id;
+    }
+
+    /**
      * For changing a book's values in the database, the book's non-null values are expected to be
      * not null and contain some information.
      * @param book book object to be compared
      * @return true if non-nulls are valid, false if they are not.
      */
     private boolean areNullFieldsValid(Book book) {
-        if (book.getId() <= 0) {
-            return false;
-        }
-
         if (book.getTitle() == null || book.getTitle().isEmpty()) {
             return false;
         }

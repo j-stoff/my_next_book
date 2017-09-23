@@ -91,9 +91,12 @@ public class AuthorDAO {
      * Delete an author within the database using the database author id.
      * Calls the getAuthor in order to popular an Author class to utilize delete from a session.
      * @param author_id author's id in the database.
-     * @return author id on success or 0 for failure.
+     * @return author id on success, 0 if the author is not in the database, -1 for error.
      */
     public int deleteAuthor(int author_id) {
+        if (author_id <= 0) {
+            return -1;
+        }
         int db_author_id;
         Author authorToDelete = getAuthor(author_id);
 
@@ -133,12 +136,12 @@ public class AuthorDAO {
     /**
      * Delete an author based on a class. Mostly testing purposes.
      * @param author the author class to be deleted.
-     * @return the author's id on success or 0 on failure.
+     * @return the author's id on success, 0 if the author is not in the database, -1 for error.
      */
     public int deleteAuthor(Author author) {
         int db_author_id = 0;
         if (author == null) {
-            return 0;
+            return -1;
         } else {
             db_author_id = author.getId();
         }
@@ -168,40 +171,6 @@ public class AuthorDAO {
         }
 
         return db_author_id;
-    }
-
-    /**
-     * Update an author's information in the database using the author's id.
-     * @param author_id author's id in the database
-     */
-    public void updateAuthor(int author_id) {
-        if (author_id <= 0) {
-            return;
-        }
-        Author author = getAuthor(author_id);
-        Session databaseSession = null;
-        Transaction currentTransaction = null;
-
-        try {
-            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
-            currentTransaction = databaseSession.beginTransaction();
-            databaseSession.update(author);
-            currentTransaction.commit();
-        } catch (HibernateException hibernateException) {
-            String message = "Hibernate Exception in updateAuthor";
-            rollbackTransaction(currentTransaction, message, hibernateException);
-        } catch (Exception exception) {
-            String message = "Exception in updateAuthor";
-            rollbackTransaction(currentTransaction, message, exception);
-        } finally {
-            try {
-                if (databaseSession != null) {
-                    databaseSession.close();
-                }
-            } catch (Exception exception) {
-                log.error("Problem with closing database session", exception);
-            }
-        }
     }
 
     /**

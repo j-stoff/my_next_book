@@ -225,4 +225,25 @@ public class Book {
     public void setGoodreadsId(int goodreadsId) {
         this.goodreadsId = goodreadsId;
     }
+
+    @Override
+    public String toString() {
+        String lineSeparator = System.getProperty("line.separator");
+        String output = lineSeparator;
+        output += "Database id: " + id + lineSeparator;
+        output += "Title: " + title + lineSeparator;
+        output += "Author: " + authorName + lineSeparator;
+        output += "Rating: " + rating + lineSeparator;
+        output += "Number of ratings: " + numberOfRatings + lineSeparator;
+        output += "Number of reviews: " + numberOfReviews + lineSeparator;
+        if (genre != null) {
+            output += "Genres: " + genre.toString() + lineSeparator;
+        } else {
+            output += " Genres: None yet" + lineSeparator;
+        }
+        output += "Book ISBN: " + isbn + lineSeparator;
+        output += "Goodreads ID: " + goodreadsId + lineSeparator;
+
+        return output;
+    }
 }
