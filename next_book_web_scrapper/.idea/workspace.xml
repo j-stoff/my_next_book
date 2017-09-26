@@ -14,6 +14,14 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/next_book_web_scrapper$BookDAOTest.coverage" NAME="BookDAOTest Coverage Results" MODIFIED="1506389574517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>next_book_web_scrapper.database.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/next_book_web_scrapper$AuthorDAOTest.coverage" NAME="AuthorDAOTest Coverage Results" MODIFIED="1506390825281" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>next_book_web_scrapper.database.*</FILTER>
+    </SUITE>
+  </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
     <option name="GROUP_SCHEMA" value="true" />
@@ -55,7 +63,7 @@
       <file leaf-file-name="BookDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/BookDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
+            <state relative-caret-position="414">
               <caret line="212" column="28" lean-forward="false" selection-start-line="212" selection-start-column="28" selection-end-line="212" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -64,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AuthorDAO.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AuthorDAO.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/AuthorDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="143" column="21" lean-forward="false" selection-start-line="143" selection-start-column="21" selection-end-line="143" selection-end-column="21" />
+            <state relative-caret-position="-210">
+              <caret line="223" column="38" lean-forward="false" selection-start-line="223" selection-start-column="20" selection-end-line="223" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -79,8 +87,8 @@
       <file leaf-file-name="Author.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/entity/Author.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+            <state relative-caret-position="-468">
+              <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -91,8 +99,8 @@
       <file leaf-file-name="Book.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/entity/Book.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="36" column="32" lean-forward="true" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+            <state relative-caret-position="594">
+              <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -100,17 +108,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BookDAOTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BookDAOTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/next_book_web_scrapper/database/BookDAOTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="70" column="30" lean-forward="false" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
+            <state relative-caret-position="1602">
+              <caret line="97" column="39" lean-forward="false" selection-start-line="97" selection-start-column="39" selection-end-line="97" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#314#315#0" expanded="true" />
-                <element signature="e#353#354#0" expanded="true" />
                 <element signature="e#471#479#0" expanded="true" />
                 <element signature="e#1608#1616#0" expanded="true" />
+                <element signature="e#2252#2260#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -129,9 +136,12 @@
       <file leaf-file-name="AuthorDAOTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/next_book_web_scrapper/database/AuthorDAOTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13">
-              <caret line="2" column="44" lean-forward="false" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
-              <folding />
+            <state relative-caret-position="342">
+              <caret line="36" column="58" lean-forward="false" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#788#796#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -185,12 +195,12 @@
         <option value="$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/ListConverter.java" />
         <option value="$PROJECT_DIR$/src/main/java/next_book_web_scrapper/util/ListConverter.java" />
         <option value="$PROJECT_DIR$/src/main/java/next_book_web_scrapper/entity/Author.java" />
-        <option value="$PROJECT_DIR$/src/test/java/next_book_web_scrapper/database/AuthorDAOTest.java" />
         <option value="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/main/java/next_book_web_scrapper/entity/Book.java" />
         <option value="$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/AuthorDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/BookDAO.java" />
         <option value="$PROJECT_DIR$/src/test/java/next_book_web_scrapper/database/BookDAOTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/next_book_web_scrapper/database/AuthorDAOTest.java" />
       </list>
     </option>
   </component>
@@ -214,7 +224,7 @@
     <option name="height" value="680" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -227,113 +237,7 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="AndroidView" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="next_book_web_scrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="next_book_web_scrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="next_book_web_scrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="next_book_web_scrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="next_book_web_scrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="next_book_web_scrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="next_book_web_scrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="next_book_web_scrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="next_book_web_scrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="next_book_web_scrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="next_book_web_scrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="next_book_web_scrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="next_book_web_scrapper" type="b2602c69:ProjectViewProjectNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="next_book_web_scrapper" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
@@ -366,8 +270,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.BookDAOTest.deleteBookTest">
-    <configuration name="AuthorDAOTest.updateAuthorAddNewTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.AuthorDAOTest">
+    <configuration name="AuthorDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="next_book_web_scrapper.database.*" />
@@ -379,7 +283,32 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="next_book_web_scrapper.database" />
       <option name="MAIN_CLASS_NAME" value="next_book_web_scrapper.database.AuthorDAOTest" />
-      <option name="METHOD_NAME" value="updateAuthorAddNewTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="AuthorDAOTest.deleteAuthorById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="next_book_web_scrapper.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="next_book_web_scrapper" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="next_book_web_scrapper.database" />
+      <option name="MAIN_CLASS_NAME" value="next_book_web_scrapper.database.AuthorDAOTest" />
+      <option name="METHOD_NAME" value="deleteAuthorById" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -392,7 +321,7 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="BookDAOTest.addBookStaticBookTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AuthorDAOTest.getAuthorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="next_book_web_scrapper.database.*" />
@@ -403,8 +332,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="next_book_web_scrapper.database" />
-      <option name="MAIN_CLASS_NAME" value="next_book_web_scrapper.database.BookDAOTest" />
-      <option name="METHOD_NAME" value="addBookStaticBookTest" />
+      <option name="MAIN_CLASS_NAME" value="next_book_web_scrapper.database.AuthorDAOTest" />
+      <option name="METHOD_NAME" value="getAuthorTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -417,7 +346,7 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="BookDAOTest.deleteBookTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BookDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="next_book_web_scrapper.database.*" />
@@ -429,8 +358,8 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="next_book_web_scrapper.database" />
       <option name="MAIN_CLASS_NAME" value="next_book_web_scrapper.database.BookDAOTest" />
-      <option name="METHOD_NAME" value="deleteBookTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -442,7 +371,7 @@
       <envs />
       <patterns />
     </configuration>
-    <configuration name="BookDAOTest.getBookInDatabase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BookDAOTest.deleteBookById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="next_book_web_scrapper.database.*" />
@@ -454,32 +383,7 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="next_book_web_scrapper.database" />
       <option name="MAIN_CLASS_NAME" value="next_book_web_scrapper.database.BookDAOTest" />
-      <option name="METHOD_NAME" value="getBookInDatabase" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-    </configuration>
-    <configuration name="BookDAOTest.updateBookAlreadyInDatabase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="next_book_web_scrapper.database.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="next_book_web_scrapper" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="next_book_web_scrapper.database" />
-      <option name="MAIN_CLASS_NAME" value="next_book_web_scrapper.database.BookDAOTest" />
-      <option name="METHOD_NAME" value="updateBookAlreadyInDatabase" />
+      <option name="METHOD_NAME" value="deleteBookById" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -574,19 +478,19 @@
       <listeners />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.AuthorDAOTest.updateAuthorAddNewTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.BookDAOTest.addBookStaticBookTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.BookDAOTest.getBookInDatabase" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.BookDAOTest.updateBookAlreadyInDatabase" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.BookDAOTest.deleteBookTest" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.BookDAOTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.AuthorDAOTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.BookDAOTest.deleteBookById" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.AuthorDAOTest.getAuthorTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.AuthorDAOTest.deleteAuthorById" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.BookDAOTest.deleteBookTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.BookDAOTest.updateBookAlreadyInDatabase" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.BookDAOTest.addBookStaticBookTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.BookDAOTest.getBookInDatabase" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.AuthorDAOTest.updateAuthorAddNewTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.AuthorDAOTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.AuthorDAOTest.deleteAuthorById" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.AuthorDAOTest.getAuthorTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.BookDAOTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.BookDAOTest.deleteBookById" />
       </list>
     </recent_temporary>
   </component>
@@ -603,44 +507,45 @@
       <workItem from="1505964777598" duration="3674000" />
       <workItem from="1506022021898" duration="6406000" />
       <workItem from="1506103769027" duration="11117000" />
-      <workItem from="1506198252592" duration="10382000" />
+      <workItem from="1506198252592" duration="10436000" />
+      <workItem from="1506389039438" duration="1882000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="BookDAOTest_addBookStaticBookTest - 2017.09.23 at 16h 42m 56s.xml">
-      <configuration name="BookDAOTest.addBookStaticBookTest" configurationId="JUnit" />
+    <history-entry file="AuthorDAOTest - 2017.09.25 at 20h 33m 35s.xml">
+      <configuration name="AuthorDAOTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BookDAOTest_addBookStaticBookTest - 2017.09.23 at 16h 44m 08s.xml">
-      <configuration name="BookDAOTest.addBookStaticBookTest" configurationId="JUnit" />
+    <history-entry file="AuthorDAOTest - 2017.09.25 at 20h 53m 51s.xml">
+      <configuration name="AuthorDAOTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BookDAOTest_addBookStaticBookTest - 2017.09.23 at 16h 47m 46s.xml">
-      <configuration name="BookDAOTest.addBookStaticBookTest" configurationId="JUnit" />
+    <history-entry file="AuthorDAOTest_deleteAuthorById - 2017.09.25 at 20h 53m 39s.xml">
+      <configuration name="AuthorDAOTest.deleteAuthorById" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BookDAOTest_addBookStaticBookTest - 2017.09.23 at 17h 46m 46s.xml">
-      <configuration name="BookDAOTest.addBookStaticBookTest" configurationId="JUnit" />
+    <history-entry file="AuthorDAOTest_getAuthorTest - 2017.09.25 at 20h 40m 01s.xml">
+      <configuration name="AuthorDAOTest.getAuthorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BookDAOTest_addBookStaticBookTest - 2017.09.23 at 17h 47m 28s.xml">
-      <configuration name="BookDAOTest.addBookStaticBookTest" configurationId="JUnit" />
+    <history-entry file="AuthorDAOTest_getAuthorTest - 2017.09.25 at 20h 42m 54s.xml">
+      <configuration name="AuthorDAOTest.getAuthorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BookDAOTest_deleteBookTest - 2017.09.23 at 18h 15m 38s.xml">
-      <configuration name="BookDAOTest.deleteBookTest" configurationId="JUnit" />
+    <history-entry file="AuthorDAOTest_getAuthorTest - 2017.09.25 at 20h 45m 30s.xml">
+      <configuration name="AuthorDAOTest.getAuthorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BookDAOTest_deleteBookTest - 2017.09.23 at 18h 16m 42s.xml">
-      <configuration name="BookDAOTest.deleteBookTest" configurationId="JUnit" />
+    <history-entry file="AuthorDAOTest_getAuthorTest - 2017.09.25 at 20h 46m 32s.xml">
+      <configuration name="AuthorDAOTest.getAuthorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BookDAOTest_deleteBookTest - 2017.09.23 at 18h 17m 18s.xml">
-      <configuration name="BookDAOTest.deleteBookTest" configurationId="JUnit" />
+    <history-entry file="AuthorDAOTest_getAuthorTest - 2017.09.25 at 20h 47m 41s.xml">
+      <configuration name="AuthorDAOTest.getAuthorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BookDAOTest_getBookInDatabase - 2017.09.23 at 17h 00m 48s.xml">
-      <configuration name="BookDAOTest.getBookInDatabase" configurationId="JUnit" />
+    <history-entry file="AuthorDAOTest_getAuthorTest - 2017.09.25 at 20h 49m 57s.xml">
+      <configuration name="AuthorDAOTest.getAuthorTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="BookDAOTest_updateBookAlreadyInDatabase - 2017.09.23 at 17h 51m 28s.xml">
-      <configuration name="BookDAOTest.updateBookAlreadyInDatabase" configurationId="JUnit" />
+    <history-entry file="BookDAOTest - 2017.09.25 at 20h 33m 00s.xml">
+      <configuration name="BookDAOTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31579000" />
+    <option name="totallyTimeSpent" value="33515000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1617" height="1062" extended-state="6" />
@@ -652,7 +557,7 @@
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1402167" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20076482" sideWeight="0.49417636" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -664,8 +569,9 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35167205" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35167205" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20076482" sideWeight="0.5058236" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2" sideWeight="0.5121951" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2" sideWeight="0.4878049" order="0" side_tool="false" content_ui="combo" />
@@ -732,22 +638,90 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/Book.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/BookDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="3726">
+          <caret line="212" column="28" lean-forward="false" selection-start-line="212" selection-start-column="28" selection-end-line="212" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/AuthorDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2574">
+          <caret line="143" column="21" lean-forward="false" selection-start-line="143" selection-start-column="21" selection-end-line="143" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/entity/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="36" column="32" lean-forward="true" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/entity/Author.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" column="53" lean-forward="false" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/Author.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/next_book_web_scrapper/database/AuthorDAOTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="49" column="15" lean-forward="false" selection-start-line="49" selection-start-column="15" selection-end-line="49" selection-end-column="15" />
-          <folding />
+        <state relative-caret-position="36">
+          <caret line="2" column="44" lean-forward="false" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#788#796#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/SessionFactoryProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="31" column="5" lean-forward="false" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/next_book_web_scrapper/database/BookDAOTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="43" column="4" lean-forward="true" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#471#479#0" expanded="true" />
+            <element signature="e#1608#1616#0" expanded="true" />
+            <element signature="e#2252#2260#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/Book.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/Author.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/BookDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -758,14 +732,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/ListConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="23" column="20" lean-forward="false" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/ListConverter.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/AuthorDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5094">
@@ -780,7 +747,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10134">
           <caret line="563" column="72" lean-forward="true" selection-start-line="563" selection-start-column="72" selection-end-line="563" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -798,26 +764,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="21" column="25" lean-forward="false" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/Author.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="23" column="44" lean-forward="false" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/Book.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/Author.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/AuthorDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1422">
@@ -832,7 +783,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
           <caret line="35" column="123" lean-forward="false" selection-start-line="35" selection-start-column="123" selection-end-line="35" selection-end-column="123" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -855,7 +805,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="21" column="59" lean-forward="false" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#788#796#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -869,30 +822,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/ListConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/ListConverter.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="44" lean-forward="false" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/Book.java" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b3eca7d7-5042-4437-8444-94711224d9a5/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -900,14 +838,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/Author.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1494">
-          <caret line="105" column="75" lean-forward="false" selection-start-line="105" selection-start-column="75" selection-end-line="105" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/Author.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/database/Book.java" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b3eca7d7-5042-4437-8444-94711224d9a5/console.sql">
       <provider selected="true" editor-type-id="text-editor">
@@ -922,7 +853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="21" column="25" lean-forward="false" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -947,14 +877,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/ListConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="23" column="20" lean-forward="false" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/ListConverter.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/SessionFactoryProvider.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -969,39 +892,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="10134">
           <caret line="563" column="72" lean-forward="false" selection-start-line="563" selection-start-column="72" selection-end-line="563" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/Author.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="49" column="15" lean-forward="false" selection-start-line="49" selection-start-column="15" selection-end-line="49" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="37" column="15" lean-forward="false" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/Author.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/Book.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/util/ListConverter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/next_book_web_scrapper/database/AuthorDAOTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13">
-          <caret line="2" column="44" lean-forward="false" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1013,30 +912,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/entity/Author.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/AuthorDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="143" column="21" lean-forward="false" selection-start-line="143" selection-start-column="21" selection-end-line="143" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/entity/Book.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="36" column="32" lean-forward="true" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+        <state relative-caret-position="594">
+          <caret line="36" column="32" lean-forward="false" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1045,7 +924,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/BookDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
+        <state relative-caret-position="414">
           <caret line="212" column="28" lean-forward="false" selection-start-line="212" selection-start-column="28" selection-end-line="212" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1053,16 +932,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/next_book_web_scrapper/database/BookDAOTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/entity/Author.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="70" column="30" lean-forward="false" selection-start-line="70" selection-start-column="30" selection-end-line="70" selection-end-column="30" />
+        <state relative-caret-position="-468">
+          <caret line="10" column="22" lean-forward="false" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#314#315#0" expanded="true" />
-            <element signature="e#353#354#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/next_book_web_scrapper/database/AuthorDAOTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="36" column="58" lean-forward="false" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#788#796#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/next_book_web_scrapper/database/BookDAOTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1602">
+          <caret line="97" column="39" lean-forward="false" selection-start-line="97" selection-start-column="39" selection-end-line="97" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#471#479#0" expanded="true" />
             <element signature="e#1608#1616#0" expanded="true" />
+            <element signature="e#2252#2260#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/next_book_web_scrapper/database/AuthorDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-210">
+          <caret line="223" column="38" lean-forward="false" selection-start-line="223" selection-start-column="20" selection-end-line="223" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
