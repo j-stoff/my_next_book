@@ -25,7 +25,7 @@ public class WebScraper {
         fullBooks = new ArrayList<Book>();
     }
 
-    private loadProperties(String propertiesFileLocation) {
+    private void loadProperties(String propertiesFileLocation) {
         properties = new Properties();
 
         try {

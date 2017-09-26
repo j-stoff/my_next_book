@@ -69,14 +69,6 @@ public class AuthorDAOTest {
         assertTrue(id == author_id);
     }
 
-    @Test
-    public void deleteAuthorById() throws Exception {
-        Author author = new Author("Jacobo", "Stroganoff", 7);
-        int author_id = authorDao.addAuthor(author);
-        int delete_id = authorDao.deleteAuthor(author_id);
-        assertTrue("Delete fail\n",delete_id > 0);
-        assertTrue("Ids not equal\n", author_id == delete_id);
-    }
 
     @Test
     public void updateAuthorAddNewTest() throws Exception {
@@ -87,5 +79,42 @@ public class AuthorDAOTest {
 
         boolean passed = authorDao.updateAuthor(author);
         assertTrue(passed);
+    }
+
+    @Test
+    public void safeAddAuthorAlreadyInDatabaseTest() {
+        Author author = new Author("My nane", "Is not needed", 5);
+        int original_id = authorDao.safeAddAuthor(author);
+        assertTrue( original_id > 0);
+        int second_id = authorDao.safeAddAuthor(author);
+        assertTrue( second_id == 0);
+    }
+
+    @Test
+    public void safeUpdateAuthorTest() {
+        Author author = new Author("Safe", "Update", 1);
+        int author_id = authorDao.safeAddAuthor(author);
+        assertTrue("Add failure", author_id > 0);
+
+        author.setAverageRating(55);
+        boolean passed = authorDao.safeUpdateAuthor(author);
+        assertTrue("Did not pass", passed);
+
+        int delete_id = authorDao.safeDeleteAuthor(author);
+        assertTrue("Not the same id", author_id == delete_id);
+
+        passed = authorDao.safeUpdateAuthor(author);
+        assertFalse("The update went through but should not have", passed);
+    }
+
+    @Test
+    public void safeDeleteAuthorTest() {
+        Author author = new Author("For", "Safe Delete", 2);
+        int author_id = authorDao.safeAddAuthor(author);
+        assertTrue("Author not added", author_id > 0);
+
+        int delete_id = authorDao.safeDeleteAuthor(author);
+        assertTrue("Safe delete failure", delete_id > 0);
+        assertTrue("Ids do not match", delete_id == author_id);
     }
 }
