@@ -26,10 +26,6 @@ public class BookDAO {
      * @return the id of the book in the database, 0 if the book already exists, -1 for error
      */
     public int addBook(Book book) {
-        if (!areNullFieldsValid(book)) {
-            return -1;
-        }
-
         int book_id = 0;
         Session databaseSession = null;
         Transaction currentTransaction = null;
@@ -93,14 +89,6 @@ public class BookDAO {
      * @return boolean if the book update was successful.
      */
     public boolean updateBook(Book bookUpdated) {
-        if (bookUpdated == null) {
-            return false;
-        }
-
-        if (!areNullFieldsValid(bookUpdated)) {
-            return false;
-        }
-
         Session databaseSession = null;
         Transaction currentTransaction = null;
 
@@ -128,12 +116,12 @@ public class BookDAO {
         return true;
     }
 
-
     /**
      * Delete a book in the database using the id.
      * @param book_id the database id of the book to delete.
      * @return the id on success, 0 if the book is not in the database, -1 for an error
      */
+    /*
     public int deleteBook(int book_id) {
         if (book_id <= 0) {
             return -1;
@@ -174,17 +162,13 @@ public class BookDAO {
 
         return retrievedId;
     }
-
+    */
     /**
      * Delete a book in the database using a book object.
      * @param book book object to delete.
      * @return the id on success, 0 if the book is not in the database, -1 for an error
      */
     public int deleteBook(Book book) {
-        if (book == null) {
-            return -1;
-        }
-
         int retrieved_id = book.getId();
         Session databaseSession = null;
         Transaction currentTransaction = null;
@@ -211,6 +195,75 @@ public class BookDAO {
         }
 
         return retrieved_id;
+    }
+
+
+    /**
+     * Wrapper method to safely add a book to the database. Non-null checking and
+     * error checking occur.
+     * @param bookToAdd Book object to add to the database.
+     * @return Book id on success, 0 for duplicate found, -1 for error.
+     */
+    public int safeAddBook(Book bookToAdd) {
+        if (bookToAdd == null) {
+            return -1;
+        }
+
+        if (!areNullFieldsValid(bookToAdd)) {
+            return -1;
+        }
+
+        if (bookToAdd.getId() == 0) {
+            return addBook(bookToAdd);
+        } else {
+            Book isBookInDatabase = getBook(bookToAdd.getId());
+            if (isBookInDatabase != null) {
+                return 0;
+            }
+            return addBook(bookToAdd);
+        }
+    }
+
+    /**
+     * Wrapper method to safely delete a book using a Book object.
+     * @param bookToDelete the book to delete
+     * @return book's id on success, 0 if the book wasn't in the database, -1 for error.
+     */
+    public int safeDeleteBook(Book bookToDelete) {
+        if (bookToDelete == null) {
+            return -1;
+        }
+        Book isBookInDatabase = getBook(bookToDelete.getId());
+        if (isBookInDatabase == null) {
+            return 0;
+        }
+
+        return deleteBook(bookToDelete);
+    }
+
+    /**
+     * Wrapper method to safely update a book if it exists in the database.
+     * @param bookToUpdate the book object to update.
+     * @return false if the book was not update, true if the book was successfully updated.
+     */
+    public boolean safeUpdateBook(Book bookToUpdate) {
+        if (bookToUpdate == null) {
+            return false;
+        }
+
+        if (!areNullFieldsValid(bookToUpdate)) {
+            return false;
+        }
+
+        if (bookToUpdate.getId() == 0) {
+            return updateBook(bookToUpdate);
+        } else  {
+            Book isBookInDatabase = getBook(bookToUpdate.getId());
+            if (isBookInDatabase == null) {
+                return false;
+            }
+            return updateBook(bookToUpdate);
+        }
     }
 
     /**

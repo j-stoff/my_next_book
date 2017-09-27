@@ -55,28 +55,6 @@ public class AuthorDAO {
     }
 
     /**
-     * Wrapper method that will call other methods in order to safely add objects to the database.
-     * Calls get in order to verify no object exists in database.
-     * @param author to be added to the database.
-     * @return new author id on success, 0 if the author is already in the database, and -1 for an error.
-     */
-    public int safeAddAuthor(Author author) {
-        if (author == null) {
-            return -1;
-        }
-
-        if (!areNullFieldsValid(author)) {
-            return -1;
-        }
-
-        Author getAuthorFromDatabase = getAuthor(author.getId());
-        if (getAuthorFromDatabase != null) {
-            return 0;
-        }
-        return addAuthor(author);
-    }
-
-    /**
      * Retrieve information about an author using an id's database id.
      * @param author_id author id from the database.
      * @return author class with all information from the database.
@@ -196,10 +174,10 @@ public class AuthorDAO {
             return -1;
         }
         Author isAuthorInDatabase = getAuthor(author.getId());
-        if (isAuthorInDatabase != null) {
-            return deleteAuthor(author);
+        if (isAuthorInDatabase == null) {
+            return 0;
         }
-        return 0;
+        return  deleteAuthor(author);
     }
 
     /**
@@ -217,12 +195,42 @@ public class AuthorDAO {
             return false;
         }
 
-        Author isAuthorInDatabase = getAuthor(author.getId());
-        if (isAuthorInDatabase == null) {
-            return false;
+        if (author.getId() == 0) {
+            return updateAuthor(author);
+        } else {
+            Author isAuthorInDatabase = getAuthor(author.getId());
+            if (isAuthorInDatabase == null) {
+                return false;
+            }
+
+            return updateAuthor(author);
+        }
+    }
+
+    /**
+     * Wrapper method that will call other methods in order to safely add objects to the database.
+     * Calls get in order to verify no object exists in database.
+     * @param author to be added to the database.
+     * @return new author id on success, 0 if the author is already in the database, and -1 for an error.
+     */
+    public int safeAddAuthor(Author author) {
+        if (author == null) {
+            return -1;
         }
 
-        return updateAuthor(author);
+        if (!areNullFieldsValid(author)) {
+            return -1;
+        }
+
+        if (author.getId() == 0) {
+            return addAuthor(author);
+        } else {
+            Author isAuthorInDatabase = getAuthor(author.getId());
+            if (isAuthorInDatabase != null) {
+                return 0;
+            }
+            return addAuthor(author);
+        }
     }
 
 

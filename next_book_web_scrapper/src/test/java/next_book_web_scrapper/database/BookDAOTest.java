@@ -78,6 +78,7 @@ public class BookDAOTest {
         assertTrue("Ids do not match in delete",other_id == book_id);
     }
 
+    /*
     @Test
     public void deleteBookById() {
         ArrayList<String> genres = new ArrayList<String>();
@@ -96,5 +97,77 @@ public class BookDAOTest {
         int delete_id = bookDao.deleteBook(book_id);
         assertTrue( delete_id > 0);
         assertTrue(delete_id == book_id);
+    }
+    */
+    @Test
+    public void safeAddBookTest() {
+        ArrayList<String> genres = new ArrayList<String>();
+        genres.add("Dark");
+        genres.add("Action");
+        Book book = new Book();
+        book.setAuthorName("Morty");
+        book.setTitle("Adventures of Rick and morty season 99");
+        book.setRating(5);
+        book.setIsbn(1234567891);
+        book.setGenre(genres);
+        book.setFk_id_author(3);
+
+        int book_id = bookDao.safeAddBook(book);
+        assertTrue("Error occurred\n", book_id >= 0);
+        assertTrue("Addition failure\n", book_id > 0);
+
+        Book inDatabase = bookDao.getBook(book_id);
+
+        assertTrue("Id was never set", inDatabase.getId() != 0);
+
+        int another_id = bookDao.safeAddBook(inDatabase);
+        assertTrue("Add went through\n", another_id == 0);
+
+        bookDao.safeDeleteBook(book);
+    }
+
+    @Test
+    public void safeDeleteBookTest() {
+        ArrayList<String> genres = new ArrayList<String>();
+        genres.add("Dark");
+        genres.add("Action");
+        Book book = new Book();
+        book.setAuthorName("Morty");
+        book.setTitle("Guiness book of world records");
+        book.setRating(5);
+        book.setIsbn(1234567891);
+        book.setGenre(genres);
+        book.setFk_id_author(3);
+
+        int book_id = bookDao.safeAddBook(book);
+        assertTrue("Error occurred\n", book_id >= 0);
+        assertTrue("Addition failure\n", book_id > 0);
+
+        int delete_id = bookDao.safeDeleteBook(book);
+        assertTrue("Delete failed\n", delete_id > 0);
+        assertTrue("Ids are not the same", delete_id == book_id);
+    }
+
+    @Test
+    public void safeUpdateBookTest() {
+        ArrayList<String> genres = new ArrayList<String>();
+        genres.add("Dark");
+        genres.add("Comedy");
+        Book book = new Book();
+        book.setAuthorName("Morty");
+        book.setTitle("Adventures of Rick and Morty");
+        book.setRating(5);
+        book.setIsbn(1234567891);
+        book.setGenre(genres);
+        book.setFk_id_author(3);
+
+        int book_id = bookDao.safeAddBook(book);
+
+        book.setIsbn(1111111111);
+
+        boolean passed = bookDao.safeUpdateBook(book);
+        assertTrue("Update Failed", passed);
+
+        bookDao.safeDeleteBook(book);
     }
 }
