@@ -24,11 +24,12 @@ public class BookDAOTest {
         genreList.add("Rock");
         Book book = new Book();
         book.setAuthorName("Meseeks");
-        book.setTitle("Amazing book");
+        book.setTitle("Amazing book #2");
         book.setGenre(genreList);
         book.setIsbn(1234567890);
         book.setRating(5);
         book.setFk_id_author(3);
+        bookDao.deleteBook(book);
         int book_id = bookDao.addBook(book);
         assertTrue("Validation failure", book_id >= 0);
         assertTrue("Book was not added to the database", book_id != 0);

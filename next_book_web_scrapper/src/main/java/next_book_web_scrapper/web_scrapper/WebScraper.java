@@ -48,7 +48,8 @@ public class WebScraper {
             return;
         }
 
-        htmlDocument = new GoodReadsHtmlList();
+        //htmlDocument = new GoodReadsHtmlList();
+        log.info("Good configuration");
     }
 
     // Send the
