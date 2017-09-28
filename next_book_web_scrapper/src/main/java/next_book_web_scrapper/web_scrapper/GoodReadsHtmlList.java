@@ -6,4 +6,13 @@ package next_book_web_scrapper.web_scrapper;
  */
 public class GoodReadsHtmlList {
 
+    private String target;
+
+    public GoodReadsHtmlList() {
+    }
+
+    public GoodReadsHtmlList(String url) {
+        this();
+        this.target = url;
+    }
 }
