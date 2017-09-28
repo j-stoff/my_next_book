@@ -2,8 +2,12 @@ package next_book_web_scrapper.web_scrapper;
 
 import next_book_web_scrapper.entity.Book;
 import org.apache.log4j.Logger;
+import org.hibernate.engine.jdbc.ReaderInputStream;
 
+import javax.sound.midi.SysexMessage;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -15,7 +19,7 @@ public class WebScraper {
     private String targetURL;
     private Properties properties;
     private final Logger log = Logger.getLogger(this.getClass());
-    private static final int VALID_COMMAND_LINE_ARGUMENTS = 2;
+    private static final int VALID_COMMAND_LINE_ARGUMENTS = 1;
 
     /**
      * No Argument constructor
@@ -48,8 +52,10 @@ public class WebScraper {
             return;
         }
 
-        //htmlDocument = new GoodReadsHtmlList();
-        log.info("Good configuration");
+
+        loadProperties(arguments[0]);
+        htmlDocument = new GoodReadsHtmlList(properties.getProperty("list.target.url"));
+        htmlDocument.go();
     }
 
     // Send the
