@@ -55,7 +55,7 @@ public class WebScraper {
 
         loadProperties(arguments[0]);
         htmlDocument = new GoodReadsHtmlList(properties.getProperty("list.target.url"));
-
+        htmlDocument.go();
     }
 
     // Send the
