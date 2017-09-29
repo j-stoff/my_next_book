@@ -12,6 +12,6 @@
 |9/22/17 | BookDAO in the project | 2 | |
 |9/25/17| Refactored DAOs| 3| |
 |9/26/17| Testing with DAOs | 3| |
-|9/27/17| Adding JSoup stuff and testing jar compilation| | |
+|9/27/17| Adding JSoup stuff and testing jar compilation| 4| |
 |9/28/16| Resolving merge conflicts..| 0.5| |
 | | | | |
