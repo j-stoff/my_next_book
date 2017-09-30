@@ -239,7 +239,7 @@ public class Book {
         if (genre != null) {
             output += "Genres: " + genre.toString() + lineSeparator;
         } else {
-            output += " Genres: None yet" + lineSeparator;
+            output += "Genres: None yet" + lineSeparator;
         }
         output += "Book ISBN: " + isbn + lineSeparator;
         output += "Goodreads ID: " + goodreadsId + lineSeparator;

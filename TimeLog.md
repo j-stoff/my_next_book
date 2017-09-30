@@ -13,5 +13,6 @@
 |9/25/17| Refactored DAOs| 3| |
 |9/26/17| Testing with DAOs | 3| |
 |9/27/17| Adding JSoup stuff and testing jar compilation| 4| |
-|9/28/16| Resolving merge conflicts..| 0.5| |
+|9/28/17| Resolving merge conflicts..| 0.5| |
+|9/29/17| Web Scraper work| 4 | Title and author complete, need to figure out going to the next page |
 | | | | |
