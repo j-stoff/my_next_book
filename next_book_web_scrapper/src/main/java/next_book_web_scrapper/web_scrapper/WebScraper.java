@@ -9,12 +9,13 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class WebScraper {
 
-    private ArrayList<Book> booksFromList;
-    private ArrayList<Book> fullBooks;
+    private List<Book> booksFromList;
+    private List<Book> fullBooks;
     private GoodReadsHtmlList htmlDocument;
     private String targetURL;
     private Properties properties;
@@ -54,9 +55,28 @@ public class WebScraper {
 
 
         loadProperties(arguments[0]);
-        htmlDocument = new GoodReadsHtmlList(properties.getProperty("list.target.url"));
+        htmlDocument = new GoodReadsHtmlList(properties.getProperty("list.target.url"), 30);
         htmlDocument.go();
+
+        booksFromList = htmlDocument.getBooksWithAuthors();
+
+        Book aBook = booksFromList.get(0);
+        GoodReadsResponseBookTitle response = new GoodReadsResponseBookTitle(aBook,
+                properties.getProperty("goodreads.api.key"),
+                properties.getProperty("book.base.target"));
+        response.fillInBook();
+        //visitAllBookPages();
     }
 
     // Send the
+
+    private void visitAllBookPages() {
+        GoodReadsResponseBookTitle response = null;
+        for (Book currentBook: booksFromList) {
+            response = new GoodReadsResponseBookTitle(currentBook,
+                    properties.getProperty("goodreads.api.key"),
+                    properties.getProperty("book.base.target"));
+            response.fillInBook();
+        }
+    }
 }

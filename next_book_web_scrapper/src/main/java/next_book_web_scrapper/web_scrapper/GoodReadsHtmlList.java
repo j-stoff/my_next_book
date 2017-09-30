@@ -18,6 +18,7 @@ import java.util.List;
 public class GoodReadsHtmlList {
 
     private String target;
+    private int maxPages;
     private final Logger log = Logger.getLogger(this.getClass());
     private Document htmlPage;
     private Elements tableRows;
@@ -26,15 +27,16 @@ public class GoodReadsHtmlList {
     public GoodReadsHtmlList() {
     }
 
-    public GoodReadsHtmlList(String url) {
+    public GoodReadsHtmlList(String url, int numberOfPages) {
         this();
         this.target = url;
         booksOnPage = new ArrayList<Book>();
+        maxPages = numberOfPages;
     }
 
-    private boolean connectToPage() {
+    private boolean connectToPage(String pageURL) {
         try {
-            htmlPage = Jsoup.connect(target).get();
+            htmlPage = Jsoup.connect(pageURL).get();
 
             tableRows = htmlPage.getElementsByAttributeValueMatching(
                     "itemtype", "http://schema.org/Book");
@@ -51,7 +53,7 @@ public class GoodReadsHtmlList {
         return true;
     }
 
-    public void getBookFromRow() {
+    private void getBooksFromRow() {
         Book current = null;
         Elements titleAnchor = null;
         Elements titleSpan = null;
@@ -78,25 +80,43 @@ public class GoodReadsHtmlList {
 
     }
 
+    private void visitAllPages() {
+        String currentURL = null;
+        for(int index = 2; index <= maxPages; index++) {
+            currentURL = nextPageName(index);
+            System.out.println(currentURL);
+            connectToPage(currentURL);
+            getBooksFromRow();
+        }
+    }
+
+    private String nextPageName(int pageNumber) {
+        return target + "?page=" + pageNumber;
+    }
+
     private void printAllBooks() {
         for (Book current: booksOnPage) {
             System.out.println(current.toString());
         }
     }
 
-    public void go() {
-        boolean connected = connectToPage();
+    public List<Book> getBooksWithAuthors() {
+        return booksOnPage;
+    }
 
-        if (!connected) {
-            System.out.println("it failed");
+    public void go() {
+        boolean firstPageConnection = connectToPage(target);
+
+        if (!firstPageConnection) {
+            System.out.println("wrong url");
             return;
         }
 
-        getBookFromRow();
+        getBooksFromRow();
+
+        //visitAllPages();
 
         printAllBooks();
 
-
-        System.out.println("Finished");
     }
 }
