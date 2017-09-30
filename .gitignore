@@ -23,6 +23,7 @@ hs_err_pid*
 
 # Workspace stuff
 .idea/
+.idea/workspace.xml
 
 ##Maven stutf
 target/

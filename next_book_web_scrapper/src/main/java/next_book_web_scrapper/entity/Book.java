@@ -38,10 +38,10 @@ public class Book {
     private int fk_id_author;
 
     @Column(name="book_isbn")
-    private int isbn;
+    private String isbn;
 
     @Column(name="book_goodreads_id")
-    private int goodreadsId;
+    private String goodreadsId;
 
 
     /**
@@ -55,7 +55,7 @@ public class Book {
      * Constructor for non-null fields. Testing purposes mainly.
      */
     public Book(int anId, String bookTitle, String anAuthorName,
-                int aBookRating, List<String> bookGenres, int anIsbn) {
+                int aBookRating, List<String> bookGenres, String anIsbn) {
         this.id = anId;
         this.title = bookTitle;
         this.authorName = anAuthorName;
@@ -198,7 +198,7 @@ public class Book {
      * Getter for the book's isbn. The 10 digit version.
      * @return isbn
      */
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
@@ -206,7 +206,7 @@ public class Book {
      * Setter for the book's isbn. 10 digit version.
      * @param isbn new book isbn (should not change).
      */
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
@@ -214,7 +214,7 @@ public class Book {
      * Getter for the good reads id.
      * @return goodreadsId
      */
-    public int getGoodreadsId() {
+    public String getGoodreadsId() {
         return goodreadsId;
     }
 
@@ -222,7 +222,7 @@ public class Book {
      * Setter for the good reads id.
      * @param goodreadsId the new good reads id.
      */
-    public void setGoodreadsId(int goodreadsId) {
+    public void setGoodreadsId(String goodreadsId) {
         this.goodreadsId = goodreadsId;
     }
 

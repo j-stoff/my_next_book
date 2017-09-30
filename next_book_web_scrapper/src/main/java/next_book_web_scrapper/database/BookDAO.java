@@ -289,7 +289,7 @@ public class BookDAO {
             return false;
         }
 
-        if (book.getIsbn() <= 0 || Integer.toString(book.getIsbn()).length() != 10) {
+        if (book.getIsbn().length() != 10) {
             return false;
         }
 

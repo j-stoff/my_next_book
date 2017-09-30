@@ -26,7 +26,7 @@ public class BookDAOTest {
         book.setAuthorName("Meseeks");
         book.setTitle("A different book");
         book.setGenre(genreList);
-        book.setIsbn(1234567890);
+        book.setIsbn("1234567890");
         book.setRating(5);
         book.setFk_id_author(3);
         bookDao.deleteBook(book);
@@ -46,7 +46,7 @@ public class BookDAOTest {
         book.setAuthorName("Meseeks");
         book.setTitle("Differet student book");
         book.setGenre(genreList);
-        book.setIsbn(1234567890);
+        book.setIsbn("1234567890");
         book.setRating(5);
         book.setFk_id_author(3);
         int book_id = bookDao.addBook(book);
@@ -81,7 +81,7 @@ public class BookDAOTest {
         book.setAuthorName("Rick James");
         book.setTitle("To be nuked");
         book.setRating(5);
-        book.setIsbn(1234567890);
+        book.setIsbn("1234567890");
         book.setGenre(genres);
         book.setFk_id_author(3);
         int book_id = bookDao.addBook(book);
@@ -123,7 +123,7 @@ public class BookDAOTest {
         book.setAuthorName("Morty");
         book.setTitle("Adventures of Rick and morty season 99");
         book.setRating(5);
-        book.setIsbn(1234567891);
+        book.setIsbn("1234567891");
         book.setGenre(genres);
         book.setFk_id_author(3);
 
@@ -150,7 +150,7 @@ public class BookDAOTest {
         book.setAuthorName("Morty");
         book.setTitle("Guiness book of world records");
         book.setRating(5);
-        book.setIsbn(1234567891);
+        book.setIsbn("1234567891");
         book.setGenre(genres);
         book.setFk_id_author(3);
 
@@ -172,13 +172,13 @@ public class BookDAOTest {
         book.setAuthorName("Morty");
         book.setTitle("Adventures of Rick and Morty");
         book.setRating(5);
-        book.setIsbn(1234567891);
+        book.setIsbn("1234567891");
         book.setGenre(genres);
         book.setFk_id_author(3);
 
         int book_id = bookDao.safeAddBook(book);
 
-        book.setIsbn(1111111111);
+        book.setIsbn("1111111111");
 
         boolean passed = bookDao.safeUpdateBook(book);
         assertTrue("Update Failed", passed);
