@@ -44,6 +44,11 @@ public class Book {
     private String goodreadsId;
 
 
+    @ManyToOne
+    @JoinColumn(name = "id_author", nullable = false)
+    private Author bookAuthor;
+
+
     /**
      * No argument constructor
      */
@@ -224,6 +229,15 @@ public class Book {
      */
     public void setGoodreadsId(String goodreadsId) {
         this.goodreadsId = goodreadsId;
+    }
+
+
+    public Author getBookAuthor() {
+        return bookAuthor;
+    }
+
+    public void setBookAuthor(Author bookAuthor) {
+        this.bookAuthor = bookAuthor;
     }
 
     @Override

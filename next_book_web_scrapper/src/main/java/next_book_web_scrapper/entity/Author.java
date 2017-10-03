@@ -14,7 +14,7 @@ public class Author {
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name="increment", strategy = "increment")
-    @Column(name="id_author")
+    @Column(name="id_author",unique = true, nullable = false)
     private int id;
 
     @Column(name="author_first_name")
@@ -32,6 +32,9 @@ public class Author {
 
     @Column(name="author_book_reviews")
     private String bookReviews;
+
+    @OneToMany(mappedBy = "bookAuthor")
+    private List<Book> authorBooks;
 
 
     /**
@@ -150,6 +153,24 @@ public class Author {
      */
     public void setBookReviews(String bookReviews) {
         this.bookReviews = bookReviews;
+    }
+
+
+    /**
+     * Getter for a list of the authors books
+     * @return authors books as a list
+     */
+    public List<Book> getAuthorBooks() {
+        return authorBooks;
+    }
+
+
+    /**
+     * Setter for the author's published works
+     * @param author_books List of authored books.
+     */
+    public void setAuthorBooks(List<Book> authorBooks) {
+        this.authorBooks = authorBooks;
     }
 
     @Override

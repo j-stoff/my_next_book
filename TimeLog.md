@@ -15,4 +15,17 @@
 |9/27/17| Adding JSoup stuff and testing jar compilation| 4| |
 |9/28/17| Resolving merge conflicts..| 0.5| |
 |9/29/17| Web Scraper work| 4 | Title and author complete, need to figure out going to the next page |
+|9/30/17| Web Scraper work| 5| Getting book values, so far all except Genres|
+|10/2/17| Updating database for many to one relationship, test cases fail due to nulls|2|Re-do tests|
 | | | | |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+| | | | |
+
