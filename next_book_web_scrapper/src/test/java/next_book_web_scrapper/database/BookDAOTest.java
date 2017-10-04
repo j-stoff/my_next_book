@@ -1,6 +1,7 @@
 package next_book_web_scrapper.database;
 
 import next_book_web_scrapper.entity.Book;
+import next_book_web_scrapper.entity.Author;
 import org.junit.Test;
 import org.junit.Before;
 
@@ -29,6 +30,10 @@ public class BookDAOTest {
         book.setIsbn("1234567890");
         book.setRating(5);
         book.setFk_id_author(3);
+        //
+        Author author = new Author("Ben", "Jamin", 4);
+        book.setBookAuthor(author);
+        //
         bookDao.deleteBook(book);
         int book_id = bookDao.addBook(book);
         assertTrue("Validation failure", book_id >= 0);
@@ -49,8 +54,15 @@ public class BookDAOTest {
         book.setIsbn("1234567890");
         book.setRating(5);
         book.setFk_id_author(3);
+
+        //
+        Author author = new Author("Ben", "Jamin", 4);
+        book.setBookAuthor(author);
+        //
         int book_id = bookDao.addBook(book);
         Book inDatabase = bookDao.getBook(book_id);
+
+
 
         bookDao.deleteBook(book);
         assertTrue("Get book failure", inDatabase != null);
@@ -84,6 +96,10 @@ public class BookDAOTest {
         book.setIsbn("1234567890");
         book.setGenre(genres);
         book.setFk_id_author(3);
+        //
+        Author author = new Author("Ben", "Jamin", 4);
+        book.setBookAuthor(author);
+        //
         int book_id = bookDao.addBook(book);
         assertTrue("Fail to add in delete Test", book_id > 0);
 
@@ -126,7 +142,10 @@ public class BookDAOTest {
         book.setIsbn("1234567891");
         book.setGenre(genres);
         book.setFk_id_author(3);
-
+        //
+        Author author = new Author("Ben", "Jamin", 4);
+        book.setBookAuthor(author);
+        //
         int book_id = bookDao.safeAddBook(book);
         assertTrue("Error occurred\n", book_id >= 0);
         assertTrue("Addition failure\n", book_id > 0);
@@ -154,6 +173,10 @@ public class BookDAOTest {
         book.setGenre(genres);
         book.setFk_id_author(3);
 
+        //
+        Author author = new Author("Ben", "Jamin", 4);
+        book.setBookAuthor(author);
+        //
         int book_id = bookDao.safeAddBook(book);
         assertTrue("Error occurred\n", book_id >= 0);
         assertTrue("Addition failure\n", book_id > 0);
@@ -175,6 +198,11 @@ public class BookDAOTest {
         book.setIsbn("1234567891");
         book.setGenre(genres);
         book.setFk_id_author(3);
+
+        //
+        Author author = new Author("Ben", "Jamin", 4);
+        book.setBookAuthor(author);
+        //
 
         int book_id = bookDao.safeAddBook(book);
 
