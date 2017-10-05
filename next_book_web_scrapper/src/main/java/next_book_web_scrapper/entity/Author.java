@@ -33,7 +33,7 @@ public class Author {
     @Column(name="author_book_reviews")
     private String bookReviews;
 
-    @OneToMany(mappedBy = "bookAuthor")
+    @OneToMany(mappedBy = "fk_id_author")
     private List<Book> authorBooks;
 
 

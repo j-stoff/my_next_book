@@ -3,8 +3,11 @@ package next_book_web_scrapper.database;
 import next_book_web_scrapper.entity.Author;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import java.util.List;
 
 public class AuthorDAO {
 
@@ -81,6 +84,35 @@ public class AuthorDAO {
         }
 
         return retrievedAuthor;
+    }
+
+
+
+    public boolean isAuthorInDatabaseQuery(Author author) {
+        String sql = "SELECT id_author FROM authors WHERE author_first_name='" + author.getFirstName() + "' AND author_last_name='" + author.getLastName() + "'";
+
+        Query query = null;
+        Session databaseSession = null;
+        List results = null;
+        try {
+            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
+            query = databaseSession.createSQLQuery(sql);
+            results = query.list();
+            if (results != null) {
+                if (!results.isEmpty()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+        } catch (HibernateException hibernateException) {
+            log.error("Hibernate error in databaseQuery", hibernateException);
+        } catch (Exception exception) {
+            log.error("Exception in databaseQuery", exception);
+        }
+
+        return false;
     }
 
     /**
@@ -223,7 +255,11 @@ public class AuthorDAO {
         }
 
         if (author.getId() == 0) {
-            return addAuthor(author);
+            if (isAuthorInDatabaseQuery(author)) {
+                return 0;
+            } else {
+                return addAuthor(author);
+            }
         } else {
             Author isAuthorInDatabase = getAuthor(author.getId());
             if (isAuthorInDatabase != null) {

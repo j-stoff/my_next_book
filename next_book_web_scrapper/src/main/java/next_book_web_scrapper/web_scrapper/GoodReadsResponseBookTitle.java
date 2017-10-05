@@ -1,6 +1,7 @@
 package next_book_web_scrapper.web_scrapper;
 
 import next_book_web_scrapper.entity.Book;
+import next_book_web_scrapper.entity.Author;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.parser.Parser;
@@ -11,7 +12,10 @@ import org.jsoup.select.Elements;
 import javax.el.ELException;
 import javax.sound.midi.SysexMessage;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class is designed to parse a response from a GoodReads API call
@@ -20,6 +24,7 @@ import java.net.URL;
 public class GoodReadsResponseBookTitle {
 
     private Book currentText;
+    private Author bookAuthor;
     private String developerKey;
     private String targetURL;
     private Document response;
@@ -29,8 +34,10 @@ public class GoodReadsResponseBookTitle {
      * No argument constructor
      */
     public GoodReadsResponseBookTitle() {
+        bookAuthor = new Author();
     }
 
+    // Send the
     /**
      * Constructor to take in a Book object to complete
      * @param partialBook the book to be queried and completed.
@@ -87,28 +94,54 @@ public class GoodReadsResponseBookTitle {
         }
     }
 
+    private boolean checkShelf(String genre) {
+        if (genre.contains("audiobook")) {
+            return false;
+        } else if (genre.contains("to-read")) {
+            return false;
+        } else  if (genre.contains("default")) {
+            return false;
+        } else if (genre.contains("ebook")) {
+            return false;
+        } else if (genre.contains("read-in")) {
+            return false;
+        } else if (genre.contains("favorites")) {
+            return false;
+        } else if (genre.contains("on-hold")) {
+            return false;
+        }
+
+        return true;
+    }
+
     /**
      * To fill a List of Strings in order to add to the book's genre field.
      * @param shelves the shelves element on the page.
      */
     private void parseShelvesForGenres(Element shelves) {
         Elements allShelves = shelves.getElementsByTag("shelf");
+        List<String> genres = new ArrayList<String>();
 
         for (Element shelf: allShelves) {
-            System.out.println(shelf.attr("name"));
+            //System.out.println(shelf.attr("name"));
+            if (checkShelf(shelf.attr("name"))) {
+                genres.add(shelf.attr("name"));
+            }
+
+            if (genres.size() == 3) {
+                break;
+            }
         }
+
+        currentText.setGenre(genres);
+
+        System.out.println(genres.toString());
     }
 
     /**
      * To fill in the empty values in the book object in order to add it to the database.
      */
     private void addValuesToBook() {
-        // rating
-        // number of ratings
-        // number of reviews
-        // genre
-        // isbn
-        // good reads id
         Element bookElement = response.select("book").first();
         Element idElement = bookElement.select("id").first();
         Element isbnElement = bookElement.select("isbn").first();
@@ -144,9 +177,45 @@ public class GoodReadsResponseBookTitle {
 
         System.out.println(currentText.toString());
 
+    }
 
 
-        System.out.println("Book values added");
+    private void addNameToAuthor() {
+        String fullName = currentText.getAuthorName();
+        String firstName = fullName.split(" ")[0];
+        bookAuthor.setFirstName(firstName);
+
+        String[] name = fullName.split(" ");
+        int size = Array.getLength(name);
+        String lastName = name[size - 1];
+
+        for (int index = size - 2; index > 0; index --) {
+            lastName += ", " + name[index];
+        }
+
+        bookAuthor.setLastName(lastName);
+    }
+
+    private void addValuesToAuthor() {
+        // Split the author name already in the book
+        addNameToAuthor();
+        Element authorElement = response.select("author").first();
+        Element nameElement = authorElement.select("average_rating").first();
+
+        if (nameElement.hasText()) {
+            bookAuthor.setAverageRating(Double.parseDouble(nameElement.html()));
+        }
+
+        System.out.println(bookAuthor.toString());
+
+    }
+
+    public Author getAuthorOfBook() {
+        return bookAuthor;
+    }
+
+    public Book getCurrentText() {
+        return currentText;
     }
 
     /**
@@ -159,6 +228,10 @@ public class GoodReadsResponseBookTitle {
         visitPage();
 
         addValuesToBook();
+
+        addValuesToAuthor();
+
+        currentText.setFk_id_author(bookAuthor);
 
         System.out.println("Books filled in");
     }

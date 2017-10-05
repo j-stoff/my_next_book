@@ -13,27 +13,31 @@ import static org.junit.Assert.*;
 public class BookDAOTest {
 
     private BookDAO bookDao;
+    private AuthorDAO authorDao;
     @Before
     public void setup() {
         bookDao = new BookDAO();
+        authorDao = new AuthorDAO();
+
     }
 
     @Test
     public void addBookStaticBookTest() throws Exception {
+        Author author = new Author("Ben", "Jamin", 4);
+        int id = authorDao.safeAddAuthor(author);
+
+        assertTrue("Author not added to the database.",id > 0);
         List<String> genreList = new ArrayList<String>();
         genreList.add("Classical");
         genreList.add("Rock");
         Book book = new Book();
         book.setAuthorName("Meseeks");
-        book.setTitle("A different book");
+        book.setTitle("Beep a de boo bop");
         book.setGenre(genreList);
         book.setIsbn("1234567890");
         book.setRating(5);
-        book.setFk_id_author(3);
-        //
-        Author author = new Author("Ben", "Jamin", 4);
-        book.setBookAuthor(author);
-        //
+        book.setFk_id_author(author);
+
         bookDao.deleteBook(book);
         int book_id = bookDao.addBook(book);
         assertTrue("Validation failure", book_id >= 0);
@@ -44,6 +48,7 @@ public class BookDAOTest {
 
     @Test
     public void getBookInDatabase() throws Exception {
+        Author author = new Author("Ben", "Jamin", 4);
         List<String> genreList = new ArrayList<String>();
         genreList.add("Classical");
         genreList.add("Rock");
@@ -53,12 +58,9 @@ public class BookDAOTest {
         book.setGenre(genreList);
         book.setIsbn("1234567890");
         book.setRating(5);
-        book.setFk_id_author(3);
+        book.setFk_id_author(author);
 
-        //
-        Author author = new Author("Ben", "Jamin", 4);
-        book.setBookAuthor(author);
-        //
+
         int book_id = bookDao.addBook(book);
         Book inDatabase = bookDao.getBook(book_id);
 
@@ -86,6 +88,7 @@ public class BookDAOTest {
 
     @Test
     public void deleteBookTest() {
+        Author author = new Author("Ben", "Jamin", 4);
         ArrayList<String> genres = new ArrayList<String>();
         genres.add("Contemporary");
         genres.add("Hello");
@@ -95,11 +98,8 @@ public class BookDAOTest {
         book.setRating(5);
         book.setIsbn("1234567890");
         book.setGenre(genres);
-        book.setFk_id_author(3);
-        //
-        Author author = new Author("Ben", "Jamin", 4);
-        book.setBookAuthor(author);
-        //
+        book.setFk_id_author(author);
+
         int book_id = bookDao.addBook(book);
         assertTrue("Fail to add in delete Test", book_id > 0);
 
@@ -132,6 +132,7 @@ public class BookDAOTest {
     */
     @Test
     public void safeAddBookTest() {
+        Author author = new Author("Ben", "Jamin", 4);
         ArrayList<String> genres = new ArrayList<String>();
         genres.add("Dark");
         genres.add("Action");
@@ -141,11 +142,8 @@ public class BookDAOTest {
         book.setRating(5);
         book.setIsbn("1234567891");
         book.setGenre(genres);
-        book.setFk_id_author(3);
-        //
-        Author author = new Author("Ben", "Jamin", 4);
-        book.setBookAuthor(author);
-        //
+        book.setFk_id_author(author);
+
         int book_id = bookDao.safeAddBook(book);
         assertTrue("Error occurred\n", book_id >= 0);
         assertTrue("Addition failure\n", book_id > 0);
@@ -162,6 +160,7 @@ public class BookDAOTest {
 
     @Test
     public void safeDeleteBookTest() {
+        Author author = new Author("Ben", "Jamin", 4);
         ArrayList<String> genres = new ArrayList<String>();
         genres.add("Dark");
         genres.add("Action");
@@ -171,12 +170,8 @@ public class BookDAOTest {
         book.setRating(5);
         book.setIsbn("1234567891");
         book.setGenre(genres);
-        book.setFk_id_author(3);
+        book.setFk_id_author(author);
 
-        //
-        Author author = new Author("Ben", "Jamin", 4);
-        book.setBookAuthor(author);
-        //
         int book_id = bookDao.safeAddBook(book);
         assertTrue("Error occurred\n", book_id >= 0);
         assertTrue("Addition failure\n", book_id > 0);
@@ -188,6 +183,7 @@ public class BookDAOTest {
 
     @Test
     public void safeUpdateBookTest() {
+        Author author = new Author("Ben", "Jamin", 4);
         ArrayList<String> genres = new ArrayList<String>();
         genres.add("Dark");
         genres.add("Comedy");
@@ -197,12 +193,8 @@ public class BookDAOTest {
         book.setRating(5);
         book.setIsbn("1234567891");
         book.setGenre(genres);
-        book.setFk_id_author(3);
+        book.setFk_id_author(author);
 
-        //
-        Author author = new Author("Ben", "Jamin", 4);
-        book.setBookAuthor(author);
-        //
 
         int book_id = bookDao.safeAddBook(book);
 

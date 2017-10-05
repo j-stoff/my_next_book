@@ -1,10 +1,12 @@
 package next_book_web_scrapper.web_scrapper;
 
 import next_book_web_scrapper.entity.Book;
+import next_book_web_scrapper.entity.Author;
+import next_book_web_scrapper.database.AuthorDAO;
+import next_book_web_scrapper.database.BookDAO;
 import org.apache.log4j.Logger;
 import org.hibernate.engine.jdbc.ReaderInputStream;
 
-import javax.sound.midi.SysexMessage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,6 +23,8 @@ public class WebScraper {
     private Properties properties;
     private final Logger log = Logger.getLogger(this.getClass());
     private static final int VALID_COMMAND_LINE_ARGUMENTS = 1;
+    private BookDAO bookDao;
+    private AuthorDAO authorDAO;
 
     /**
      * No Argument constructor
@@ -28,6 +32,8 @@ public class WebScraper {
     public WebScraper() {
         booksFromList = new ArrayList<Book>();
         fullBooks = new ArrayList<Book>();
+        bookDao = new BookDAO();
+        authorDAO = new AuthorDAO();
     }
 
     private void loadProperties(String propertiesFileLocation) {
@@ -65,10 +71,12 @@ public class WebScraper {
                 properties.getProperty("goodreads.api.key"),
                 properties.getProperty("book.base.target"));
         response.fillInBook();
+
+        Book finishedBook = response.getCurrentText();
+        Author bookAuthor = response.getAuthorOfBook();
+        addValuesToDatabase(finishedBook, bookAuthor);
         //visitAllBookPages();
     }
-
-    // Send the
 
     private void visitAllBookPages() {
         GoodReadsResponseBookTitle response = null;
@@ -77,6 +85,25 @@ public class WebScraper {
                     properties.getProperty("goodreads.api.key"),
                     properties.getProperty("book.base.target"));
             response.fillInBook();
+        }
+    }
+
+    private void addValuesToDatabase(Book book, Author author) {
+        //Author must be added first
+        int id = authorDAO.safeAddAuthor(author);
+        if (id < 0) {
+            log.error("=================Author was not added to the database due to error======================");
+            log.error("Author name: " + author.getFirstName() + " " + author.getLastName());
+        }
+
+        author.setId(id);
+
+        System.out.println(author.toString());
+
+        id = bookDao.safeAddBook(book);
+        if (id < 0) {
+            log.error("=======================Book was not added to database================================");
+            log.error("Book title: " + book.getTitle());
         }
     }
 }

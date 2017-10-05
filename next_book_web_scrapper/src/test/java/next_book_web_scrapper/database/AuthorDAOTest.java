@@ -117,4 +117,16 @@ public class AuthorDAOTest {
         assertTrue("Safe delete failure", delete_id > 0);
         assertTrue("Ids do not match", delete_id == author_id);
     }
+
+    @Test
+    public void findAuthorWithoutUsingId() {
+        Author author = new Author("Gib", "Pence", 3);
+        int author_id = authorDao.safeAddAuthor(author);
+        assertTrue("Author not added", author_id > 0);
+
+
+        boolean passed = authorDao.isAuthorInDatabaseQuery(author);
+        assertTrue("Did not find the author",passed);
+
+    }
 }

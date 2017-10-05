@@ -34,9 +34,10 @@ public class Book {
     @Convert(converter = ListConverter.class)
     private List<String> genre;
 
+    /*
     @Column(name="fk_id_author")
     private int fk_id_author;
-
+    */
     @Column(name="book_isbn")
     private String isbn;
 
@@ -45,8 +46,8 @@ public class Book {
 
 
     @ManyToOne
-    @JoinColumn(name = "id_author", nullable = false)
-    private Author bookAuthor;
+    @JoinColumn(name="author_fk", referencedColumnName = "id_author", nullable = false)
+    private Author fk_id_author;
 
 
     /**
@@ -187,7 +188,7 @@ public class Book {
      * Getter for the author's id from the author table.
      * @return fk_id_author
      */
-    public int getFk_id_author() {
+    public Author getFk_id_author() {
         return fk_id_author;
     }
 
@@ -195,7 +196,7 @@ public class Book {
      * Setter for the author's id from the author table.
      * @param fk_id_author the new author id (should not change).
      */
-    public void setFk_id_author(int fk_id_author) {
+    public void setFk_id_author(Author fk_id_author) {
         this.fk_id_author = fk_id_author;
     }
 
@@ -232,6 +233,7 @@ public class Book {
     }
 
 
+    /*
     public Author getBookAuthor() {
         return bookAuthor;
     }
@@ -239,6 +241,7 @@ public class Book {
     public void setBookAuthor(Author bookAuthor) {
         this.bookAuthor = bookAuthor;
     }
+    */
 
     @Override
     public String toString() {
