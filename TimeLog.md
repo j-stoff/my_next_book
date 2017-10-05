@@ -17,7 +17,7 @@
 |9/29/17| Web Scraper work| 4 | Title and author complete, need to figure out going to the next page |
 |9/30/17| Web Scraper work| 5| Getting book values, so far all except Genres|
 |10/2/17| Updating database for many to one relationship, test cases fail due to nulls|2|Re-do tests|
-| | | | |
+|10/4/17| Adding index jsp to web application and basic security|2| Security not yet complete|
 | | | | |
 | | | | |
 | | | | |
