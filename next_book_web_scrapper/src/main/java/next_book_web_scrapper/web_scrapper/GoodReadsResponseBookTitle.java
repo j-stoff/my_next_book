@@ -123,7 +123,6 @@ public class GoodReadsResponseBookTitle {
         List<String> genres = new ArrayList<String>();
 
         for (Element shelf: allShelves) {
-            //System.out.println(shelf.attr("name"));
             if (checkShelf(shelf.attr("name"))) {
                 genres.add(shelf.attr("name"));
             }
@@ -187,11 +186,15 @@ public class GoodReadsResponseBookTitle {
 
         String[] name = fullName.split(" ");
         int size = Array.getLength(name);
-        String lastName = name[size - 1];
+        StringBuilder nameString = new StringBuilder(name[size - 1]);
+        //String lastName = name[size - 1];
 
         for (int index = size - 2; index > 0; index --) {
-            lastName += ", " + name[index];
+            //lastName += ", " + name[index];
+            nameString.append(", " + name[index]);
         }
+
+        String lastName = nameString.toString();
 
         bookAuthor.setLastName(lastName);
     }

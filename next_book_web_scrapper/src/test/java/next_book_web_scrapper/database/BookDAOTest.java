@@ -2,6 +2,7 @@ package next_book_web_scrapper.database;
 
 import next_book_web_scrapper.entity.Book;
 import next_book_web_scrapper.entity.Author;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.Before;
 
@@ -14,19 +15,27 @@ public class BookDAOTest {
 
     private BookDAO bookDao;
     private AuthorDAO authorDao;
+    private Author author;
     @Before
     public void setup() {
         bookDao = new BookDAO();
         authorDao = new AuthorDAO();
 
+        author = new Author("Ben", "Jamin", 4);
+        int addReturnCode = authorDao.safeAddAuthor(author);
+        assertTrue("Couldn't add author to the database", addReturnCode > 0);
+    }
+
+
+    @After
+    public void cleanUp() {
+        int deleteCode = authorDao.safeDeleteAuthor(author);
+        assertTrue("Delete author didn't work", deleteCode > 0);
     }
 
     @Test
     public void addBookStaticBookTest() throws Exception {
-        Author author = new Author("Ben", "Jamin", 4);
-        int id = authorDao.safeAddAuthor(author);
-
-        assertTrue("Author not added to the database.",id > 0);
+        //assertTrue("Author not added to the database.",id > 0);
         List<String> genreList = new ArrayList<String>();
         genreList.add("Classical");
         genreList.add("Rock");
@@ -42,13 +51,16 @@ public class BookDAOTest {
         int book_id = bookDao.addBook(book);
         assertTrue("Validation failure", book_id >= 0);
         assertTrue("Book was not added to the database", book_id != 0);
+
+        //int authorDelete = authorDao.deleteAuthor(author);
+        //assertTrue("Delete author failed for addBookStaticTest", authorDelete > 0);
     }
 
 
 
     @Test
     public void getBookInDatabase() throws Exception {
-        Author author = new Author("Ben", "Jamin", 4);
+        //Author author = new Author("Ben", "Jamin", 4);
         List<String> genreList = new ArrayList<String>();
         genreList.add("Classical");
         genreList.add("Rock");
@@ -88,7 +100,7 @@ public class BookDAOTest {
 
     @Test
     public void deleteBookTest() {
-        Author author = new Author("Ben", "Jamin", 4);
+        //Author author = new Author("Ben", "Jamin", 4);
         ArrayList<String> genres = new ArrayList<String>();
         genres.add("Contemporary");
         genres.add("Hello");
@@ -132,7 +144,7 @@ public class BookDAOTest {
     */
     @Test
     public void safeAddBookTest() {
-        Author author = new Author("Ben", "Jamin", 4);
+        //Author author = new Author("Ben", "Jamin", 4);
         ArrayList<String> genres = new ArrayList<String>();
         genres.add("Dark");
         genres.add("Action");
@@ -160,7 +172,7 @@ public class BookDAOTest {
 
     @Test
     public void safeDeleteBookTest() {
-        Author author = new Author("Ben", "Jamin", 4);
+        //Author author = new Author("Ben", "Jamin", 4);
         ArrayList<String> genres = new ArrayList<String>();
         genres.add("Dark");
         genres.add("Action");
@@ -183,7 +195,7 @@ public class BookDAOTest {
 
     @Test
     public void safeUpdateBookTest() {
-        Author author = new Author("Ben", "Jamin", 4);
+        //Author author = new Author("Ben", "Jamin", 4);
         ArrayList<String> genres = new ArrayList<String>();
         genres.add("Dark");
         genres.add("Comedy");

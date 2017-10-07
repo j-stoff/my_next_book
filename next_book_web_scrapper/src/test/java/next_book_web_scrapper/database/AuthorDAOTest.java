@@ -23,6 +23,8 @@ public class AuthorDAOTest {
         int returnCode = authorDao.addAuthor(author);
         assertTrue("An error occurred while trying to add",returnCode >= 0);
         assertTrue("The author wasn't added to the database",returnCode != 0);
+        int deleteCode = authorDao.deleteAuthor(author);
+        assertTrue("Delete failed for constraint Test", deleteCode > 0);
     }
 
     @Test
@@ -32,7 +34,6 @@ public class AuthorDAOTest {
         list.add("Fantasy");
         Author author = new Author("Rick", "Sanchez", 5);
         author.setGenres(list);
-        author.setBookReviews("None");
         int author_id = authorDao.addAuthor(author);
         Author getAuthor = authorDao.getAuthor(author_id);
 
@@ -40,7 +41,9 @@ public class AuthorDAOTest {
         assertEquals("First name not the same\n", author.getFirstName(), getAuthor.getFirstName());
         assertEquals("Last name not the same\n", author.getLastName(), getAuthor.getLastName());
         assertTrue("Rating not equal\n", author.getAverageRating() == getAuthor.getAverageRating());
-        assertEquals("Reviews not the same", author.getBookReviews(), getAuthor.getBookReviews());
+
+        int deleteCode = authorDao.deleteAuthor(author);
+        assertTrue("Delete fail for getAuthorTest", deleteCode > 0);
     }
 
     /*
@@ -79,6 +82,9 @@ public class AuthorDAOTest {
 
         boolean passed = authorDao.updateAuthor(author);
         assertTrue(passed);
+
+        int deleteCode = authorDao.deleteAuthor(author);
+        assertTrue("Delete author failed for updateAuthor Test", deleteCode > 0);
     }
 
     @Test
@@ -88,6 +94,9 @@ public class AuthorDAOTest {
         assertTrue( original_id > 0);
         int second_id = authorDao.safeAddAuthor(author);
         assertTrue( second_id == 0);
+
+        int deleteCode = authorDao.safeDeleteAuthor(author);
+        assertTrue("Delete author failed for safeAddAuthorTest", deleteCode > 0);
     }
 
     @Test
@@ -127,6 +136,9 @@ public class AuthorDAOTest {
 
         boolean passed = authorDao.isAuthorInDatabaseQuery(author);
         assertTrue("Did not find the author",passed);
+
+        int deleteCode = authorDao.safeDeleteAuthor(author);
+        assertTrue("Delete author failed for findAuthorWithoutUsingId", deleteCode > 0);
 
     }
 }

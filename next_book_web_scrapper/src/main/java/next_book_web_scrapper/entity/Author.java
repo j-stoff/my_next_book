@@ -30,8 +30,10 @@ public class Author {
     @Column(name="author_average_rating")
     private double averageRating;
 
+    /*
     @Column(name="author_book_reviews")
     private String bookReviews;
+    */
 
     @OneToMany(mappedBy = "fk_id_author")
     private List<Book> authorBooks;
@@ -142,19 +144,22 @@ public class Author {
      *      Subject to change
      * @return bookReviews
      */
+    /*
     public String getBookReviews() {
         return bookReviews;
     }
+    */
 
     /**
      * Setter for books reviewed by the author.
      *      Subject to change.
      * @param bookReviews reviews done by the author of non-authored books.
      */
+    /*
     public void setBookReviews(String bookReviews) {
         this.bookReviews = bookReviews;
     }
-
+    */
 
     /**
      * Getter for a list of the authors books
@@ -167,7 +172,7 @@ public class Author {
 
     /**
      * Setter for the author's published works
-     * @param author_books List of authored books.
+     * @param authorBooks List of authored books.
      */
     public void setAuthorBooks(List<Book> authorBooks) {
         this.authorBooks = authorBooks;
@@ -186,7 +191,7 @@ public class Author {
         }
 
         author += "Average book rating: " + averageRating + newLine;
-        author += "Book reviews " + bookReviews + newLine;
+        //author += "Book reviews " + bookReviews + newLine;
 
         return author;
     }

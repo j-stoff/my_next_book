@@ -46,7 +46,7 @@ public class Book {
 
 
     @ManyToOne
-    @JoinColumn(name="author_fk", referencedColumnName = "id_author", nullable = false)
+    @JoinColumn(name="fk_id_author", referencedColumnName = "id_author", nullable = false)
     private Author fk_id_author;
 
 
