@@ -141,4 +141,17 @@ public class AuthorDAOTest {
         assertTrue("Delete author failed for findAuthorWithoutUsingId", deleteCode > 0);
 
     }
+
+    @Test
+    public void findAuthorAndGetId() {
+        Author author = new Author("Locke", "Lamora", 5);
+        int author_id = authorDao.safeAddAuthor(author);
+        assertTrue("Author not added", author_id > 0);
+
+        int found_id = authorDao.findAuthorByClass(author);
+        assertTrue("Values not equal", found_id == author_id);
+
+        int deleteCode = authorDao.safeDeleteAuthor(author);
+        assertTrue("Delete fail in findAuthor", deleteCode > 0);
+    }
 }

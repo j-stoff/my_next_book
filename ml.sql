@@ -94,3 +94,6 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` VALUES (1,'admin','admin',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+

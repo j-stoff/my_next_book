@@ -123,6 +123,18 @@ public class GoodReadsHtmlList {
         }
     }
 
+
+    private void visitSelectNumberOfPages() {
+        String currentURL = null;
+        for(int index = 2; index <= 10; index++) {
+            currentURL = nextPageName(index);
+            System.out.println(currentURL);
+            if (connectToPage(currentURL)) {
+                getBooksFromRow();
+            }
+        }
+    }
+
     /**
      * Helper method to format the next page's url
      * @param pageNumber current page to query.
@@ -164,7 +176,9 @@ public class GoodReadsHtmlList {
 
         //visitAllPages();
 
-        printAllBooks();
+        //visitSelectNumberOfPages();
+
+        //printAllBooks();
 
     }
 }

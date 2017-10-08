@@ -19,8 +19,8 @@
 |10/2/17| Updating database for many to one relationship, test cases fail due to nulls|2|Re-do tests|
 |10/4/17| Adding index jsp to web application and basic security|2| Security not yet complete|
 |10/5/17| Added Authentication| 2| Not finished, still doesn't load protected page.|
-| | | | |
-| | | | |
+|10/7/17| More on authentication, finished| 2| |
+|10/8/17| Added generic model class and not null validation| 4| Haven't tested on web pages yet.|
 | | | | |
 | | | | |
 | | | | |

@@ -217,4 +217,25 @@ public class BookDAOTest {
 
         bookDao.safeDeleteBook(book);
     }
+
+    /*
+    @Test
+    public void testNotNullValidator() {
+        ArrayList<String> genres = new ArrayList<String>();
+        genres.add("Dark");
+        genres.add("Comedy");
+        Book book = new Book();
+        book.setAuthorName("Morty");
+        book.setTitle("Lock Lamora");
+        book.setRating(5);
+        book.setIsbn("1234567891");
+        book.setGenre(genres);
+        book.setFk_id_author(author);
+
+        int book_id = bookDao.safeAddBook(book);
+
+        int deleteCode = bookDao.safeDeleteBook(book);
+    }
+    */
+
 }

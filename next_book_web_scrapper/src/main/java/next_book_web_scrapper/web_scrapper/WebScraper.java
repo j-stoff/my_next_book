@@ -66,6 +66,8 @@ public class WebScraper {
 
         booksFromList = htmlDocument.getBooksWithAuthors();
 
+
+        /*
         Book aBook = booksFromList.get(0);
         GoodReadsResponseBookTitle response = new GoodReadsResponseBookTitle(aBook,
                 properties.getProperty("goodreads.api.key"),
@@ -75,16 +77,22 @@ public class WebScraper {
         Book finishedBook = response.getCurrentText();
         Author bookAuthor = response.getAuthorOfBook();
         addValuesToDatabase(finishedBook, bookAuthor);
-        //visitAllBookPages();
+        */
+        visitAllBookPages();
     }
 
     private void visitAllBookPages() {
         GoodReadsResponseBookTitle response = null;
+        Book finishedBook = null;
+        Author bookAuhtor = null;
         for (Book currentBook: booksFromList) {
             response = new GoodReadsResponseBookTitle(currentBook,
                     properties.getProperty("goodreads.api.key"),
                     properties.getProperty("book.base.target"));
             response.fillInBook();
+            finishedBook = response.getCurrentText();
+            bookAuhtor = response.getAuthorOfBook();
+            addValuesToDatabase(finishedBook, bookAuhtor);
         }
     }
 
@@ -96,9 +104,12 @@ public class WebScraper {
             log.error("Author name: " + author.getFirstName() + " " + author.getLastName());
         }
 
-        author.setId(id);
-
-        System.out.println(author.toString());
+        if (id == 0) {
+            id = authorDAO.findAuthorByClass(author);
+            author.setId(id);
+        } else {
+            author.setId(id);
+        }
 
         id = bookDao.safeAddBook(book);
         if (id < 0) {

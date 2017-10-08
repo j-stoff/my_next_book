@@ -3,25 +3,30 @@ package next_book_web_scrapper.entity;
 import next_book_web_scrapper.util.ListConverter;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
 @Table(name="books")
-public class Book {
+public class Book extends BaseEntity {
 
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name="increment", strategy = "increment")
     @Column(name="id_books")
+    @NotNull
     private int id;
 
     @Column(name="book_title")
+    @NotNull
     private String title;
 
     @Column(name="book_author")
+    @NotNull
     private String authorName;
 
     @Column(name="book_rating")
+    @NotNull
     private double rating;
 
     @Column(name="book_num_rating")
@@ -32,6 +37,7 @@ public class Book {
 
     @Column(name="book_genre")
     @Convert(converter = ListConverter.class)
+    @NotNull
     private List<String> genre;
 
     /*
@@ -39,6 +45,7 @@ public class Book {
     private int fk_id_author;
     */
     @Column(name="book_isbn")
+    @NotNull
     private String isbn;
 
     @Column(name="book_goodreads_id")

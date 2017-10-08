@@ -133,8 +133,6 @@ public class GoodReadsResponseBookTitle {
         }
 
         currentText.setGenre(genres);
-
-        System.out.println(genres.toString());
     }
 
     /**
@@ -174,8 +172,6 @@ public class GoodReadsResponseBookTitle {
 
         parseShelvesForGenres(popularShelvesElement);
 
-        System.out.println(currentText.toString());
-
     }
 
 
@@ -209,8 +205,6 @@ public class GoodReadsResponseBookTitle {
             bookAuthor.setAverageRating(Double.parseDouble(nameElement.html()));
         }
 
-        System.out.println(bookAuthor.toString());
-
     }
 
     public Author getAuthorOfBook() {
@@ -225,9 +219,6 @@ public class GoodReadsResponseBookTitle {
      * The main running method of this class to do the work.
      */
     public void fillInBook() {
-
-        System.out.println(generatePageURL());
-
         visitPage();
 
         addValuesToBook();
@@ -235,7 +226,5 @@ public class GoodReadsResponseBookTitle {
         addValuesToAuthor();
 
         currentText.setFk_id_author(bookAuthor);
-
-        System.out.println("Books filled in");
     }
 }

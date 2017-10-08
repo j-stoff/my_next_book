@@ -209,10 +209,11 @@ public class BookDAO {
             return -1;
         }
 
+        /*
         if (!areNullFieldsValid(bookToAdd)) {
             return -1;
         }
-
+        */
         if (bookToAdd.getId() == 0) {
             return addBook(bookToAdd);
         } else {
@@ -251,10 +252,11 @@ public class BookDAO {
             return false;
         }
 
+        /*
         if (!areNullFieldsValid(bookToUpdate)) {
             return false;
         }
-
+        */
         if (bookToUpdate.getId() == 0) {
             return updateBook(bookToUpdate);
         } else  {

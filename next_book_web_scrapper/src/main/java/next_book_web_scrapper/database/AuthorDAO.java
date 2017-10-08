@@ -2,10 +2,7 @@ package next_book_web_scrapper.database;
 
 import next_book_web_scrapper.entity.Author;
 import org.apache.log4j.Logger;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 
 import java.util.List;
 
@@ -113,6 +110,35 @@ public class AuthorDAO {
         }
 
         return false;
+    }
+
+
+
+    public int findAuthorByClass(Author author) {
+        String sql = "SELECT * FROM authors WHERE author_first_name='" + author.getFirstName() + "' AND author_last_name='" + author.getLastName() + "'";
+
+        SQLQuery query = null;
+        Session databaseSession = null;
+        List results = null;
+        Transaction currentTransaction = null;
+        try {
+            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
+            currentTransaction = databaseSession.beginTransaction();
+            query = databaseSession.createSQLQuery(sql);
+            query.addEntity(Author.class);
+            results = query.list();
+            if (results != null) {
+                Author returnedAuthor = (Author) results.get(0);
+                return returnedAuthor.getId();
+            }
+            currentTransaction.commit();
+
+        } catch (HibernateException hibernateException) {
+            log.error("Hibernate error in databaseQuery", hibernateException);
+        } catch (Exception exception) {
+            log.error("Exception in databaseQuery", exception);
+        }
+        return 0;
     }
 
     /**

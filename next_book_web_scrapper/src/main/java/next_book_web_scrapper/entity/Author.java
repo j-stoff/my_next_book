@@ -1,6 +1,8 @@
 package next_book_web_scrapper.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.ArrayList;
@@ -9,18 +11,21 @@ import next_book_web_scrapper.util.ListConverter;
 
 @Entity
 @Table(name="authors")
-public class Author {
+public class Author extends BaseEntity {
 
     @Id
+    @NotNull
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name="increment", strategy = "increment")
     @Column(name="id_author",unique = true, nullable = false)
     private int id;
 
     @Column(name="author_first_name")
+    @NotNull
     private String firstName;
 
     @Column(name="author_last_name")
+    @NotNull
     private String lastName;
 
     @Column(name="author_genre")
