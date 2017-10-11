@@ -59,6 +59,7 @@ public class WebScraper {
             return;
         }
 
+        System.out.println("Starting scrape");
 
         loadProperties(arguments[0]);
         htmlDocument = new GoodReadsHtmlList(properties.getProperty("list.target.url"), 30);
@@ -79,20 +80,23 @@ public class WebScraper {
         addValuesToDatabase(finishedBook, bookAuthor);
         */
         visitAllBookPages();
+
+        System.out.println("Finished parsings");
     }
 
     private void visitAllBookPages() {
         GoodReadsResponseBookTitle response = null;
         Book finishedBook = null;
-        Author bookAuhtor = null;
+        Author bookAuthor = null;
         for (Book currentBook: booksFromList) {
             response = new GoodReadsResponseBookTitle(currentBook,
                     properties.getProperty("goodreads.api.key"),
                     properties.getProperty("book.base.target"));
-            response.fillInBook();
-            finishedBook = response.getCurrentText();
-            bookAuhtor = response.getAuthorOfBook();
-            addValuesToDatabase(finishedBook, bookAuhtor);
+            if (response.fillInBook()) {
+                finishedBook = response.getCurrentText();
+                bookAuthor = response.getAuthorOfBook();
+                addValuesToDatabase(finishedBook, bookAuthor);
+            }
         }
     }
 

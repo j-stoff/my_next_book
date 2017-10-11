@@ -5,4 +5,5 @@ public class WebScrapeRunner {
         WebScraper runner = new WebScraper();
         runner.run(args);
     }
+
 }

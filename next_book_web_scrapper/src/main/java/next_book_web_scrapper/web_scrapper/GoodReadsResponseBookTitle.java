@@ -9,9 +9,8 @@ import org.jsoup.nodes.Element;
 import org.apache.log4j.Logger;
 import org.jsoup.select.Elements;
 
-import javax.el.ELException;
-import javax.sound.midi.SysexMessage;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
@@ -29,6 +28,8 @@ public class GoodReadsResponseBookTitle {
     private String targetURL;
     private Document response;
     private final Logger log = Logger.getLogger(this.getClass());
+    private boolean isPageValid;
+    private InputStream inputLocation;
 
     /**
      * No argument constructor
@@ -85,13 +86,17 @@ public class GoodReadsResponseBookTitle {
     private void visitPage() {
         response = null;
         try {
-            response = Jsoup.parse(new URL(generatePageURL()).openStream(),
-                    "UTF-8", "", Parser.xmlParser());
+            inputLocation = new URL(generatePageURL()).openStream();
+            response = Jsoup.parse(inputLocation, "UTF-8", "", Parser.xmlParser());
+            isPageValid = true;
         } catch (IOException ioexception) {
             log.error("IOException in visitPage for XML response", ioexception);
+            isPageValid = false;
         } catch (Exception exception) {
             log.error("Exception in visitPage for XML response", exception);
+            isPageValid = false;
         }
+        // TODO  try closing the stream in a finally block
     }
 
     private boolean checkShelf(String genre) {
@@ -108,6 +113,16 @@ public class GoodReadsResponseBookTitle {
         } else if (genre.contains("favorites")) {
             return false;
         } else if (genre.contains("on-hold")) {
+            return false;
+        } else if (genre.contains("book")) {
+            return false;
+        } else if (genre.contains("currently")) {
+            return false;
+        } else if (genre.contains("buy")) {
+            return false;
+        } else if (genre.contains("favourite")) {
+            return false;
+        } else if (genre.contains("owned")) {
             return false;
         }
 
@@ -207,6 +222,16 @@ public class GoodReadsResponseBookTitle {
 
     }
 
+    private void closeStream() {
+        try {
+            inputLocation.close();
+        } catch (IOException ioException) {
+            log.error("IOException in closing stream for response", ioException);
+        } catch (Exception exception) {
+            log.error("Exception in closing stream for response", exception);
+        }
+    }
+
     public Author getAuthorOfBook() {
         return bookAuthor;
     }
@@ -217,14 +242,22 @@ public class GoodReadsResponseBookTitle {
 
     /**
      * The main running method of this class to do the work.
+     * @return true on success, false if a failure occurred.
      */
-    public void fillInBook() {
+    public boolean fillInBook() {
         visitPage();
+        if (isPageValid) {
+            addValuesToBook();
 
-        addValuesToBook();
+            addValuesToAuthor();
 
-        addValuesToAuthor();
+            currentText.setFk_id_author(bookAuthor);
+            closeStream();
+            return true;
+        }
 
-        currentText.setFk_id_author(bookAuthor);
+        System.out.println("Did not add book");
+        closeStream();
+        return false;
     }
 }

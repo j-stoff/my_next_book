@@ -1,3 +1,9 @@
+--- Notes
+--- Drop books before authors, makes it easier
+--- if authors can't be deleted use below
+--- SET FOREIGN_KEY_CHECKS=0; DROP TABLE authors; SET FOREIGN_KEY_CHECKS=1;
+
+
 CREATE DATABASE /*!32312 IF NOT EXISTS*/ `ml_6` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `ml_6`;
@@ -5,6 +11,7 @@ USE `ml_6`;
 --
 -- Table structure for table `authors`
 --
+
 
 DROP TABLE IF EXISTS `authors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -34,7 +41,7 @@ CREATE TABLE `books` (
   `book_rating` double NOT NULL,
   `book_num_rating` int(11) DEFAULT NULL,
   `book_num_review` int(11) DEFAULT NULL,
-  `book_genre` varchar(45) NOT NULL,
+  `book_genre` varchar(256) NOT NULL,
   `fk_id_author` int(11) NOT NULL,
   `book_isbn` varchar(10) NOT NULL,
   `book_goodreads_id` varchar(11) DEFAULT NULL,
