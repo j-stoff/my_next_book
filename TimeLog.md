@@ -21,7 +21,7 @@
 |10/5/17| Added Authentication| 2| Not finished, still doesn't load protected page.|
 |10/7/17| More on authentication, finished| 2| |
 |10/8/17| Added generic model class and not null validation| 4| Haven't tested on web pages yet.|
-| | | | |
+|10/10/17| Fixed issue with bad server response| 2| Issues with stopping the program still|
 | | | | |
 | | | | |
 | | | | |

@@ -174,7 +174,7 @@ public class GoodReadsHtmlList {
 
         getBooksFromRow();
 
-        //visitAllPages();
+        visitAllPages();
 
         //visitSelectNumberOfPages();
 

@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import static java.lang.System.exit;
+
 public class WebScraper {
 
     private List<Book> booksFromList;
@@ -62,7 +64,8 @@ public class WebScraper {
         System.out.println("Starting scrape");
 
         loadProperties(arguments[0]);
-        htmlDocument = new GoodReadsHtmlList(properties.getProperty("list.target.url"), 30);
+        htmlDocument = new GoodReadsHtmlList(properties.getProperty("list.target.url"),
+                Integer.parseInt(properties.getProperty("list.number.pages")));
         htmlDocument.go();
 
         booksFromList = htmlDocument.getBooksWithAuthors();
@@ -79,9 +82,16 @@ public class WebScraper {
         Author bookAuthor = response.getAuthorOfBook();
         addValuesToDatabase(finishedBook, bookAuthor);
         */
-        visitAllBookPages();
 
-        System.out.println("Finished parsings");
+        if (booksFromList != null) {
+            visitAllBookPages();
+
+            System.out.println("Finished parsings");
+            exit(0);
+        } else {
+            log.info("Book list is null from list web page");
+            exit(-1);
+        }
     }
 
     private void visitAllBookPages() {
