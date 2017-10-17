@@ -22,7 +22,7 @@
 |10/7/17| More on authentication, finished| 2| |
 |10/8/17| Added generic model class and not null validation| 4| Haven't tested on web pages yet.|
 |10/10/17| Fixed issue with bad server response| 2| Issues with stopping the program still|
-| | | | |
+|10/19| Still formatting data being put into the database| 3| Will need to do some basic statisics to format data for machine learning|
 | | | | |
 | | | | |
 | | | | |
