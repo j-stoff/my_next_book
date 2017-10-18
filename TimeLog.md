@@ -21,9 +21,9 @@
 |10/5/17| Added Authentication| 2| Not finished, still doesn't load protected page.|
 |10/7/17| More on authentication, finished| 2| |
 |10/8/17| Added generic model class and not null validation| 4| Haven't tested on web pages yet.|
-| | | | |
-| | | | |
-| | | | |
+|10/10/17| Fixed issue with bad server response| 2| Issues with stopping the program still|
+|10/17| Still formatting data being put into the database| 3| Will need to do some basic statisics to format data for machine learning|
+|10/18| Reworking AWS for machine learning. Also added JSP pages to web app, barebones at least| 4| Still need the rest of the data before using machine learning.|
 | | | | |
 | | | | |
 | | | | |

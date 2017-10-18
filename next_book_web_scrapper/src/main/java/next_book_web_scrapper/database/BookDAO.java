@@ -5,6 +5,8 @@ import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
+
 import java.util.ArrayList;
 
 public class BookDAO {
@@ -35,6 +37,8 @@ public class BookDAO {
             currentTransaction = databaseSession.beginTransaction();
             book_id = (int)databaseSession.save(book);
             currentTransaction.commit();
+        } catch (ConstraintViolationException alreadyInDatabase) {
+            log.info("Book is already in the database: " + book.getTitle());
         } catch (HibernateException hibernateException) {
             String message = "Hibernate Exception in addBook";
             rollbackTransaction(currentTransaction, message, hibernateException);
