@@ -49,6 +49,7 @@ public class GoodReadsResponseBookTitle {
         currentText = partialBook;
         developerKey = apiKey;
         targetURL = baseURL;
+        isPageValid = false;
     }
 
 

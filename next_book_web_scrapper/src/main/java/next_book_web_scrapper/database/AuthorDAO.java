@@ -107,6 +107,14 @@ public class AuthorDAO {
             log.error("Hibernate error in databaseQuery", hibernateException);
         } catch (Exception exception) {
             log.error("Exception in databaseQuery", exception);
+        } finally {
+            try {
+                if (databaseSession != null) {
+                    databaseSession.close();
+                }
+            } catch (Exception exception) {
+
+            }
         }
 
         return false;
@@ -137,7 +145,16 @@ public class AuthorDAO {
             log.error("Hibernate error in databaseQuery", hibernateException);
         } catch (Exception exception) {
             log.error("Exception in databaseQuery", exception);
-        }
+        } finally {
+            try {
+                if (databaseSession != null) {
+                    databaseSession.close();
+                }
+
+            } catch (Exception exception) {
+                log.error("Problem closing the database session");
+            }
+         }
         return 0;
     }
 
