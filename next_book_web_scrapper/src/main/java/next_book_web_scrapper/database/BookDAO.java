@@ -1,13 +1,16 @@
 package next_book_web_scrapper.database;
 
+import javassist.bytecode.ExceptionTable;
 import next_book_web_scrapper.entity.Book;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.exception.ConstraintViolationException;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BookDAO {
 
@@ -270,6 +273,46 @@ public class BookDAO {
             }
             return updateBook(bookToUpdate);
         }
+    }
+
+    /**
+     * A method to retrieve a book object from the database based on a
+     * title query.
+     * @param bookTitle The title of the book object
+     * @return a book object with all relevant information or null if not found
+     */
+    public List findBookByTitle(String bookTitle) {
+        String hql = "FROM Book B WHERE B.title like '" + bookTitle + "'";
+        //String hql = "From Book";
+        Session databaseSession = null;
+        Transaction currentTransaction = null;
+        List results = null;
+
+        try {
+            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
+            currentTransaction = databaseSession.beginTransaction();
+            Query query = databaseSession.createQuery(hql);
+            if (query != null) {
+                results = query.list();
+            }
+            currentTransaction.commit();
+        } catch (HibernateException hibernateException) {
+            String message = "Hibernate Exception in findBookByTitle";
+            rollbackTransaction(currentTransaction, message, hibernateException);
+        } catch (Exception exceptiion) {
+            String message = "Exception in findBookByTitle";
+            rollbackTransaction(currentTransaction, message, exceptiion);
+        } finally {
+            try {
+                if (databaseSession != null) {
+                    databaseSession.close();
+                }
+            } catch (Exception exception) {
+                log.error("Problem closing database session", exception);
+            }
+        }
+
+        return results;
     }
 
     /**

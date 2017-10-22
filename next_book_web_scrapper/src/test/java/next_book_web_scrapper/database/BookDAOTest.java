@@ -238,4 +238,15 @@ public class BookDAOTest {
     }
     */
 
+
+    @Test
+    public void testForFindBookByTitle() {
+        List<Book> results = (List<Book>)bookDao.findBookByTitle("Dune");
+
+        assertNotNull("Query failed", results);
+        for (Book book : results) {
+            System.out.println(book.toString());
+        }
+    }
+
 }
