@@ -13,8 +13,8 @@
   <login-config>
     <auth-method>FORM</auth-method>
     <form-login-config>
-      <form-login-page>/jsp/login.jsp</form-login-page>
-      <form-error-page>/jsp/login-error.jsp</form-error-page>
+      <form-login-page>/next_book/jsp/login.jsp</form-login-page>
+      <form-error-page>/next_book/jsp/login-error.jsp</form-error-page>
     </form-login-config>
   </login-config>
 
@@ -23,7 +23,7 @@
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>edit</web-resource-name>
-      <url-pattern>/edit.jsp</url-pattern>
+      <url-pattern>/next_book/jsp/edit.jsp</url-pattern>
     </web-resource-collection>
     <auth-constraint>
       <role-name>administrator</role-name>

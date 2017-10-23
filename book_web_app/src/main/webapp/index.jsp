@@ -2,13 +2,14 @@
 
 <html>
     <c:set var="pageTitle" value="Next Book App" scope="session" />
-    <c:import url="jsp-snippets/header-tag.jsp"/>
+    <c:import url="/next_book/jsp/jsp-snippets/header-tag.jsp"/>
 
 <body>
 <div class="container-fluid">
 <h2 class="jumbotron">Next Book App - For those who don't know what to read next</h2>
     <div class="col-md-2"></div>
-    <form method="GET" action="main.jsp" class="col-sm-4">
+    <!--
+    <form method="POST" action="/book_app/home" class="col-sm-4">
         <div class="row">
         <label for="username">Username:</label>
         <input type="text" placeholder="Username or Email"/>
@@ -22,10 +23,18 @@
 
         <input type="submit" value="Login" class="col-sm-3"/>
         <div class="col-sm-2"></div>
-        <a href="signup.jsp">
+        <a href="next_book/jsp/signup.jsp">
         <input type="button" value="Sign up" class="link col-sm-3"/>
         </a>
     </form>
+    -->
+    <a href="/book_app/login">
+        <input type="button" value="Login" class="link"/>
+    </a>
+    <div class="col-sm-2"></div>
+    <a href="next_book/jsp/signup.jsp">
+        <input type="button" value="Sign up" class="link"/>
+    </a>
     <!--
     <a href="login.jsp">Login</a>
     <hr/>
