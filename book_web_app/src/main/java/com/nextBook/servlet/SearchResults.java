@@ -22,7 +22,6 @@ public class SearchResults extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        log.info("THIS GOES TO THE LOG");
         String bookTitleParameter = request.getParameter("bookTitle");
         String bookIdParameter = request.getParameter("bookId");
 
