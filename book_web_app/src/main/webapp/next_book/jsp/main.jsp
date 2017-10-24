@@ -13,6 +13,9 @@
 <body>
     <h2>Get a book recommendation</h2>
 
+    <a href="search"><h3>Search the database</h3></a>
+    
+
     <h3>Recommend me a good book</h3>
     <input type="button" value="Get a book to read - does not work"/>
     <p>Based on your preferences, get a book to your liking.</p>
