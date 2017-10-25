@@ -24,6 +24,7 @@ hs_err_pid*
 # Workspace stuff
 .idea/
 *.iml
+next_book_web_scraper/.idea/
 
 ##Maven stutf
 target/

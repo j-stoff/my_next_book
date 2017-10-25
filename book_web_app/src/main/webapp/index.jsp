@@ -1,8 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
+    <head>
     <c:set var="pageTitle" value="Next Book App" scope="session" />
     <c:import url="/next_book/jsp/jsp-snippets/header-tag.jsp"/>
+    <link rel="stylesheet" type="text/css" href="next_book/jsp/css/style.css" />
+    </head>
 
 <body>
 <div class="container-fluid">
