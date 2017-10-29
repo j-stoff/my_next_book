@@ -31,7 +31,7 @@
         </a>
     </form>
     -->
-    <a href="/book_app/login">
+    <a href="next_book/jsp/main.jsp">
         <input type="button" value="Login" class="link"/>
     </a>
     <div class="col-sm-2"></div>

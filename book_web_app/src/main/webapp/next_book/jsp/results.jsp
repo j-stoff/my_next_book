@@ -9,7 +9,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Search Results</title>
+    <c:set var="pageTitle" value="Search Results" scope="session"/>
+    <c:import url="jsp-snippets/header-tag.jsp"/>
 </head>
 <body>
 

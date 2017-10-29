@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>next_book.webapp</groupId>
-  <artifactId>web_app</artifactId>
+  <artifactId>book_app</artifactId>
   <packaging>war</packaging>
   <version>1.1-SNAPSHOT</version>
-  <name>web_app Maven Webapp</name>
+  <name>book_app Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
@@ -48,7 +48,7 @@
 
   </dependencies>
   <build>
-    <finalName>web_app</finalName>
+    <finalName>book_app</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
