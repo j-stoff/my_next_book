@@ -35,7 +35,7 @@
         <input type="button" value="Login" class="link"/>
     </a>
     <div class="col-sm-2"></div>
-    <a href="next_book/jsp/signup.jsp">
+    <a href="next_book/signup/signup.jsp">
         <input type="button" value="Sign up" class="link"/>
     </a>
     <!--
