@@ -31,10 +31,11 @@
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>book_app</web-resource-name>
-      <url-pattern>/next_book/jsp/*</url-pattern>
+      <url-pattern>/main/*</url-pattern>
     </web-resource-collection>
     <auth-constraint>
       <role-name>registered-user</role-name>
+      <role-name>administrator</role-name>
     </auth-constraint>
   </security-constraint>
 

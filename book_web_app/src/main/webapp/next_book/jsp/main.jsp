@@ -13,6 +13,7 @@
 <body>
     <h2>Get a book recommendation</h2>
 
+    <!-- TODO links are broken -->
     <a href="search"><h3>Search the database</h3></a>
     
 

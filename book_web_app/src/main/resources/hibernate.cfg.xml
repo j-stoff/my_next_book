@@ -10,9 +10,10 @@
 
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/ml_6</property>
-        <property name="connection.username">bookAdd</property>
-        <property name="connection.password">addMe</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/ml_training</property>
+        <property name="connection.username">test</property>
+        <property name="connection.password">test</property>
+        <!-- TODO change to correct defaults for username/password -->
 
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
@@ -24,6 +25,8 @@
         <!-- List the annotated entity class/es -->
         <mapping class="com.nextBook.database.entity.Book"/>
         <mapping class="com.nextBook.database.entity.Author"/>
+        <mapping class="com.nextBook.database.entity.Users" />
+        <mapping class="com.nextBook.database.entity.User_roles" />
 
     </session-factory>
 

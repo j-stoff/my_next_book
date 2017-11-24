@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "searchResults", urlPatterns = "/results")
+@WebServlet(name = "searchResults", urlPatterns = "/main/results")
 public class SearchResults extends HttpServlet {
 
     private final Logger log = Logger.getLogger(this.getClass());
