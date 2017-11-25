@@ -6,6 +6,8 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.sound.midi.Track;
+
 public class UserDAO {
     private final Logger log = Logger.getLogger(this.getClass());
 
@@ -55,6 +57,29 @@ public class UserDAO {
         return userInDatabase;
     }
 
+    public int deleteUser(Users user) {
+        int userId = user.getId();
+        Session databaseSession = null;
+        Transaction currentTransaction = null;
+
+        try {
+            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
+            currentTransaction = databaseSession.beginTransaction();
+            databaseSession.delete(user);
+            currentTransaction.commit();
+        } catch (HibernateException hibExcept) {
+            String message = "Hibernate exception in deleteUser";
+            rollbackTransaction(currentTransaction, message, hibExcept);
+        } catch (Exception except) {
+            String message = "Exception in deleteUser";
+            rollbackTransaction(currentTransaction, message, except);
+        } finally {
+            closeSession(databaseSession, "deleteUser");
+        }
+
+        return userId;
+    }
+
 
 
     /**
@@ -81,13 +106,13 @@ public class UserDAO {
     }
 
 
-    private void closeSession(Session session, String location) {
+    private void closeSession(Session session, String locationName) {
         try {
             if (session != null) {
                 session.close();
             }
         } catch (Exception except) {
-            log.error("Problem closing the database session in " + location);
+            log.error("Problem closing the database session in " + locationName);
         }
     }
 }

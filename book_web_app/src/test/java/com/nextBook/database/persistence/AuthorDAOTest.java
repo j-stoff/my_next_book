@@ -1,5 +1,6 @@
-package com.nextBook.database.entity;
+package com.nextBook.database.persistence;
 
+import com.nextBook.database.entity.Author;
 import com.nextBook.database.persistence.AuthorDAO;
 import org.junit.Before;
 import org.junit.Test;

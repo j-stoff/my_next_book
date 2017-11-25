@@ -169,11 +169,6 @@ public class BookDAO {
             return -1;
         }
 
-        /*
-        if (!areNullFieldsValid(bookToAdd)) {
-            return -1;
-        }
-        */
         if (bookToAdd.getId() == 0) {
             return addBook(bookToAdd);
         } else {
