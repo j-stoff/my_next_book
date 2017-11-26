@@ -6,7 +6,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import javax.sound.midi.Track;
 
 public class UserDAO {
     private final Logger log = Logger.getLogger(this.getClass());
@@ -78,6 +77,31 @@ public class UserDAO {
         }
 
         return userId;
+    }
+
+
+    public boolean updateUser(Users user) {
+        boolean didUpdate = false;
+        Session databaseSession = null;
+        Transaction currentTransction = null;
+
+        try {
+            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
+            currentTransction = databaseSession.beginTransaction();
+            databaseSession.saveOrUpdate(user);
+            currentTransction.commit();
+            didUpdate = true;
+        } catch (HibernateException hibExcept) {
+            String message = "Hibernate exception in updateUser";
+            rollbackTransaction(currentTransction, message, hibExcept);
+        } catch (Exception exception) {
+            String message = "Exception caught in updateUser";
+            rollbackTransaction(currentTransction, message, exception);
+        } finally {
+            closeSession(databaseSession, "updateUser");
+        }
+
+        return didUpdate;
     }
 
 

@@ -96,6 +96,7 @@ public class BookDAO {
      * @return boolean if the book update was successful.
      */
     public boolean updateBook(Book bookUpdated) {
+        boolean didUpdate = false;
         Session databaseSession = null;
         Transaction currentTransaction = null;
 
@@ -104,6 +105,7 @@ public class BookDAO {
             currentTransaction = databaseSession.beginTransaction();
             databaseSession.update(bookUpdated);
             currentTransaction.commit();
+            didUpdate = true;
         } catch (HibernateException hibernateException) {
             String message = "Hibernate Exception in updateBook";
             rollbackTransaction(currentTransaction, message, hibernateException);
@@ -120,7 +122,7 @@ public class BookDAO {
             }
         }
 
-        return true;
+        return didUpdate;
     }
 
     /**

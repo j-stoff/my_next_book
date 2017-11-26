@@ -323,6 +323,7 @@ public class AuthorDAO {
      * @return true if updates commited to database, or false if errors were found.
      */
     public boolean updateAuthor(Author author) {
+        boolean didUpdate = false;
         Session databaseSession = null;
         Transaction currentTransaction = null;
         try {
@@ -330,6 +331,7 @@ public class AuthorDAO {
             currentTransaction = databaseSession.beginTransaction();
             databaseSession.update(author);
             currentTransaction.commit();
+            didUpdate = true;
         } catch (HibernateException hibernateException) {
             String message = "Hibernate Exception in updateAuthor";
             rollbackTransaction(currentTransaction, message, hibernateException);
@@ -346,7 +348,7 @@ public class AuthorDAO {
             }
         }
 
-        return true;
+        return didUpdate;
     }
 
     /**

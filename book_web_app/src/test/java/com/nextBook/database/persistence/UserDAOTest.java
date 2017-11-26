@@ -44,8 +44,6 @@ public class UserDAOTest {
     public void deleteUserTest() throws Exception {
         Users user = insertSingleUserReturnUser();
 
-        assertTrue("Test user not inserted correctly", user.getId() >= 0);
-
         int retrievedId = userDAO.deleteUser(user);
 
         assertTrue("The deleted id is not the same as the original", user.getId() == retrievedId);
@@ -55,18 +53,38 @@ public class UserDAOTest {
         assertNull("The user was found in the database", getUser);
     }
 
+    @Test
+    public void updateUserTest() throws Exception {
+        Users user = insertSingleUserReturnUser();
+
+        String originalUserName = user.getUser_name();
+
+        user.setUser_name("CptPlanet");
+
+        assertTrue("The update did not work", userDAO.updateUser(user));
+
+        Users updatedUser = userDAO.getUser(user.getId());
+
+        assertNotNull("Get user failed after updating", updatedUser);
+        assertTrue("The retrieved user has a different ID", updatedUser.getId() == user.getId());
+        assertNotEquals("The user name hasn't changed", originalUserName, updatedUser.getUser_name());
+
+        cleanUp(user);
+    }
+
 
     private int insertSingleUserReturnInt() {
         Users user = new Users(555, "CptMarvel", "shazam", "immaCaptain@hotmail.com");
-
-        return userDAO.addUser(user);
+        int id = userDAO.addUser(user);
+        assertTrue("Test user not inserted correctly", id >= 0);
+        return id;
     }
 
     private Users insertSingleUserReturnUser() {
         Users user = new Users(555, "CptMarvel", "shazam", "immaCaptain@hotmail.com");
-
-        userDAO.addUser(user);
-
+        int id = userDAO.addUser(user);
+        assertTrue("Test user not inserted correctly", id >= 0);
+        user.setUser_id(id);
         return user;
     }
 
