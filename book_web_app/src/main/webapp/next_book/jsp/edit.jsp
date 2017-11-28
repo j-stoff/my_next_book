@@ -3,7 +3,9 @@
   User: jake-python
   Date: 10/5/17
   Time: 11:51 PM
-  To change this template use File | Settings | File Templates.
+
+
+  Test authorization page. Do not point anything to this.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
