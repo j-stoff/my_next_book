@@ -1,8 +1,11 @@
 package com.nextBook.database.persistence;
 
+import com.nextBook.database.entity.User_roles;
 import com.nextBook.database.entity.Users;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -18,10 +21,11 @@ public class UserDAOTest {
         Users user = new Users(1000, "TheBeebs", "thebeebs", "beebs@hotmail.com");
         int userId = userDAO.addUser(user);
 
-        assertTrue("The user id should be greater than 0", userId >= 0);
+        assertTrue("The user id should be greater than 0", userId > 0);
 
         cleanUp(user);
     }
+
 
     @Test
     public void getUserTest() throws Exception {
@@ -38,6 +42,22 @@ public class UserDAOTest {
         assertEquals("The email is different from the one inserted", retreivedUser.getEmail(), "immaCaptain@hotmail.com");
 
         cleanUp(retreivedUser);
+    }
+
+    @Test
+    public void addUserWithRoleTest() throws Exception {
+        Users user = insertSingleUserReturnUser();
+        User_roles role = new User_roles(user.getUser_name(), "registered-user");
+        role.setUser(user);
+
+        user.getRoles().add(role);
+
+        int userId = userDAO.addUser(user);
+
+        assertTrue("User was not added", userId > 0);
+
+        // TODO fix double add
+        //cleanUp(user);
     }
 
     @Test

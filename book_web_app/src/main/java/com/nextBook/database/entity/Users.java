@@ -1,19 +1,19 @@
 package com.nextBook.database.entity;
 
 import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
+//import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
 public class Users extends BaseEntity implements Serializable {
 
+  // TODO get rid of the ID for Users and set the user_name to the ID in order to have correct mapping.
   @Id
   @NotNull
   @GeneratedValue(generator = "increment")
@@ -25,6 +25,7 @@ public class Users extends BaseEntity implements Serializable {
   @Column(name = "user_name")
   private String user_name;
 
+
   @NotNull
   @Column(name = "user_password")
   private String user_password;
@@ -32,12 +33,12 @@ public class Users extends BaseEntity implements Serializable {
   @Column(name = "email")
   private String email;
 
-  @OneToMany(mappedBy = "user")
-  //@Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
-  private Set<User_roles> roles;
+  @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+  //@Cascade({CascadeType.ALL})
+  private List<User_roles> roles;
 
   public Users() {
-    roles = new HashSet<User_roles>();
+    roles = new ArrayList<>();
   }
 
   public Users(int id, String username, String password, String email) {
@@ -60,9 +61,11 @@ public class Users extends BaseEntity implements Serializable {
     return user_name;
   }
 
+
   public void setUser_name(String user_name) {
     this.user_name = user_name;
   }
+
 
   public String getUser_password() {
     return user_password;
@@ -80,11 +83,11 @@ public class Users extends BaseEntity implements Serializable {
     this.email = email;
   }
 
-  public Set<User_roles> getRoles() {
+  public List<User_roles> getRoles() {
     return this.roles;
   }
 
-  public void setRoles(Set<User_roles> newRoles) {
+  public void setRoles(List<User_roles> newRoles) {
     this.roles = newRoles;
   }
 

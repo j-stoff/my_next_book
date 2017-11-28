@@ -57,7 +57,7 @@ public class UserDAO {
     }
 
     public int deleteUser(Users user) {
-        int userId = user.getId();
+        int userId = 0;
         Session databaseSession = null;
         Transaction currentTransaction = null;
 
@@ -66,6 +66,7 @@ public class UserDAO {
             currentTransaction = databaseSession.beginTransaction();
             databaseSession.delete(user);
             currentTransaction.commit();
+            userId = user.getId();
         } catch (HibernateException hibExcept) {
             String message = "Hibernate exception in deleteUser";
             rollbackTransaction(currentTransaction, message, hibExcept);
