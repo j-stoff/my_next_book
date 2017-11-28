@@ -39,7 +39,6 @@ public class UserDAO {
     }
 
     public int addUserByRole(User_roles role) {
-        //User_roles roleFromDatabase = null;
         int roleId = 0;
         Session databaseSession = null;
         Transaction currentTransction = null;
@@ -59,8 +58,34 @@ public class UserDAO {
             closeSession(databaseSession, "addUserRole");
         }
 
-        //return roleFromDatabase.getId();
         return roleId;
+    }
+
+    public User_roles getRole(int roleId) {
+        User_roles roleFromDatabase = null;
+        Session databaseSession = null;
+
+        try {
+            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
+            roleFromDatabase = (User_roles) databaseSession.get(User_roles.class, roleId);
+        } catch (HibernateException hibExcept) {
+            log.error("Hibernate exception in getRole", hibExcept);
+        } catch (Exception except) {
+            log.error("Exception in getRole", except);
+        } finally {
+            closeSession(databaseSession, "getRole");
+        }
+
+        return roleFromDatabase;
+    }
+
+    public Users getUserByRole(int roleId) {
+        User_roles role = getRole(roleId);
+        if (role == null) {
+            return null;
+        }
+
+        return role.getUser();
     }
 
 

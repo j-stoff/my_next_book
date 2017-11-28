@@ -40,6 +40,7 @@ public class User_roles extends BaseEntity implements Serializable {
   private Users user;
 
 
+
   public User_roles() {
   }
 
@@ -63,7 +64,7 @@ public class User_roles extends BaseEntity implements Serializable {
     this.role_id = role_id;
   }
 
-  /*
+
   public String getUser_name() {
     return user_name;
   }
@@ -72,7 +73,7 @@ public class User_roles extends BaseEntity implements Serializable {
     this.user_name = user_name;
   }
 
-  */
+
   public String getRole_type() {
     return role_type;
   }
@@ -81,13 +82,14 @@ public class User_roles extends BaseEntity implements Serializable {
     this.role_type = role_type;
   }
 
+
   /*
-  public int getUser_id_fk() {
-    return user_id_fk;
+  public int getUser_fk() {
+    return user_fk;
   }
 
-  public void setUser_id_fk(int user_id_fk) {
-    this.user_id_fk = user_id_fk;
+  public void setUser_id_fk(int user_fk) {
+    this.user_fk = user_fk;
   }
   */
 

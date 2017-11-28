@@ -46,18 +46,36 @@ public class UserDAOTest {
 
     @Test
     public void addUserWithRoleTest() throws Exception {
-        Users user = insertSingleUserReturnUser();
-        User_roles role = new User_roles(user.getUser_name(), "registered-user");
-        role.setUser(user);
+        User_roles role = insertUserWithRole();
 
-        //user.getRoles().add(role);
+        assertNotNull("The role returned was null", role);
+        Users user = role.getUser();
+        assertNotNull("The user inside of the role is null", user);
+        assertEquals("The user names for the retreived role and user are not the same", role.getUser_name(), user.getUser_name());
 
-        int roleId = userDAO.addUserByRole(role);
-
-        assertTrue("User was not added", roleId > 0);
-
-        // TODO fix double add
         cleanUp(user);
+    }
+
+    @Test
+    public void getRoleTest() throws Exception {
+        User_roles role = insertUserWithRole();
+
+        User_roles databaseRole = userDAO.getRole(role.getId());
+
+        assertEquals("The roles are different", databaseRole, role);
+
+        cleanUp(role.getUser());
+    }
+
+    @Test
+    public void getUserFromRoleTest() throws Exception {
+        User_roles role = insertUserWithRole();
+
+        Users databaseUser = userDAO.getUserByRole(role.getId());
+
+        assertEquals("The user from the database matches the one with that role", role.getUser(), databaseUser);
+
+        cleanUp(role.getUser());
     }
 
     @Test
@@ -112,6 +130,19 @@ public class UserDAOTest {
         int deleteCode = userDAO.deleteUser(userToDelete);
 
         assertTrue("The clean up deletion from the getUserTest failed", deleteCode >= 0);
+    }
+
+    private User_roles insertUserWithRole() {
+        Users user = insertSingleUserReturnUser();
+        User_roles role = new User_roles(user.getUser_name(), "registered-user");
+        role.setUser(user);
+
+        int roleId = userDAO.addUserByRole(role);
+
+        assertTrue("User and role were not inserted correctly", roleId > 0);
+        role.setRole_id(roleId);
+
+        return role;
     }
 
 
