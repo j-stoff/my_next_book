@@ -22,7 +22,7 @@
         <h1>Sign up to this awesome service</h1>
     </div>
     <div class="col-sm-2"></div>
-    <form method="POST" action="" class="form row col-sm-10" id="signupForm" novalidate="novalidate">
+    <form method="POST" action="addNewUser" class="form row col-sm-10" id="signupForm" novalidate="novalidate">
         <div class="form-group row">
             <label for="username" class="col-sm-2 control-label">Username:</label>
             <div class="col-sm-4">
