@@ -1,5 +1,6 @@
 package com.nextBook.database.persistence;
 
+import com.nextBook.database.entity.User_roles;
 import org.apache.log4j.Logger;
 import com.nextBook.database.entity.Users;
 import org.hibernate.HibernateException;
@@ -35,6 +36,31 @@ public class UserDAO {
 
 
         return userId;
+    }
+
+    public int addUserByRole(User_roles role) {
+        //User_roles roleFromDatabase = null;
+        int roleId = 0;
+        Session databaseSession = null;
+        Transaction currentTransction = null;
+
+        try {
+            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
+            currentTransction = databaseSession.beginTransaction();
+            roleId = (Integer) databaseSession.save(role);
+            currentTransction.commit();
+        } catch (HibernateException hibExcept) {
+            String message = "Hibernate excepetion in addUserRole";
+            rollbackTransaction(currentTransction, message, hibExcept);
+        } catch (Exception except) {
+            String message = "Exception in addUserRole";
+            rollbackTransaction(currentTransction, message, except);
+        } finally {
+            closeSession(databaseSession, "addUserRole");
+        }
+
+        //return roleFromDatabase.getId();
+        return roleId;
     }
 
 

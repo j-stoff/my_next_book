@@ -50,14 +50,14 @@ public class UserDAOTest {
         User_roles role = new User_roles(user.getUser_name(), "registered-user");
         role.setUser(user);
 
-        user.getRoles().add(role);
+        //user.getRoles().add(role);
 
-        int userId = userDAO.addUser(user);
+        int roleId = userDAO.addUserByRole(role);
 
-        assertTrue("User was not added", userId > 0);
+        assertTrue("User was not added", roleId > 0);
 
         // TODO fix double add
-        //cleanUp(user);
+        cleanUp(user);
     }
 
     @Test

@@ -1,7 +1,7 @@
 package com.nextBook.database.entity;
 
 import org.hibernate.annotations.Cascade;
-//import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -33,8 +33,8 @@ public class Users extends BaseEntity implements Serializable {
   @Column(name = "email")
   private String email;
 
-  @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-  //@Cascade({CascadeType.ALL})
+  @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+  @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
   private List<User_roles> roles;
 
   public Users() {
