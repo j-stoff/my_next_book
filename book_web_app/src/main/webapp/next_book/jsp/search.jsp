@@ -13,18 +13,20 @@
     <c:import url="jsp-snippets/header-tag.jsp"/>
 </head>
 <body>
-<h2>Search the database</h2>
-<h4>Enter only one parameter, processed from top to bottom</h4>
-<form action="results" method="get">
-    <label for="bookTitle">Book Title:</label>
-    <input type="text" name="bookTitle" id="bookTitle"/>
-    <br/>
+    <c:import url="jsp-snippets/banner-tag.jsp" />
+    <c:import url="jsp-snippets/navbar-tag.jsp" />
+    <h2>Search the database</h2>
+    <h4>Enter only one parameter, processed from top to bottom</h4>
+    <form action="results" method="get">
+        <label for="bookTitle">Book Title:</label>
+        <input type="text" name="bookTitle" id="bookTitle"/>
+        <br/>
 
-    <label for="bookId">Book ID:</label>
-    <input type="text" name="bookId" id="bookId"/>
-    <br/>
+        <label for="bookId">Book ID:</label>
+        <input type="text" name="bookId" id="bookId"/>
+        <br/>
 
-    <input type="submit">
-</form>
+        <input type="submit">
+    </form>
 </body>
 </html>

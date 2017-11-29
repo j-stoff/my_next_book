@@ -11,6 +11,8 @@
     <c:import url="jsp-snippets/header-tag.jsp" />
 </head>
 <body>
+    <c:import url="jsp-snippets/banner-tag.jsp" />
+    <c:import url="jsp-snippets/navbar-tag.jsp" />
     <h2>Something else clever</h2>
 
 

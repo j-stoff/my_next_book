@@ -13,7 +13,8 @@
     <c:import url="jsp-snippets/header-tag.jsp" />
 </head>
 <body>
-    <!-- TODO navigation snippet -->
+    <c:import url="jsp-snippets/banner-tag.jsp" />
+    <c:import url="jsp-snippets/navbar-tag.jsp" />
     <h2>Hopefully something clever</h2>
 
     <a href="main">Main Page</a>
