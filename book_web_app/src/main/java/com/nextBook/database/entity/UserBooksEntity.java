@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "user_books", schema = "ml_training")
-public class UserBooksEntity implements Serializable {
+public class UserBooksEntity extends BaseEntity implements Serializable {
 
     @Id
     @ManyToOne
@@ -62,6 +62,10 @@ public class UserBooksEntity implements Serializable {
     }
     */
 
+    public int getId() {
+        return userForBooks.getId();
+    }
+
     public Book getBook() {
         return bookPerUser;
     }
@@ -76,5 +80,14 @@ public class UserBooksEntity implements Serializable {
 
     public void setUser(Users user) {
         this.userForBooks = user;
+    }
+
+    @Override
+    public String toString() {
+        String newLine = System.getProperty("line.separator");
+        String output = "UserBook entry: " + newLine;
+        output += userForBooks.toString();
+        output += bookPerUser.toString();
+        return output;
     }
 }
