@@ -13,7 +13,6 @@ import java.io.Serializable;
 @Table(name = "users")
 public class Users extends BaseEntity implements Serializable {
 
-  // TODO get rid of the ID for Users and set the user_name to the ID in order to have correct mapping.
   @Id
   @NotNull
   @GeneratedValue(generator = "increment")
@@ -36,6 +35,10 @@ public class Users extends BaseEntity implements Serializable {
   @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
   @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
   private List<User_roles> roles;
+
+  @OneToMany(mappedBy = "bookPerUser", fetch = FetchType.EAGER)
+  @Cascade({CascadeType.SAVE_UPDATE ,CascadeType.DELETE})
+  private Set<UserBooksEntity> booksForUser;
 
   public Users() {
     roles = new ArrayList<>();
@@ -89,6 +92,14 @@ public class Users extends BaseEntity implements Serializable {
 
   public void setRoles(List<User_roles> newRoles) {
     this.roles = newRoles;
+  }
+
+  public Set<UserBooksEntity> getBooks() {
+    return booksForUser;
+  }
+
+  public void setBooks(Set<UserBooksEntity> books) {
+    this.booksForUser = books;
   }
 
   @Override

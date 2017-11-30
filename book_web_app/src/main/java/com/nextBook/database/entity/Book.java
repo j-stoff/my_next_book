@@ -1,10 +1,13 @@
 package com.nextBook.database.entity;
 
 import com.nextBook.database.util.ListConverter;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Set;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name="books")
@@ -55,6 +58,10 @@ public class Book extends BaseEntity {
     @ManyToOne
     @JoinColumn(name="fk_id_author", referencedColumnName = "id_author", nullable = false)
     private Author fk_id_author;
+
+    @OneToMany(mappedBy = "userForBooks", fetch = FetchType.EAGER)
+    @Cascade({CascadeType.SAVE_UPDATE , CascadeType.DELETE})
+    private Set<UserBooksEntity> booksForUser;
 
 
     /**
@@ -249,6 +256,14 @@ public class Book extends BaseEntity {
         this.bookAuthor = bookAuthor;
     }
     */
+
+    public Set<UserBooksEntity> getBooksForUser() {
+        return booksForUser;
+    }
+
+    public void setBooksForUser(Set<UserBooksEntity> booksForUser) {
+        this.booksForUser = booksForUser;
+    }
 
     @Override
     public String toString() {
