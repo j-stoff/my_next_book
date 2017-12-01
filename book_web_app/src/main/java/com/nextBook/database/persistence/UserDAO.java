@@ -3,9 +3,14 @@ package com.nextBook.database.persistence;
 import com.nextBook.database.entity.User_roles;
 import org.apache.log4j.Logger;
 import com.nextBook.database.entity.Users;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class UserDAO {
@@ -102,6 +107,29 @@ public class UserDAO {
             log.error("Exception in getUser.", except);
         } finally {
             closeSession(databaseSession, "getUser");
+        }
+
+        return userInDatabase;
+    }
+
+    public Users getUserByUserName(String userName) {
+        List<Users> results = new ArrayList<Users>();
+        Users userInDatabase = null;
+        Session databaseSession = null;
+
+        try {
+            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
+            // query based on criteria
+            Criteria criteria = databaseSession.createCriteria(Users.class);
+            criteria.add(Restrictions.eq("user_name", userName));
+            results = criteria.list();
+            userInDatabase = results.get(0);
+        } catch (HibernateException hibExcept) {
+            log.error("Hibernate exception when retrieving user", hibExcept);
+        } catch (Exception except) {
+            log.error("Esxception when retrieving user", except);
+        } finally {
+            closeSession(databaseSession, "getUserByUserName");
         }
 
         return userInDatabase;

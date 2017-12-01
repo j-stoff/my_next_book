@@ -15,10 +15,14 @@
 <body>
     <c:import url="jsp-snippets/banner-tag.jsp" />
     <c:import url="jsp-snippets/navbar-tag.jsp" />
-    <h3>Hello, {currentUser.user_name}</h3>
-    <h2>Get a book recommendation</h2>
+    <c:if test="${currentUser != null}" >
+        <h3>Hello, ${currentUser.user_name}</h3>
+    </c:if>
 
-    <!-- TODO links are broken -->
+    <c:if test="${currentUser == null}" >
+        <h3>There was a problem.</h3>
+    </c:if>
+
     <a href="search"><h3>Search the database</h3></a>
     
 

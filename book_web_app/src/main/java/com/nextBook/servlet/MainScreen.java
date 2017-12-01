@@ -1,5 +1,8 @@
 package com.nextBook.servlet;
 
+import com.nextBook.database.entity.Users;
+import com.nextBook.database.persistence.UserDAO;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +19,15 @@ public class MainScreen extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getAttribute("currentUser") == null) {
+            //TODO
+            // Get user object
+            String userName = request.getRemoteUser();
+            UserDAO userDAO = new UserDAO();
+            Users user = userDAO.getUserByUserName(request.getRemoteUser());
+            request.getSession().setAttribute("currentUser", user);
+        }
+
         String url = "/next_book/jsp/main.jsp";
 
         RequestDispatcher dispatcher =

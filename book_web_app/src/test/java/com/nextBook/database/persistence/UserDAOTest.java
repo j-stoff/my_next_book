@@ -119,11 +119,11 @@ public class UserDAOTest {
 
     @Test
     public void addBookToUserList() throws Exception {
-        Users user = insertSingleUserReturnUser();
+        Users user = new Users(555, "CptMarvel", "shazam", "immaCaptain@hotmail.com");
 
-        //Author author =  new Author("Kyle", "Martin", 5.0);
-        //authorDAO.addAuthor(author);
-        Author author = authorDAO.getAuthor(2);
+        Author author =  new Author("Kyle", "Martin", 5.0);
+        int authorId = authorDAO.addAuthor(author);
+        //Author author = authorDAO.getAuthor(2);
         List<String> genres = new ArrayList<String>();
         genres.add("fantasty");
         genres.add("dark");
@@ -140,6 +140,18 @@ public class UserDAOTest {
         int id = userDAO.addUser(user);
 
         assertTrue("The user was not added properly", id > 0);
+
+        cleanUp(user);
+    }
+
+    @Test
+    public void getUserWithUserName() throws Exception {
+        Users user = insertSingleUserReturnUser();
+
+        Users returnedUser = userDAO.getUserByUserName(user.getUser_name());
+
+        assertNotNull("The returned user was null", returnedUser);
+        assertEquals("The users are not the same", returnedUser, user);
 
         cleanUp(user);
     }

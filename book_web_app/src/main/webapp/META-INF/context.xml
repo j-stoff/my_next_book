@@ -1,7 +1,7 @@
 <Context docBase="book_app" path="/book_app" reloadable="true">
     <Realm className="org.apache.catalina.realm.JDBCRealm"
            driverName="com.mysql.jdbc.Driver"
-           connectionURL="jdbc:mysql://localhost:3306/ml_6?user=tomcat&amp;password=tomcat"
+           connectionURL="jdbc:mysql://localhost:3306/ml_training?user=tomcat&amp;password=tomcat"
            userTable="users" userNameCol="user_name" userCredCol="user_password"
            userRoleTable="user_roles" roleNameCol="role_type" >
     </Realm>

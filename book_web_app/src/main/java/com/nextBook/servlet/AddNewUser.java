@@ -39,7 +39,7 @@ public class AddNewUser extends HttpServlet {
 
         userDAO.addUser(user);
 
-        request.setAttribute("currentUser", user);
+        request.getSession().setAttribute("currentUser", user);
 
         String url = "/book_app/main";
 
