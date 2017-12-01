@@ -20,7 +20,7 @@
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
         <!-- Echo all executed SQL to stdout -->
-        <!-- get rid of later
+        <!--
         <property name="show_sql">true</property>
         -->
         <!-- List the annotated entity class/es -->
@@ -28,7 +28,6 @@
         <mapping class="com.nextBook.database.entity.Author"/>
         <mapping class="com.nextBook.database.entity.Users" />
         <mapping class="com.nextBook.database.entity.User_roles" />
-        <mapping class="com.nextBook.database.entity.UserBooksEntity"/>
 
     </session-factory>
 

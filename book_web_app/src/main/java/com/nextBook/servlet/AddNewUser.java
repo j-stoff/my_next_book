@@ -39,6 +39,8 @@ public class AddNewUser extends HttpServlet {
 
         userDAO.addUser(user);
 
+        request.setAttribute("currentUser", user);
+
         String url = "/book_app/main";
 
         response.sendRedirect(url);

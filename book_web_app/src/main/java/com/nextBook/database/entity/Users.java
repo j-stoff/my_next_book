@@ -36,12 +36,21 @@ public class Users extends BaseEntity implements Serializable {
   @Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
   private List<User_roles> roles;
 
+  /*
   @OneToMany(mappedBy = "bookPerUser", fetch = FetchType.EAGER)
   @Cascade({CascadeType.SAVE_UPDATE ,CascadeType.DELETE})
   private Set<UserBooksEntity> booksForUser;
+  */
+
+  @ManyToMany(fetch = FetchType.EAGER, cascade = javax.persistence.CascadeType.ALL)
+  @JoinTable(name = "user_books",
+          joinColumns = { @JoinColumn(name = "user_id", nullable = false, updatable = false)},
+          inverseJoinColumns = {@JoinColumn(name = "id_books", nullable = false, updatable = false)})
+  private Set<Book> booksForUser;
 
   public Users() {
     roles = new ArrayList<>();
+    booksForUser = new HashSet<Book>(0);
   }
 
   public Users(int id, String username, String password, String email) {
@@ -94,11 +103,11 @@ public class Users extends BaseEntity implements Serializable {
     this.roles = newRoles;
   }
 
-  public Set<UserBooksEntity> getBooks() {
+  public Set<Book> getBooks() {
     return booksForUser;
   }
 
-  public void setBooks(Set<UserBooksEntity> books) {
+  public void setBooks(Set<Book> books) {
     this.booksForUser = books;
   }
 

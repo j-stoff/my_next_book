@@ -1,10 +1,14 @@
 package com.nextBook.database.persistence;
 
+import com.nextBook.database.entity.Author;
+import com.nextBook.database.entity.Book;
 import com.nextBook.database.entity.User_roles;
 import com.nextBook.database.entity.Users;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.*;
@@ -12,9 +16,11 @@ import static org.junit.Assert.*;
 public class UserDAOTest {
 
     private UserDAO userDAO;
+    private AuthorDAO authorDAO;
     @Before
     public void setUpTest() throws Exception {
         userDAO = new UserDAO();
+        authorDAO = new AuthorDAO();
     }
     @Test
     public void addUserTest() throws Exception {
@@ -106,6 +112,34 @@ public class UserDAOTest {
         assertNotNull("Get user failed after updating", updatedUser);
         assertTrue("The retrieved user has a different ID", updatedUser.getId() == user.getId());
         assertNotEquals("The user name hasn't changed", originalUserName, updatedUser.getUser_name());
+
+        cleanUp(user);
+    }
+
+
+    @Test
+    public void addBookToUserList() throws Exception {
+        Users user = insertSingleUserReturnUser();
+
+        //Author author =  new Author("Kyle", "Martin", 5.0);
+        //authorDAO.addAuthor(author);
+        Author author = authorDAO.getAuthor(2);
+        List<String> genres = new ArrayList<String>();
+        genres.add("fantasty");
+        genres.add("dark");
+
+        Book book1 = new Book( "Anything really", author.getFirstName(), 5, genres, "1231312312");
+        Book book2 = new Book("Anything else", author.getFirstName(), 5, genres, "1234567890");
+        book1.setFk_id_author(author);
+        book2.setFk_id_author(author);
+
+
+        user.getBooks().add(book1);
+        user.getBooks().add(book2);
+
+        int id = userDAO.addUser(user);
+
+        assertTrue("The user was not added properly", id > 0);
 
         cleanUp(user);
     }

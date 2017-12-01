@@ -5,6 +5,8 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.hibernate.annotations.CascadeType;
@@ -59,24 +61,30 @@ public class Book extends BaseEntity {
     @JoinColumn(name="fk_id_author", referencedColumnName = "id_author", nullable = false)
     private Author fk_id_author;
 
+    /*
     @OneToMany(mappedBy = "userForBooks", fetch = FetchType.EAGER)
     @Cascade({CascadeType.SAVE_UPDATE , CascadeType.DELETE})
     private Set<UserBooksEntity> booksForUser;
+    */
 
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "booksForUser")
+    private Set<Users> userBooks;
 
     /**
      * No argument constructor
      */
     public Book() {
-
+        genre = new ArrayList<String>();
+        userBooks = new HashSet<Users>();
     }
 
     /**
      * Constructor for non-null fields. Testing purposes mainly.
      */
-    public Book(int anId, String bookTitle, String anAuthorName,
+    public Book(String bookTitle, String anAuthorName,
                 int aBookRating, List<String> bookGenres, String anIsbn) {
-        this.id = anId;
+        this();
+        //this.id = anId;
         this.title = bookTitle;
         this.authorName = anAuthorName;
         this.rating = aBookRating;
@@ -257,12 +265,12 @@ public class Book extends BaseEntity {
     }
     */
 
-    public Set<UserBooksEntity> getBooksForUser() {
-        return booksForUser;
+    public Set<Users> getBooksForUser() {
+        return userBooks;
     }
 
-    public void setBooksForUser(Set<UserBooksEntity> booksForUser) {
-        this.booksForUser = booksForUser;
+    public void setBooksForUser(Set<Users> booksForUser) {
+        this.userBooks = booksForUser;
     }
 
     @Override

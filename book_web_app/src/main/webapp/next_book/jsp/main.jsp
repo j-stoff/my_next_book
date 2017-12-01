@@ -15,8 +15,8 @@
 <body>
     <c:import url="jsp-snippets/banner-tag.jsp" />
     <c:import url="jsp-snippets/navbar-tag.jsp" />
+    <h3>Hello, {currentUser.user_name}</h3>
     <h2>Get a book recommendation</h2>
-    <!-- TODO Navigation bar snippet -->
 
     <!-- TODO links are broken -->
     <a href="search"><h3>Search the database</h3></a>
