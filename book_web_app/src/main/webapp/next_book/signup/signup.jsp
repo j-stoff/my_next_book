@@ -11,10 +11,10 @@
 <head>
     <c:set var="pageTitle" value="Sign up" scope="session"/>
     <c:import url="../jsp/jsp-snippets/header-tag.jsp" />
-    <script src="next_book/js/jquery.js"></script>
-    <script src="next_book/js/jquery-3.1.1.js"></script>
-    <script src="next_book/js/jquery.validate.min.js"></script>
-    <script src="next_book/js/signupValidation.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-3.1.1.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/signupValidation.js"></script>
 </head>
 <body>
 <div class="container">

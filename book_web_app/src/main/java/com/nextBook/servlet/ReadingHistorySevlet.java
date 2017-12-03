@@ -7,7 +7,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 @WebServlet(
     name = "UserReadingHistory", 
-    urlPatterns = "/history")
+    urlPatterns = "/next_book/history")
 public class ReadingHistorySevlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 

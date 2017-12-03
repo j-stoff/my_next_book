@@ -1,5 +1,6 @@
 (function($) {
     $(document).ready(function() {
+        console.log("validating");
         //$.validator.setDefaults({"submitHandler": function() {alert("Form submitted properly")}});
         $("#signupForm").validate({
             rules: {

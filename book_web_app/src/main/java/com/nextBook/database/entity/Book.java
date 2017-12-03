@@ -82,7 +82,7 @@ public class Book extends BaseEntity {
      * Constructor for non-null fields. Testing purposes mainly.
      */
     public Book(String bookTitle, String anAuthorName,
-                int aBookRating, List<String> bookGenres, String anIsbn) {
+                double aBookRating, List<String> bookGenres, String anIsbn) {
         this();
         //this.id = anId;
         this.title = bookTitle;

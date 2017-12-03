@@ -6,13 +6,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 @WebServlet(
-    name = "UserInformation", 
-    urlPatterns = "/next_book/userInfo")
-public class UserInformationServlet extends HttpServlet {
+    name = "RecommendationPage", 
+    urlPatterns = "/next_book/recommendABook")
+public class RecommendationPageServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
-        String url = "/next_book/jsp/user_info.jsp";
+        String url = "/next_book/jsp/recommendation.jsp";
 
         RequestDispatcher dispatcher =
             getServletContext().getRequestDispatcher(url);

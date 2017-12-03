@@ -103,12 +103,16 @@ public class Users extends BaseEntity implements Serializable {
     this.roles = newRoles;
   }
 
-  public Set<Book> getBooks() {
+  public Set<Book> getBooksForUser() {
     return booksForUser;
   }
 
-  public void setBooks(Set<Book> books) {
+  public void setBooksForUser(Set<Book> books) {
     this.booksForUser = books;
+  }
+
+  public String toLog() {
+    return "Id: " + user_id + ", Username: " + user_name + ", Password: " + user_password + ", Email: " + email;
   }
 
   @Override

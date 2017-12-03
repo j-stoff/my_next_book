@@ -1,4 +1,4 @@
-package com.nextBook.servlet;
+package com.nextBook.servlet.databaseEndpoints;
 
 import com.nextBook.database.entity.User_roles;
 import com.nextBook.database.entity.Users;
@@ -39,9 +39,11 @@ public class AddNewUser extends HttpServlet {
 
         userDAO.addUser(user);
 
+        log.info("New user added: " + user.toLog());
+
         request.getSession().setAttribute("currentUser", user);
 
-        String url = "/book_app/main";
+        String url = "/book_app/next_book/main";
 
         response.sendRedirect(url);
 

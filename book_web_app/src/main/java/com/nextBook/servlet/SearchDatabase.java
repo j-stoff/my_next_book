@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 
-@WebServlet(name = "SearchDatabase", urlPatterns = "/search")
+@WebServlet(name = "SearchDatabase", urlPatterns = "/next_book/search")
 public class SearchDatabase extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

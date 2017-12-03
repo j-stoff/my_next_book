@@ -134,8 +134,8 @@ public class UserDAOTest {
         book2.setFk_id_author(author);
 
 
-        user.getBooks().add(book1);
-        user.getBooks().add(book2);
+        user.getBooksForUser().add(book1);
+        user.getBooksForUser().add(book2);
 
         int id = userDAO.addUser(user);
 

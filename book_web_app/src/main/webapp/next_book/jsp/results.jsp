@@ -14,6 +14,7 @@
 </head>
 <body>
 
+    <c:import url="jsp-snippets/navbar-tag.jsp" />
     <c:choose>
         <c:when test="${not empty resultList}" >
             <h1>Here are the results of the search</h1>
