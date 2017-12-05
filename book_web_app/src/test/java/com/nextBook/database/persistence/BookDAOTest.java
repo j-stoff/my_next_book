@@ -247,8 +247,28 @@ public class BookDAOTest {
         assertTrue("Author was not cleaned from database", authorDao.deleteAuthor(authorOfBook) > 0);
     }
 
+    @Test
+    public void searchBasedOnListOfAuthorsTest() throws Exception {
+        Author author = addAuthorToDatabase();
+        Book book = addBookToDatabase(author);
+
+        List<Author> authorList = authorDao.searchBasedOnAuthorFirstName(author.getFirstName());
+        
+        assertNotNull("The author list was null", authorList);
+        assertTrue("The author list does not contain the added author", authorList.contains(author));
+
+        List<Book> bookList = bookDao.searchBasedOnListOfAuthors(authorList);
+
+
+        assertNotNull("The book list was null", bookList);
+        assertTrue("The book list did not contain the book", bookList.contains(book));
+
+        assertTrue("Book was not cleaned from database", bookDao.deleteBook(book) > 0);
+        assertTrue("Author was not cleaned from database", authorDao.deleteAuthor(author) > 0);
+    }
+
     private Author addAuthorToDatabase() {
-        Author author = new Author("Stephen", "King", 4.5);
+        Author author = new Author("Stephena", "King", 4.5);
 
         int id = authorDao.addAuthor(author);
         author.setId(id);
@@ -266,9 +286,7 @@ public class BookDAOTest {
         book.setFk_id_author(author);
 
         int id = bookDao.addBook(book);
-
         book.setId(id);
-
 
         assertTrue("Book was not added to database", id > 0);
 

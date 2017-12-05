@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -154,5 +155,40 @@ public class AuthorDAOTest {
 
         int deleteCode = authorDao.safeDeleteAuthor(author);
         assertTrue("Delete fail in findAuthor", deleteCode > 0);
+    }
+
+
+    @Test
+    public void searchBasedOnAuthorFirstNameTest() {
+        Author author = addAuthor();
+
+        List<Author> results = authorDao.searchBasedOnAuthorFirstName(author.getFirstName());
+
+        assertNotNull("The results were null", results);
+        assertTrue("The list does not contain the author", results.contains(author));
+
+        assertTrue("Author was not cleaned from database", authorDao.deleteAuthor(author) > 0);
+    }
+
+    @Test
+    public void searchBasedOnAuthorLastNameTest() {
+        Author author = addAuthor();
+
+        List<Author> results = authorDao.searchBasedOnAuthorLastName(author.getLastName());
+
+        assertNotNull("The results were null", results);
+        assertTrue("The list does not contain the author", results.contains(author));
+
+        assertTrue("Author was not cleaned from the database", authorDao.deleteAuthor(author) > 0);
+    }
+
+    private Author addAuthor() {
+        Author author = new Author("James", "Jones", 5);
+        int id = authorDao.addAuthor(author);
+        author.setId(id);
+
+        assertTrue("Author not added to database", id > 0);
+
+        return author;
     }
 }

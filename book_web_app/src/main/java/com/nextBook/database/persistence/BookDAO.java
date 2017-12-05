@@ -2,8 +2,11 @@ package com.nextBook.database.persistence;
 
 import javassist.bytecode.ExceptionTable;
 import com.nextBook.database.entity.Book;
+import com.nextBook.database.entity.Author;
 import org.apache.log4j.Logger;
 import org.hibernate.*;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.exception.ConstraintViolationException;
 
@@ -236,13 +239,13 @@ public class BookDAO {
 
 
 
+    // TODO documentation
     public List<Book> searchBasedOnTitle(String title) {
         List<Book> results = null;
         Session databaseSession = null;
 
         try {
             databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
-            // query based on criteria
             Criteria criteria = databaseSession.createCriteria(Book.class);
             criteria.add(Restrictions.ilike("title", title));
             results = criteria.list();
@@ -252,6 +255,34 @@ public class BookDAO {
             log.error("Exception in searchBasedOnTitle", except);
         } finally {
             closeSession(databaseSession, "searchBasedOnTitle");
+        }
+
+        return results;
+    }
+
+
+    // TODO Documentation
+    public List<Book> searchBasedOnListOfAuthors(List<Author> list) {
+        List<Book> results = null;
+
+        Criterion[] authorCriteria = new Criterion[list.size()];
+
+        Session databaseSession = null;
+        try {
+            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
+            Criteria criteria = databaseSession.createCriteria(Book.class);
+            for (int i = 0; i < list.size(); i++) {
+                authorCriteria[i] = Restrictions.eq("fk_id_author", list.get(i));
+            }
+            Disjunction queryCriteria = Restrictions.disjunction(authorCriteria);
+            criteria.add(queryCriteria);
+            results = criteria.list();
+        } catch (HibernateException hibExcept) {
+            log.error("Hibernate Exception in searchBasedOnListOfAuthors", hibExcept);
+        } catch (Exception except) {
+            log.error("Exception in searchBasedOnListOfAuthors", except);
+        } finally {
+            closeSession(databaseSession, "searchBasedOnListOfAuthors");
         }
 
         return results;

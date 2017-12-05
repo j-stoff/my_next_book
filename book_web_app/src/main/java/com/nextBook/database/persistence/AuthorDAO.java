@@ -3,7 +3,9 @@ package com.nextBook.database.persistence;
 import com.nextBook.database.entity.Author;
 import org.apache.log4j.Logger;
 import org.hibernate.*;
+import org.hibernate.criterion.Restrictions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AuthorDAO {
@@ -267,6 +269,49 @@ public class AuthorDAO {
         }
 
         return didUpdate;
+    }
+
+
+    // TODO documentation
+    public List<Author> searchBasedOnAuthorFirstName(String firstName) {
+        List<Author> results = new ArrayList<>();
+        Session databaseSession = null;
+
+        try {
+            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
+            Criteria criteria = databaseSession.createCriteria(Author.class);
+            criteria.add(Restrictions.ilike("firstName", firstName));
+            results = criteria.list();
+        } catch (HibernateException hibExcept) {
+            log.error("Hibernate Exception in searchBasedOnAuthorFirstName", hibExcept);
+        } catch (Exception except) {
+            log.error("Exception in searchBasedOnAuthorFirstName", except);
+        } finally {
+            closeSession(databaseSession, "searchBasedOnAuthorFirstName");
+        }
+
+        return results;
+    }
+
+    // TODO documentation
+    public List<Author> searchBasedOnAuthorLastName(String lastName) {
+        List<Author> results = new ArrayList<>();
+        Session databaseSession = null;
+
+        try {
+            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
+            Criteria criteria = databaseSession.createCriteria(Author.class);
+            criteria.add(Restrictions.ilike("lastName", lastName));
+            results = criteria.list();
+        } catch (HibernateException hibExcept) {
+            log.error("Hibernate Exception in searchBasedOnAuthorFirstName", hibExcept);
+        } catch (Exception except) {
+            log.error("Exception in searchBasedOnAuthorFirstName", except);
+        } finally {
+            closeSession(databaseSession, "searchBasedOnAuthorFirstName");
+        }
+
+        return results;
     }
 
     /**
