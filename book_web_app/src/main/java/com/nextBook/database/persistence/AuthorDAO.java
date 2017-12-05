@@ -42,13 +42,7 @@ public class AuthorDAO {
             String message = "Exception in addAuthor";
             rollbackTransaction(currentTransaction, message, exception);
         } finally {
-            try {
-                if (databaseSession != null) {
-                    databaseSession.close();
-                }
-            } catch (Exception exception) {
-                log.error("Problem closing session in addAuthor()", exception);
-            }
+            closeSession(databaseSession, "addAuthor");
         }
 
         return author_id;
@@ -71,13 +65,7 @@ public class AuthorDAO {
         } catch (Exception exception) {
             log.error("Exception in getAuthor()", exception);
         } finally {
-            try {
-                if (databaseSession != null) {
-                    databaseSession.close();
-                }
-            } catch (Exception exception) {
-                log.error("Problem closing session in getAuthor()", exception);
-            }
+            closeSession(databaseSession, "getAuthor");
         }
 
         return retrievedAuthor;
@@ -107,6 +95,8 @@ public class AuthorDAO {
             log.error("Hibernate error in databaseQuery", hibernateException);
         } catch (Exception exception) {
             log.error("Exception in databaseQuery", exception);
+        } finally {
+            closeSession(databaseSession, "isAuthorInDatabaseQuery");
         }
 
         return false;
@@ -137,54 +127,12 @@ public class AuthorDAO {
             log.error("Hibernate error in databaseQuery", hibernateException);
         } catch (Exception exception) {
             log.error("Exception in databaseQuery", exception);
+        } finally {
+            closeSession(databaseSession, "findAuthorByClass");
         }
         return 0;
     }
 
-    /**
-     * Delete an author within the database using the database author id.
-     * Calls the getAuthor in order to popular an Author class to utilize delete from a session.
-     * @param author_id author's id in the database.
-     * @return author id on success, 0 if the author is not in the database, -1 for error.
-     */
-    /*
-    public int deleteAuthor(int author_id) {
-        int db_author_id;
-        Author authorToDelete = getAuthor(author_id);
-
-        if (authorToDelete == null) {
-            return 0;
-        } else {
-            db_author_id = authorToDelete.getId();
-        }
-
-        Session databaseSession = null;
-        Transaction currentTransaction = null;
-
-        try {
-            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
-            currentTransaction = databaseSession.beginTransaction();
-            databaseSession.delete(authorToDelete);
-            currentTransaction.commit();
-        } catch (HibernateException hibernateException) {
-            String message = "Hibernate Exception in deleteAuthor";
-            rollbackTransaction(currentTransaction, message, hibernateException);
-        } catch (Exception exception) {
-            String message = "Exception in deleteAuthor";
-            rollbackTransaction(currentTransaction, message, exception);
-        } finally {
-            try {
-                if (databaseSession != null) {
-                    databaseSession.close();
-                }
-            } catch (Exception exception) {
-                log.error("Problem with closing session in deleteAuthor()", exception);
-            }
-        }
-
-        return db_author_id;
-    }
-    */
 
     /**
      * Delete an author based on a class. Mostly testing purposes. Assumes non-null author.
@@ -192,7 +140,7 @@ public class AuthorDAO {
      * @return the author's id on success, 0 if the author is not in the database, -1 for error.
      */
     public int deleteAuthor(Author author) {
-        int db_author_id = author.getId();
+        int db_author_id = 0;
 
         Session databaseSession = null;
         Transaction currentTransaction = null;
@@ -202,6 +150,7 @@ public class AuthorDAO {
             currentTransaction = databaseSession.beginTransaction();
             databaseSession.delete(author);
             currentTransaction.commit();
+            db_author_id = author.getId();
         } catch (HibernateException hibernateException) {
             String message = "Hibernate exception within deleteAuthor";
             rollbackTransaction(currentTransaction, message, hibernateException);
@@ -209,13 +158,7 @@ public class AuthorDAO {
             String message = "Exception within deleteAuthor";
             rollbackTransaction(currentTransaction,message, exception);
         } finally {
-            try {
-                if (databaseSession != null) {
-                    databaseSession.close();
-                }
-            } catch (Exception exception) {
-                log.error("Problem closing session in deleteAuthor", exception);
-            }
+            closeSession(databaseSession, "deleteAuthor");
         }
 
         return db_author_id;
@@ -298,25 +241,6 @@ public class AuthorDAO {
 
 
     /**
-     * Delete an author safely from the database. Uses getAuthor to retrieve an author if
-     * one exists.
-     * @param author_id the id of the record to be deleted.
-     * @return -1 for error, 0 if author is not in the database. Author Id returned on success.
-     */
-    /*
-    public int safeDeleteAuthor(int author_id) {
-        if (author_id <= 0) {
-            return -1;
-        }
-        Author isAuthorInDatabase = getAuthor(author_id);
-        if (isAuthorInDatabase != null) {
-            return deleteAuthor(author_id);
-        }
-        return 0;
-    }
-    */
-
-    /**
      * Update an author's information in the database using the author class.
      * Error detection done on the author class.
      * @param author the full author class.
@@ -339,13 +263,7 @@ public class AuthorDAO {
             String message = "Exception in updateAuthor";
             rollbackTransaction(currentTransaction, message, exception);
         } finally {
-            try {
-                if (databaseSession != null) {
-                    databaseSession.close();
-                }
-            } catch (Exception exception) {
-                log.error("Problem with closing session in updateAuthor", exception);
-            }
+            closeSession(databaseSession, "updateAuthor");
         }
 
         return didUpdate;
@@ -397,5 +315,15 @@ public class AuthorDAO {
         }
 
 
+    }
+
+    private void closeSession(Session session, String locationName) {
+        try {
+            if (session != null) {
+                session.close();
+            }
+        } catch (Exception except) {
+            log.error("Problem closing the database session in " + locationName);
+        }
     }
 }

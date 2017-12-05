@@ -23,7 +23,7 @@
     <c:choose>
         <c:when test="${empty bookList}">
             <h2>You don't have any books in your list.</h2>
-            <a href="recommendABook"><h3>Add Some</h3></a>
+            <a href="search"><h3>Add Some</h3></a>
         </c:when>
 
         <c:when test="${not empty bookList}">

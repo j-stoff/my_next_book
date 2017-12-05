@@ -17,7 +17,9 @@
     <c:import url="jsp-snippets/banner-tag.jsp" />
     <c:import url="jsp-snippets/navbar-tag.jsp" />
     <h1>Hi</h1>
-    <form method="post" action="addUserBook">
+    <!-- TODO remove form, for testing only. -->
+    <!-- TODO generate recommendations on this page -->
+    <form>
         <label>Title:</label>
         <input type="text" name="title" />
 
@@ -39,7 +41,7 @@
         <label>ISBN</label>
         <input type="text" name="isbn"/>
 
-        <input type="submit" value="Go"/>
+        <input type="button" value="Go" id="buttonRecommendation"/>
     </form>
 </body>
 </html>

@@ -232,4 +232,47 @@ public class BookDAOTest {
         }
     }
 
+
+    @Test
+    public void searchBasedOnTitleTest() throws Exception {
+        Author authorOfBook = addAuthorToDatabase();
+        Book bookToAdd = addBookToDatabase(authorOfBook);
+
+        List<Book> results = bookDao.searchBasedOnTitle(bookToAdd.getTitle());
+
+        assertNotNull("The results returned were null", results);
+        assertTrue("The list does not contain the book", results.contains(bookToAdd));
+
+        assertTrue("Book was not cleaned from database", bookDao.deleteBook(bookToAdd) > 0);
+        assertTrue("Author was not cleaned from database", authorDao.deleteAuthor(authorOfBook) > 0);
+    }
+
+    private Author addAuthorToDatabase() {
+        Author author = new Author("Stephen", "King", 4.5);
+
+        int id = authorDao.addAuthor(author);
+        author.setId(id);
+
+        assertTrue("Author not added to database", id > 0);
+
+        return author;
+    }
+
+    private Book addBookToDatabase(Author author) {
+        List<String> genres = new ArrayList<>();
+        genres.add("sci-fi");
+        genres.add("cult thriller");
+        Book book = new Book("Ready player one", "Ernest Cline", 5, genres, "1234567890");
+        book.setFk_id_author(author);
+
+        int id = bookDao.addBook(book);
+
+        book.setId(id);
+
+
+        assertTrue("Book was not added to database", id > 0);
+
+        return book;
+    }
+
 }

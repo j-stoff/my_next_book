@@ -15,18 +15,17 @@
 <body>
     <c:import url="jsp-snippets/banner-tag.jsp" />
     <c:import url="jsp-snippets/navbar-tag.jsp" />
-    <h2>Search the database</h2>
-    <h4>Enter only one parameter, processed from top to bottom</h4>
-    <form action="results" method="get">
-        <label for="bookTitle">Book Title:</label>
-        <input type="text" name="bookTitle" id="bookTitle"/>
-        <br/>
-
-        <label for="bookId">Book ID:</label>
-        <input type="text" name="bookId" id="bookId"/>
-        <br/>
-
-        <input type="submit">
-    </form>
+    <div class="container">
+        <h2>Search the database</h2>
+        <form action="results" method="get" class="form-inline">
+            <select name="selectCriteria" id="selectCriteria">
+                <option value="title">Title</option>
+                <option value="author">Author</option>
+                <option value="genre">Genre</option>
+            </select>
+            <input type="text" id="query" name="query"/>
+            <input type="submit">
+        </form>
+    </div>
 </body>
 </html>

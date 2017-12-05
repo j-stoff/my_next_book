@@ -25,6 +25,11 @@ public class SearchResults extends HttpServlet {
         String bookTitleParameter = request.getParameter("bookTitle");
         String bookIdParameter = request.getParameter("bookId");
 
+        String selection = request.getParameter("selectCriteria");
+        String query = request.getParameter("query");
+
+        log.info("Selection: " + selection + ", query: " + query);
+
         List<Book> results = null;
 
         BookDAO bookDao = new BookDAO();

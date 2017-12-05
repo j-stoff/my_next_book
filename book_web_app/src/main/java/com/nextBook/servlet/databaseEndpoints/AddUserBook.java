@@ -77,9 +77,9 @@ public class AddUserBook extends HttpServlet {
 
         response.getWriter().write("Hello from the servlet");
 
-        String url = "/book_app/next_book/recommendABook";
+        //String url = "/book_app/next_book/recommendABook";
 
-        response.sendRedirect(url);
+        //response.sendRedirect(url);
     }
         
 }

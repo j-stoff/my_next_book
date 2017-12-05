@@ -22,7 +22,6 @@ public class MainScreen extends HttpServlet {
         if (request.getAttribute("currentUser") == null) {
             //TODO
             // Get user object
-            String userName = request.getRemoteUser();
             UserDAO userDAO = new UserDAO();
             Users user = userDAO.getUserByUserName(request.getRemoteUser());
             request.getSession().setAttribute("currentUser", user);

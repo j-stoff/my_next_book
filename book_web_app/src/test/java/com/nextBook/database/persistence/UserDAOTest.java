@@ -142,6 +142,7 @@ public class UserDAOTest {
         assertTrue("The user was not added properly", id > 0);
 
         cleanUp(user);
+        assertTrue("The author was not deleted", authorDAO.deleteAuthor(author) > 0);
     }
 
     @Test

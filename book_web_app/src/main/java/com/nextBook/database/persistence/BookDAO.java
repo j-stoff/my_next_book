@@ -3,10 +3,8 @@ package com.nextBook.database.persistence;
 import javassist.bytecode.ExceptionTable;
 import com.nextBook.database.entity.Book;
 import org.apache.log4j.Logger;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.*;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.exception.ConstraintViolationException;
 
 import java.util.ArrayList;
@@ -49,13 +47,7 @@ public class BookDAO {
             String message = "Exception in addBook";
             rollbackTransaction(currentTransaction, message, exception);
         } finally {
-            try {
-                if (databaseSession != null) {
-                    databaseSession.close();
-                }
-            } catch (Exception exception) {
-                log.error("Problem closing session in addBook", exception);
-            }
+            closeSession(databaseSession, "addBook");
         }
 
         return book_id;
@@ -78,13 +70,7 @@ public class BookDAO {
         } catch (Exception exception) {
             log.error("Exception in getBook", exception);
         } finally {
-            try {
-                if (databaseSession != null) {
-                    databaseSession.close();
-                }
-            } catch (Exception exception) {
-                log.error("Problem closing session in getBook", exception);
-            }
+            closeSession(databaseSession, "getBook");
         }
 
         return retrievedBook;
@@ -113,13 +99,7 @@ public class BookDAO {
             String message = "Exception in updateBook";
             rollbackTransaction(currentTransaction, message, exception);
         } finally {
-            try {
-                if (databaseSession != null) {
-                    databaseSession.close();
-                }
-            } catch (Exception exception) {
-                log.error("Problem with closing session in updateBook", exception);
-            }
+            closeSession(databaseSession, "updateBook");
         }
 
         return didUpdate;
@@ -131,7 +111,7 @@ public class BookDAO {
      * @return the id on success, 0 if the book is not in the database, -1 for an error
      */
     public int deleteBook(Book book) {
-        int retrieved_id = book.getId();
+        int retrieved_id = 0;
         Session databaseSession = null;
         Transaction currentTransaction = null;
 
@@ -140,6 +120,7 @@ public class BookDAO {
             currentTransaction = databaseSession.beginTransaction();
             databaseSession.delete(book);
             currentTransaction.commit();
+            retrieved_id = book.getId();
         } catch (HibernateException hibernateException) {
             String message = "Hibernate Exception in deleteBook";
             rollbackTransaction(currentTransaction, message, hibernateException);
@@ -147,13 +128,7 @@ public class BookDAO {
             String message = "Exception in deleteBook";
             rollbackTransaction(currentTransaction, message, expcetion);
         } finally {
-            try {
-                if (databaseSession != null) {
-                    databaseSession.close();
-                }
-            } catch (Exception exception) {
-                log.error("Problem closing the session deleteBook", exception);
-            }
+            closeSession(databaseSession, "deleteBook");
         }
 
         return retrieved_id;
@@ -231,7 +206,7 @@ public class BookDAO {
      * @param bookTitle The title of the book object
      * @return a book object with all relevant information or null if not found
      */
-    public List findBookByTitle(String bookTitle) {
+    public List<Book> findBookByTitle(String bookTitle) {
         String hql = "FROM Book B WHERE B.title like '" + bookTitle + "'";
         //String hql = "From Book";
         Session databaseSession = null;
@@ -253,17 +228,35 @@ public class BookDAO {
             String message = "Exception in findBookByTitle";
             rollbackTransaction(currentTransaction, message, exceptiion);
         } finally {
-            try {
-                if (databaseSession != null) {
-                    databaseSession.close();
-                }
-            } catch (Exception exception) {
-                log.error("Problem closing database session", exception);
-            }
+            closeSession(databaseSession, "findBookByTitle");
         }
 
         return results;
     }
+
+
+
+    public List<Book> searchBasedOnTitle(String title) {
+        List<Book> results = null;
+        Session databaseSession = null;
+
+        try {
+            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
+            // query based on criteria
+            Criteria criteria = databaseSession.createCriteria(Book.class);
+            criteria.add(Restrictions.ilike("title", title));
+            results = criteria.list();
+        } catch (HibernateException hibExcept) {
+            log.error("Hibernate exception in searchBasedOnTitle", hibExcept);
+        } catch (Exception except) {
+            log.error("Exception in searchBasedOnTitle", except);
+        } finally {
+            closeSession(databaseSession, "searchBasedOnTitle");
+        }
+
+        return results;
+    }
+
 
     /**
      * For changing a book's values in the database, the book's non-null values are expected to be
@@ -317,5 +310,16 @@ public class BookDAO {
         }
 
 
+    }
+
+
+    private void closeSession(Session session, String locationName) {
+        try {
+            if (session != null) {
+                session.close();
+            }
+        } catch (Exception except) {
+            log.error("Problem closing the database session in " + locationName);
+        }
     }
 }
