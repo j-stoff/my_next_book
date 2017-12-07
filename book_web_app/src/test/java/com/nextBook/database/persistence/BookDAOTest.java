@@ -240,6 +240,8 @@ public class BookDAOTest {
 
         List<Book> results = bookDao.searchBasedOnTitle(bookToAdd.getTitle());
 
+        System.out.println(bookDao.searchBasedOnTitle("Rick and morty"));
+
         assertNotNull("The results returned were null", results);
         assertTrue("The list does not contain the book", results.contains(bookToAdd));
 
@@ -253,7 +255,7 @@ public class BookDAOTest {
         Book book = addBookToDatabase(author);
 
         List<Author> authorList = authorDao.searchBasedOnAuthorFirstName(author.getFirstName());
-        
+
         assertNotNull("The author list was null", authorList);
         assertTrue("The author list does not contain the added author", authorList.contains(author));
 

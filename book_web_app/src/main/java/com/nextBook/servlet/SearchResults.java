@@ -1,6 +1,8 @@
 package com.nextBook.servlet;
 
+import com.nextBook.database.entity.Author;
 import com.nextBook.database.entity.Book;
+import com.nextBook.database.persistence.AuthorDAO;
 import com.nextBook.database.persistence.BookDAO;
 import org.apache.log4j.Logger;
 
@@ -21,38 +23,31 @@ public class SearchResults extends HttpServlet {
     private final Logger log = Logger.getLogger(this.getClass());
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        String bookTitleParameter = request.getParameter("bookTitle");
-        String bookIdParameter = request.getParameter("bookId");
-
         String selection = request.getParameter("selectCriteria");
         String query = request.getParameter("query");
 
-        log.info("Selection: " + selection + ", query: " + query);
-
         List<Book> results = null;
-
         BookDAO bookDao = new BookDAO();
 
-        if (bookTitleParameter != null && !bookTitleParameter.isEmpty()) {
-            // Search by title
-            results = (List<Book>) bookDao.findBookByTitle(bookTitleParameter);
-        } else if (bookIdParameter != null && !bookIdParameter.isEmpty()) {
-            int requestId = Integer.parseInt(bookIdParameter);
-            // Get the associated book and add it to the list
-            Book specifiedBook = bookDao.getBook(requestId);
 
-            if (specifiedBook != null) {
-                results = new ArrayList<Book>();
-                results.add(specifiedBook);
+        if (query != null && !query.isEmpty()) {
+            if (selection.equals("title")) {
+                results = bookDao.searchBasedOnTitle(query);
+            }
+            if (selection.equals("author")) {
+                AuthorDAO authorDAO = new AuthorDAO();
+                List<Author> authorList = authorDAO.searchBasedOnAuthorLastName(query);
+                if (authorList.isEmpty()) {
+                    authorList = authorDAO.searchBasedOnAuthorFirstName(query);
+                }
+                results = bookDao.searchBasedOnListOfAuthors(authorList);
             }
         }
 
 
-
         HttpSession session = request.getSession();
 
-        session.setAttribute("resultList", results);
+        session.setAttribute("bookList", results);
 
         String url = "/next_book/jsp/results.jsp";
 
@@ -61,5 +56,6 @@ public class SearchResults extends HttpServlet {
 
         dispatcher.forward(request, response);
     }
+
 
 }

@@ -11,14 +11,16 @@
 <head>
     <c:set var="pageTitle" value="Search Results" scope="session"/>
     <c:import url="jsp-snippets/header-tag.jsp"/>
+    <script src="../js/addBook.js"></script>
 </head>
 <body>
 
     <c:import url="jsp-snippets/navbar-tag.jsp" />
+    <div class="container">
     <c:choose>
-        <c:when test="${not empty resultList}" >
+        <c:when test="${not empty bookList}" >
             <h1>Here are the results of the search</h1>
-            <table>
+            <table id="bookResults">
                 <tr>
                     <th>Book Title:</th>
                     <th>Author:</th>
@@ -27,16 +29,18 @@
                     <th>Number of Ratings:</th>
                     <th>Genres:</th>
                     <th>ISBN:</th>
+                    <th></th>
                 </tr>
-                <c:forEach var="book" items="${resultList}">
-                    <tr>
-                        <td>${book.title}</td>
-                        <td>${book.authorName}</td>
-                        <td>${book.rating}</td>
-                        <td>${book.numberOfRatings}</td>
-                        <td>${book.numberOfReviews}</td>
-                        <td>${book.genre}</td>
-                        <td>${book.isbn}</td>
+                <c:forEach var="book" items="${bookList}">
+                    <tr id="${book.id}">
+                        <td class="bookInfo">${book.title}</td>
+                        <td class="bookInfo">${book.authorName}</td>
+                        <td class="bookInfo">${book.rating}</td>
+                        <td class="bookInfo">${book.numberOfRatings}</td>
+                        <td class="bookInfo">${book.numberOfReviews}</td>
+                        <td class="bookInfo">${book.genre}</td>
+                        <td class="bookInfo">${book.isbn}</td>
+                        <td><input type="button" class="addToUserBooks" value="Add Book"/></td>
                     </tr>
                 </c:forEach>
             </table>
@@ -48,8 +52,9 @@
 
     </c:choose>
 
+    </div>
     <!--
-    <c:forEach var="book" items="${resultList}">
+    <c:forEach var="book" items="${bookList}">
         ${book.title}
     </c:forEach>
     -->
