@@ -227,9 +227,6 @@ public class BookDAOTest {
         List<Book> results = (List<Book>)bookDao.findBookByTitle("Dune");
 
         assertNotNull("Query failed", results);
-        for (Book book : results) {
-            System.out.println(book.toString());
-        }
     }
 
 
@@ -239,8 +236,6 @@ public class BookDAOTest {
         Book bookToAdd = addBookToDatabase(authorOfBook);
 
         List<Book> results = bookDao.searchBasedOnTitle(bookToAdd.getTitle());
-
-        System.out.println(bookDao.searchBasedOnTitle("Rick and morty"));
 
         assertNotNull("The results returned were null", results);
         assertTrue("The list does not contain the book", results.contains(bookToAdd));
@@ -254,6 +249,7 @@ public class BookDAOTest {
         Author author = addAuthorToDatabase();
         Book book = addBookToDatabase(author);
 
+
         List<Author> authorList = authorDao.searchBasedOnAuthorFirstName(author.getFirstName());
 
         assertNotNull("The author list was null", authorList);
@@ -262,11 +258,13 @@ public class BookDAOTest {
         List<Book> bookList = bookDao.searchBasedOnListOfAuthors(authorList);
 
 
+
         assertNotNull("The book list was null", bookList);
         assertTrue("The book list did not contain the book", bookList.contains(book));
 
         assertTrue("Book was not cleaned from database", bookDao.deleteBook(book) > 0);
         assertTrue("Author was not cleaned from database", authorDao.deleteAuthor(author) > 0);
+
     }
 
     private Author addAuthorToDatabase() {
@@ -284,7 +282,7 @@ public class BookDAOTest {
         List<String> genres = new ArrayList<>();
         genres.add("sci-fi");
         genres.add("cult thriller");
-        Book book = new Book("Ready player one", "Ernest Cline", 5, genres, "1234567890");
+        Book book = new Book("RPO", "Stephena King", 5, genres, "1234567890");
         book.setFk_id_author(author);
 
         int id = bookDao.addBook(book);

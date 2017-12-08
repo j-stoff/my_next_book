@@ -11,6 +11,6 @@
     <title>Failed Login</title>
 </head>
 <body>
-<h1>Your login failed <a href="login.jsp">try again</a></h1>
+<h1>Your login failed <a href="next_book/main">try again</a></h1>
 </body>
 </html>

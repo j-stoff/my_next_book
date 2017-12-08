@@ -1,4 +1,8 @@
-package com.nextBook.servlet;import javax.servlet.ServletException;
+package com.nextBook.controller;
+
+import com.nextBook.database.entity.Users;
+
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -6,13 +10,20 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 @WebServlet(
-    name = "UserInformation", 
-    urlPatterns = "/next_book/userInfo")
-public class UserInformationServlet extends HttpServlet {
+    name = "Logout", 
+    urlPatterns = "/next_book/logout")
+public class LogoutServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
-        String url = "/next_book/jsp/user_info.jsp";
+
+        request.setAttribute("currentUser", null);
+
+        request.logout();
+
+        request.getSession().invalidate();
+
+        String url = "/next_book/jsp/logout.jsp";
 
         RequestDispatcher dispatcher =
             getServletContext().getRequestDispatcher(url);

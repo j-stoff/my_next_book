@@ -1,4 +1,4 @@
-package com.nextBook.servlet.databaseEndpoints;
+package com.nextBook.controller.databaseEndpoints;
 
 import com.nextBook.database.entity.User_roles;
 import com.nextBook.database.entity.Users;

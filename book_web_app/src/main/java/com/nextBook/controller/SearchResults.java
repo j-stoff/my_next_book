@@ -1,4 +1,4 @@
-package com.nextBook.servlet;
+package com.nextBook.controller;
 
 import com.nextBook.database.entity.Author;
 import com.nextBook.database.entity.Book;
@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "searchResults", urlPatterns = "/next_book/results")

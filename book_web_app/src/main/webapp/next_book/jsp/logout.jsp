@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: jake-python
-  Date: 10/5/17
-  Time: 11:45 PM
+  User: j-stoff
+  Date: 12/8/17
+  Time: 3:46 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -15,18 +15,12 @@
 <body>
     <div class="container-fluid">
         <div class="jumbotron">
-            <h2>Log in dude</h2>
+            <h2>You have logged out</h2>
         </div>
     </div>
+
     <div class="container">
-        <FORM ACTION="j_security_check" METHOD="POST">
-            <TABLE>
-                <TR><TD>User name: <INPUT TYPE="TEXT" NAME="j_username">
-                <TR><TD>Password: <INPUT TYPE="PASSWORD" NAME="j_password">
-                <TR><TH><INPUT TYPE="SUBMIT" VALUE="Log In">
-            </TABLE>
-        </FORM>
+        <h4><a href="main">Log back in</a></h4>
     </div>
 </body>
 </html>
-
