@@ -20,14 +20,16 @@ public class MainScreen extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (request.getAttribute("currentUser") == null) {
-            //TODO
-            // Get user object
             UserDAO userDAO = new UserDAO();
             Users user = userDAO.getUserByUserName(request.getRemoteUser());
             request.getSession().setAttribute("currentUser", user);
         }
 
         String url = "/next_book/jsp/main.jsp";
+        if (request.isUserInRole("administrator")) {
+            url = "/next_book/admin/user-management.jsp";
+        }
+
 
         RequestDispatcher dispatcher =
                 getServletContext().getRequestDispatcher(url);
