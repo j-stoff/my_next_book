@@ -158,6 +158,15 @@ public class UserDAOTest {
     }
 
 
+    @Test
+    public void getAllUsersExceptAdminTest() throws Exception {
+        List<Users> list = userDAO.getAllUsersExceptAdmin();
+
+        System.out.println(list);
+        assertNotNull("The list was null",list);
+    }
+
+
     private int insertSingleUserReturnInt() {
         Users user = new Users(555, "CptMarvel", "shazam", "immaCaptain@hotmail.com");
         int id = userDAO.addUser(user);

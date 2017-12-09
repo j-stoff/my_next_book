@@ -28,14 +28,7 @@ public class User_roles extends BaseEntity implements Serializable {
   @Column(name="role_type")
   private String role_type;
 
-  /*
-  @NotNull
-  private int user_id_fk;
-  */
-
-
   @ManyToOne
-  //@Cascade({CascadeType.SAVE_UPDATE, CascadeType.DELETE})
   @JoinColumn(name = "user_id_fk", referencedColumnName = "user_id", nullable = false)
   private Users user;
 
@@ -52,7 +45,6 @@ public class User_roles extends BaseEntity implements Serializable {
   public User_roles(int id, String role, int fk_id, Users user) {
     this.role_id = id;
     this.role_type = role;
-    //this.user_id_fk = fk_id;
     this.user = user;
   }
 
@@ -113,9 +105,8 @@ public class User_roles extends BaseEntity implements Serializable {
   public String toString() {
     String newLine = System.getProperty("line.separator");
     String user_role = "Role ID: " + role_id + newLine;
-    //user_role += "Username: " + user_name + newLine;
     user_role += "Role type: " + role_type + newLine;
-    //user_role += "User Foreign key id: " + user_id_fk + newLine;
+    user_role += user.toString();
 
     return user_role;
   }

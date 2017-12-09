@@ -160,6 +160,27 @@ public class UserDAO {
     }
 
 
+    public List<Users> getAllUsersExceptAdmin() {
+        List<Users> list = null;
+        Session databaseSession = null;
+
+        try {
+            databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
+            Criteria criteria = databaseSession.createCriteria(User_roles.class);
+            criteria.add(Restrictions.ne("role_type", "administrator"));
+            list = criteria.list();
+        } catch (HibernateException hibExcept) {
+            log.error("Hibernate Exception in getAllUsersExceptAdmin");
+        } catch (Exception except) {
+            log.error("Exception in getAllusersExceptAdmin");
+        } finally {
+            closeSession(databaseSession, "getAllUsersExceptAdmin");
+        }
+
+        return list;
+    }
+
+
     public boolean updateUser(Users user) {
         boolean didUpdate = false;
         Session databaseSession = null;

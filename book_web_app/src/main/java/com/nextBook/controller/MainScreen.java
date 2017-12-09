@@ -27,7 +27,7 @@ public class MainScreen extends HttpServlet {
 
         String url = "/next_book/jsp/main.jsp";
         if (request.isUserInRole("administrator")) {
-            url = "/next_book/admin/user-management.jsp";
+            url = "/admin/userManagement";
         }
 
 
