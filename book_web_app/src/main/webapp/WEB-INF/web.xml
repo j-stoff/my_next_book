@@ -20,8 +20,8 @@
 
   <security-constraint>
     <web-resource-collection>
-      <web-resource-name>edit</web-resource-name>
-      <url-pattern>/next_book/jsp/edit.jsp</url-pattern>
+      <web-resource-name>Admin</web-resource-name>
+      <url-pattern>/admin/*</url-pattern>
     </web-resource-collection>
     <auth-constraint>
       <role-name>administrator</role-name>
