@@ -13,5 +13,32 @@
 </head>
 <body>
     <h3><a href="logout"> Logout</a></h3>
+    <c:choose>
+        <c:when test="${not empty userList}">
+            <table>
+                <tr>
+                    <th>User Id</th>
+                    <th>Username</th>
+                    <th>User email</th>
+                    <th>Roles</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+                <c:forEach var="user" items="${userList}">
+                    <tr id="${user.user_id}">
+                        <td>${user.user_id}</td>
+                        <td>${user.user_name}</td>
+                        <td>${user.email}</td>
+                        <td>${user.roles}</td>
+                        <td><input type="button" value="Delete"/></td>
+                        <td><input type="button" value="Edit"></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </c:when>
+        <c:otherwise>
+            <h1>No users to edit.</h1>
+        </c:otherwise>
+    </c:choose>
 </body>
 </html>

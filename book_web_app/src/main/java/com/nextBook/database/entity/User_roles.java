@@ -103,11 +103,15 @@ public class User_roles extends BaseEntity implements Serializable {
 
   @Override
   public String toString() {
+    /*
+    Old part for debugging
+
     String newLine = System.getProperty("line.separator");
     String user_role = "Role ID: " + role_id + newLine;
     user_role += "Role type: " + role_type + newLine;
     user_role += user.toString();
+    */
 
-    return user_role;
+    return role_type;
   }
 }

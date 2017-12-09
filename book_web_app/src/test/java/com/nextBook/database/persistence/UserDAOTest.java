@@ -161,8 +161,6 @@ public class UserDAOTest {
     @Test
     public void getAllUsersExceptAdminTest() throws Exception {
         List<Users> list = userDAO.getAllUsersExceptAdmin();
-
-        System.out.println(list);
         assertNotNull("The list was null",list);
     }
 

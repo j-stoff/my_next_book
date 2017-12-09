@@ -161,14 +161,15 @@ public class UserDAO {
 
 
     public List<Users> getAllUsersExceptAdmin() {
-        List<Users> list = null;
+        List<Users> userList = null;
+        List<User_roles> roleList = null;
         Session databaseSession = null;
 
         try {
             databaseSession = SessionFactoryProvider.getSessionFactory().openSession();
             Criteria criteria = databaseSession.createCriteria(User_roles.class);
             criteria.add(Restrictions.ne("role_type", "administrator"));
-            list = criteria.list();
+            roleList = criteria.list();
         } catch (HibernateException hibExcept) {
             log.error("Hibernate Exception in getAllUsersExceptAdmin");
         } catch (Exception except) {
@@ -177,7 +178,15 @@ public class UserDAO {
             closeSession(databaseSession, "getAllUsersExceptAdmin");
         }
 
-        return list;
+        if (!roleList.isEmpty()) {
+            userList = new ArrayList<>();
+            for (User_roles role :
+                    roleList) {
+                userList.add(role.getUser());
+            }
+        }
+
+        return userList;
     }
 
 
