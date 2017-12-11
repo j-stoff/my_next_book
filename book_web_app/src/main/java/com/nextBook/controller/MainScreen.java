@@ -25,15 +25,15 @@ public class MainScreen extends HttpServlet {
             request.getSession().setAttribute("currentUser", user);
         }
 
-        String url = "/next_book/jsp/main.jsp";
+
         if (request.isUserInRole("administrator")) {
-            url = "/admin/userManagement";
+            response.sendRedirect("/book_app/admin/main");
+        } else {
+            String url = "/next_book/jsp/main.jsp";
+            RequestDispatcher dispatcher =
+                    getServletContext().getRequestDispatcher(url);
+
+            dispatcher.forward(request, response);
         }
-
-
-        RequestDispatcher dispatcher =
-                getServletContext().getRequestDispatcher(url);
-
-        dispatcher.forward(request, response);
     }
 }

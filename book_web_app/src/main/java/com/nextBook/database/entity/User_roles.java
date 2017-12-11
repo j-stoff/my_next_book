@@ -74,17 +74,6 @@ public class User_roles extends BaseEntity implements Serializable {
     this.role_type = role_type;
   }
 
-
-  /*
-  public int getUser_fk() {
-    return user_fk;
-  }
-
-  public void setUser_id_fk(int user_fk) {
-    this.user_fk = user_fk;
-  }
-  */
-
   public Users getUser() {
     return this.user;
   }
