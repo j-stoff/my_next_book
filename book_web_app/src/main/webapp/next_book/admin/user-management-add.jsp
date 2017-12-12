@@ -26,6 +26,7 @@
     </head>
 
 <body>
+    <div class="container">
     <h3><a href="logout">Logout</a></h3>
     <h3><a href="deleteUser">Delete Users</a></h3>
     <h2>Add Users</h2>
@@ -68,5 +69,6 @@
         <input type="submit" value="Add User" class="btn btn-default"/>
     </form>
     <div class="isUserAdded"></div>
+    </div>
 </body>
 </html>

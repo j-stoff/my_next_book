@@ -37,7 +37,8 @@ public class AddNewUser extends HttpServlet {
 
         user.getRoles().add(role);
 
-        userDAO.addUser(user);
+        int id = userDAO.addUser(user);
+        user.setUser_id(id);
 
         log.info("New user added: " + user.toLog());
 

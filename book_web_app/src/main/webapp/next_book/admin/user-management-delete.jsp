@@ -21,15 +21,15 @@
 
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="../js/jquery.validate.min.js"></script>
-        <script src="../js/signupValidation.js"></script>
+        <script src="../js/userManagementDelete.js"></script>
     </head>
 <body>
+    <div class="container">
     <h3><a href="logout"> Logout</a></h3>
     <h3><a href="addUser">Add Users</a></h3>
     <c:choose>
         <c:when test="${not empty userList}">
-            <table>
+            <table id="userTable">
                 <tr>
                     <th>User Id</th>
                     <th>Username</th>
@@ -52,5 +52,6 @@
             <h1>No users to edit.</h1>
         </c:otherwise>
     </c:choose>
+    </div>
 </body>
 </html>
